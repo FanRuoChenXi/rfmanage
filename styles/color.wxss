@@ -1,0 +1,123 @@
+/* prettier-ignore */
+/* 主色 */
+.red {
+  color: #f65916;
+}
+.blue {
+  color: #009af3;
+}
+.gold {
+  color: #e2aa6e;
+}
+/* 中性色 */
+.N {
+  color: #00000000;
+}
+.N0 {
+  color: #000000;
+}
+.N1 {
+  color: #323233;
+}
+.N2 {
+  color: #6e6f70;
+}
+.N3 {
+  color: #9196a0;
+}
+.N4 {
+  color: #c2c5cd;
+}
+.N5 {
+  color: #dcdee0;
+}
+.N6 {
+  color: #ebedf0;
+}
+.N7 {
+  color: #f2f3f5;
+}
+.N8 {
+  color: #f7f8fa;
+}
+.N9 {
+  color: #ffffff;
+}
+
+/* 业务用色 */
+/* 成功 */
+.G1 {
+  color: #67c23a;
+}
+.G2 {
+  color: #c2e7b0;
+}
+.G3 {
+  color: #f0f9ea;
+}
+/* 提示 */
+.Y1 {
+  color: #e6a23c;
+}
+.Y2 {
+  color: #f7d77b;
+}
+.Y3 {
+  color: #fffbe8;
+}
+/* 报错 */
+.R1 {
+  color: #f56c6c;
+}
+.R2 {
+  color: #fbc4c4;
+}
+.R3 {
+  color: #fef0f0;
+}
+/* 强调色 */
+.O1 {
+  color: #ed3b0b;
+}
+.O2 {
+  color: #ed6a0b;
+}
+.O3 {
+  color: #fff1df;
+}
+
+/* 背景主色 */
+.bg-red {
+  background-color: #ee0a24;
+}
+/* 背景中性色 */
+.bg-N0 {
+  background-color: #000000;
+}
+.bg-N1 {
+  background-color: #323233;
+}
+.bg-N2 {
+  background-color: #6e6f70;
+}
+.bg-N3 {
+  background-color: #9196a0;
+}
+.bg-N4 {
+  background-color: #c2c5cd;
+}
+.bg-N5 {
+  background-color: #dcdee0;
+}
+.bg-N6 {
+  background-color: #ebedf0;
+}
+.bg-N7 {
+  background-color: #f2f3f5;
+}
+.bg-N8 {
+  background-color: #f7f8fa;
+}
+.bg-N9 {
+  background-color: #ffffff;
+}

@@ -1,14 +1,10 @@
 {
-  "pages": [
-    "pages/index/index",
-    "pages/logs/logs"
-  ],
+  "pages": ["pages/basic/login/login"],
   "window": {
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "Weixin",
+    "navigationBarTitleText": "RFmanage",
     "navigationBarBackgroundColor": "#ffffff"
   },
-  "style": "v2",
   "componentFramework": "glass-easel",
   "sitemapLocation": "sitemap.json",
   "lazyCodeLoading": "requiredComponents"

@@ -1,0 +1,25 @@
+@import '/styles/color.wxss';
+@import '/styles/layout.wxss';
+
+page {
+  background-color: #f7f7f7;
+  font-family: SourceHanSansSCVF-Regular;
+}
+
+.loginText {
+  color: #565656;
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.inputBox {
+  width: 345px;
+  height: 145px;
+  margin: 0 0 0 30rpx;
+}
+
+.forgetText {
+  color: #c5c5c5;
+  font-size: 13px;
+  margin: 14px 0 0 210rpx;
+}

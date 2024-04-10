@@ -10,6 +10,6 @@
   "license": "ISC",
   "dependencies": {
     "moment": "^2.30.1",
-    "wux-weapp": "^3.11.1"
+    "tdesign-miniprogram": "^1.2.9"
   }
 }
