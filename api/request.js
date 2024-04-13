@@ -1,51 +1,4 @@
-const URL = {
-  release: 'https://pms.geemro.com/vip-php/public/index.php/', // 发布版接口地址
-  trial: 'https://trial.geemro.com/vip-php/public/index.php/', // 体验版接口地址
-  develop: 'https://dev.geemro.com/vip-php/public/index.php/', // 开发版接口地址
-  mock: 'http://192.168.2.99:4523/mock/997517/', // 本地 MOCK 接口地址
-}
-const accountInfo = wx.getAccountInfoSync() // 可判断是开发环境还是生产环境
-let appid = accountInfo.miniProgram.appId
-let env = accountInfo.miniProgram.envVersion // 保存环境标记
-// if (env == 'develop') env = 'release' //! 保存环境标记, 慎用!
-if (!env) {
-  wx.showToast({
-    title: '微信版本过低，请更新微信以体验小程序完整功能',
-    icon: 'none',
-    duration: 5e3,
-  })
-}
-
-/**
- * upload 请求
- * @param {String} api 请求的api接口
- * @param {String} fileList 文件列表 // * 示例: [file, file, ...]
- * @param {Object} [data] 表单参数[可选] // * 示例: { key1, key2, ... }
- */
-async function upload(api, fileList, params) {
-  params = _requestFit(params) // 请求前的数据适配
-  const FormData = require('../service/form-data.js') // 引用 wx-formdata 构建表单
-  const formData = new FormData()
-  const dataKeys = Object.keys(params) // 表单数据键值
-  for (let key of dataKeys) formData.append(key, params[key]) // 推入表单参数
-  for (let file of fileList) formData.appendFile('file[]', file.url, file.name) // 推入表单文件
-  const data = formData.getData()
-  return new Promise((resolve, reject) => {
-    wx.request({
-      url: (params.mock ? URL.mock : URL[env]) + api, // 带 mock 服务标记会自动重定向
-      data: data.buffer,
-      method: 'POST',
-      header: { 'content-type': data.contentType, cookie: wx.getStorageSync('token') },
-      success: (response) => {
-        params.file = fileList
-        resolve(_onSuccess(api, params, response)) // 请求成功回调
-      },
-      fail: (error) => {
-        reject(_onFail(api, data, error))
-      },
-    })
-  })
-}
+const baseUrl = 'https://develop.snipeitapp.com/api/v1/'
 
 /**
  * request 请求
@@ -57,8 +10,9 @@ async function upload(api, fileList, params) {
  */
 const get = (api, params) => request('GET', api, params)
 const post = (api, params) => request('POST', api, params)
+
 async function request(method = 'GET', api, params = {}) {
-  let url = (params.mock ? URL.mock : URL[env]) + api // 带 mock 服务标记会自动重定向
+  let url = baseUrl + api // 拼接接口地址
   params = _requestFit(params) // 驼峰转下划线
   return new Promise((resolve, reject) => {
     const start = +new Date()
@@ -66,19 +20,23 @@ async function request(method = 'GET', api, params = {}) {
       url: method == 'GET' ? url + _getUrlParams(params) : url, // GET 时构造 URL 参数
       data: method == 'GET' ? null : params, // GET 时不使用 data
       method,
-      header: { cookie: wx.getStorageSync('token') },
-      success: (response) => resolve(_onSuccess(api, params, response)), // 请求成功回调
-      fail: (response) => resolve(_onFail(api, params, response)), // 请求失败回调
-      complete: (response) => {
-        const costTime = +new Date() - start
-        require('./monitor').monitorApi(api, params, response, costTime) // 接口监控上报
+      header: {
+        Authorization:
+          'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZTU2MDc0MjVmYjM5YTEwYjFjNTZlZTAxMTBmZDk4ZjQ0ZjVjODMzYjcxZWVhYjZlNDk1NGMwOThlY2YzMzU2MDY4Mzg4MmFhMDMzOTAzNzciLCJpYXQiOjE2MzI4NjU5MTgsIm5iZiI6MTYzMjg2NTkxOCwiZXhwIjoyMjY0MDIxNTE4LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.LgGVzyH67IRhXvccHd4j2Dn6TDuIuQTBoo30_wD9jPehy8v_h0xBmE1-dOUBRJyeJOI8B4gwPeALsWaudpGj9Lb5qWAtKV7eYtH9IYQKoLF_iHgOGXnAUcNwID6zBU_YyLNSI6gp8zjutLJias33CBLsHy5ZRNpxVibVrZouJ_HjYuIYbtZyLus-KFFeibtZoPiTWOeHhQFD37MR6ifx4dBqT37fN-xDS99mONtrkAplEIou5aSO1oZ4IlJIPCUyA1lixPgpn1YU7PxiBDZp1teeugD0WEmrAqxRS2I0bH4qPsuTsrVXS_lo87Sf5LBGLW7lGHKqyYH6J47OZOM0K-SrxLKtE1ww8jyLBgnnxH0lJHRLCBiwUnL5ZGTUmiOysUA-wSJ6s78o8Pc-ec6bpBvAlelHdiQ-wslE7gzEJDptbejFg-75b_CEwgJYh7J2D18ul6Qu5EFCUEgt033mm04dgVk0isWTDt6EW5ZvTo5Qhr1LY0YnEIXCTqIRN-BSQjL55sZaCrtwR_21bnBGgniyI5MRDYblFawVmFKroeClCpSjBo9vi66akdD5hjpvx67RL3r33BZQhEXmPifUPNH5wP_U-IHGFUD99TJk2c1awF0RASveZRLSunbJb1x6hGAVUaIvQV4r2quWzXqYyKLph9kGTyJYrb6iJtH5smE',
+        Accept: 'application/json',
+      },
+      success: (response) => {
+        resolve(_onSuccess(api, params, response)) // 请求成功回调
+      },
+      fail: (error) => {
+        reject(_onFail(api, params, error))
       },
     })
   })
 }
 
 /**
- * 请求成功或失败回调
+ * 请求成功回调
  * @param {String} api 请求的api接口
  * @param {Object} params 请求参数
  * @param {Promise} response 请求返回
@@ -86,19 +44,27 @@ async function request(method = 'GET', api, params = {}) {
  */
 function _onSuccess(api, params, response) {
   const data = _responseFit(response.data) // 对返回数据适配
-  const token = response?.header?.['Set-Cookie'] // 转存服务端 cookie
-  if (token) wx.setStorageSync('token', Array.isArray(token) ? token[0] : token) // iOS在调上传接口时 JSON.parse 会把 token 解析成数组
-  if (data.ok) {
-    showLog(api, params, data.data) // 展示程序运行日志
-    return [data.data, null] // 构造 [res, err] 格式的返回
+  // const token = response?.header?.['Set-Cookie'] // 转存服务端 cookie
+  // if (token) wx.setStorageSync('token', Array.isArray(token) ? token[0] : token) // iOS在调上传接口时 JSON.parse 会把 token 解析成数组
+  if (response.statusCode == 200) {
+    showLog(api, params, data) // 开发环境下控制台打印数据
+    return [data, null] // 构造 [res, err] 格式的返回
   } else {
     showLog(api, params, data, 'warn') // 展示程序运行日志
-    return [data?.data, data.msg || '接口调用失败']
+    return [null, response.errMsg || '接口调用失败']
   }
 }
-function _onFail(api, params, response) {
-  showLog(api, params, response, 'error') // 展示程序运行日志
-  return [null, response] // 返回异常信息
+
+/**
+ * 请求失败回调
+ * @param {String} api 请求的api接口
+ * @param {Object} params 请求参数
+ * @param {Promise} error 请求返回
+ * @return {Array} 返回[res, err]其中报错时才有err参数
+ */
+function _onFail(api, params, error) {
+  showLog(api, params, error, 'error') // 开发环境下控制台打印数据
+  return [null, error] // 返回异常信息
 }
 
 // 将参数对象转换为 URL 形式, 适配 GET 请求
@@ -106,7 +72,8 @@ function _getUrlParams(params) {
   let urlParams = '?'
   for (let key in params) {
     if (params[key] instanceof Array) {
-      for (let item of params[key]) urlParams += `${key}[]=${encodeURIComponent(item)}&`
+      for (let item of params[key])
+        urlParams += `${key}[]=${encodeURIComponent(item)}&`
     } else {
       urlParams += `${key}=${encodeURIComponent(params[key])}&`
     }
@@ -141,36 +108,18 @@ function _responseFit(data) {
   return newData
 }
 
-// 打印或上报日志. 注:日志上报有限额
-const log = require('./log')
-const whichEnvPrint = ['develop', 'trial', 'release'] // 控制台打印日志的运行环境
-const whichEnvUpload = ['release'] // 后台上报日志的运行环境
-function showLog(api, params, response, type) {
+// 打印日志
+function showLog(api, params, response, type = 'info') {
   if (!['info', 'warn', 'error'].includes(type)) type = 'info'
   // 本地打印
-  if (whichEnvPrint.includes(env)) {
-    console.group(api, params)
-    console[type](response)
-    console.groupEnd()
-  }
-  // 日志上报
-  if (whichEnvUpload.includes(env)) {
-    params = typeof params == 'string' ? params : JSON.stringify(params)
-    response = typeof response == 'string' ? response : JSON.stringify(response)
-    let res = api + ':' + params + '\n【收】' + response // 接口名 & 发出去的参数 & 收到的参数
-    if (type == 'info') {
-      res = res.replace(/"http(.*?)"/g, '…').replace(/"/g, '') // 过滤链接以及引号
-      res = res.length < 2000 ? res : res.slice(0, 2000) + '…' // 每条长度不得超过 2KB
-    }
-    log[type](res)
-  }
+  console.group(api, params)
+  console[type](response)
+  console.groupEnd()
 }
 
-module.exports = {
-  env, // 主机地址
-  appid, // 小程序 APPID
-  host: URL[env], // 主机地址
-  upload,
-  post, // POST方法
-  get, // GET方法
+const install = () => {
+  wx.$get = get // GET方法
+  wx.$post = post // POST方法
 }
+
+export default install

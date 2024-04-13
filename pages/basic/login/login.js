@@ -3,17 +3,21 @@ Page({
   data: {
     password: '', // 密码
     buttonLoading: false, // 按钮加载
+    buttonText: '登录',
   },
-  //options(Object)
-  onLoad: function (options) {},
-  onReady: function () {},
-  onShow: function () {},
-  onHide: function () {},
-  onUnload: function () {},
-  onPullDownRefresh: function () {},
-  onReachBottom: function () {},
-  onShareAppMessage: function () {},
-  onPageScroll: function () {},
-  //item(index,pagePath,text)
-  onTabItemTap: function (item) {},
+
+  async onload() {},
+
+  // 登录
+  async onSubmitPassword() {
+    // let { password, buttonLoading, buttonText } = this.data
+    // console.log(password)
+    // this.setData({
+    //   buttonLoading: true,
+    //   buttonText: '登录中',
+    // })
+
+    const result = await wx.$get('companies')
+    console.log(result)
+  },
 })

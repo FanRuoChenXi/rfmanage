@@ -1,4 +1,6 @@
-/* 全局变量 */
+/**
+ * 全局变量
+ */
 const appData = {}
 
 /**
@@ -24,10 +26,14 @@ function modal(params) {
       cancelText: params.cancel || '取消',
       cancelColor: '#6e6f70',
       confirmText: params.confirm || '确定',
-      confirmColor: '#ee0a24',
+      // confirmColor: '#ee0a24',
+      confirmColor: '#075785',
       success: (result) => {
-        if (result.confirm) resolve()
-        else if (result.cancel) reject()
+        if (result.confirm) {
+          resolve()
+        } else {
+          reject()
+        }
       },
     })
   })
@@ -50,22 +56,20 @@ function loading(title, mask = true) {
  * @param {object} [params] 路由传参。
  */
 function push(url, params = {}) {
-  require('./monitor').monitorRouter(url, params) // 接口监控上报
+  console.log(appendUrl(url, params))
   if (url === 'back') wx.navigateBack({ delta: params.delta || 1 })
   else wx.navigateTo({ url: appendUrl(url, params) })
 }
 function replace(url, params = {}) {
-  require('./monitor').monitorRouter(url, params) // 接口监控上报
   wx.redirectTo({ url: appendUrl(url, params) })
 }
 function relaunch(url, params = {}) {
-  require('./monitor').monitorRouter(url, params) // 接口监控上报
   wx.reLaunch({ url: appendUrl(url, params) })
 }
 
 // 枚举params参数，添加在url后。若为参数内是对象，则会被转码。
 function appendUrl(url, params) {
-  const index = url.lastIndexOf('/') + 1 // 默认页面文件名与目录名一致
+  const index = url.lastIndexOf('/') + 1 // 我们默认页面文件名与目录名一致,
   if (index !== -1) url += '/' + url.substring(index) // 因此将文件名加在url最后
   if (typeof params != 'object' || JSON.stringify(params) == '{}') return url
   url += '?'
@@ -95,8 +99,10 @@ function update() {
   }
 }
 
+import requestInstall from './request'
 const install = () => {
   update() // 检查更新
+  requestInstall() // 注入 request.js
   wx.$appData = appData
   wx.$msg = msg
   wx.$modal = modal
@@ -104,14 +110,6 @@ const install = () => {
   wx.$push = push
   wx.$replace = replace
   wx.$relaunch = relaunch
-  wx.$appendUrl = appendUrl
-  const request = require('./request') // 注入 request.js
-  // wx.$host = request.host // 主机地址
-  wx.$get = request.get // GET方法
-  wx.$post = request.post // POST方法
-  wx.$upload = request.upload // upload方法
-  wx.$env = request.env // 小程序环境: release / trial / develop
-  wx.$appid = request.appid // 小程序appid
 }
 
 module.exports = {
