@@ -1,0 +1,4 @@
+page {
+  --td-tab-bar-active-bg: #6e6f70;
+  --td-tab-bar-active-color: #fff;
+}

@@ -4,8 +4,6 @@
 page {
   background-color: #f7f7f7;
   font-family: SourceHanSansSCVF-Regular;
-  --td-tab-bar-active-bg: #6e6f70;
-  --td-tab-bar-active-color: #fff;
   --td-tab-border-color: #fff;
 }
 

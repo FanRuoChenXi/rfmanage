@@ -1,5 +1,6 @@
 {
   "usingComponents": {
+    "tab-bar": "/components/TabBar/TabBar",
     "t-avatar": "tdesign-miniprogram/avatar/avatar",
     "t-avatar-group": "tdesign-miniprogram/avatar-group/avatar-group",
     "t-tabs": "tdesign-miniprogram/tabs/tabs",

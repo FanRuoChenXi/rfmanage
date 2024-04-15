@@ -1,9 +1,6 @@
 {
   "pages": ["pages/basic/login/login", "pages/basic/dashboard/dashboard"],
-  "usingComponents": {
-    "t-tab-bar": "tdesign-miniprogram/tab-bar/tab-bar",
-    "t-tab-bar-item": "tdesign-miniprogram/tab-bar-item/tab-bar-item"
-  },
+  "usingComponents": {},
   "window": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "RFmanage",

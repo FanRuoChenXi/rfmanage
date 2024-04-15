@@ -1,0 +1,5 @@
+<t-tab-bar value="{{tabBarValue}}" bindchange="onTabBarChange" theme="tag" split="{{false}}">
+    <t-tab-bar-item wx:for="{{list}}" wx:key="index" value="{{item.value}}">
+        {{item.label}}
+    </t-tab-bar-item>
+</t-tab-bar>
