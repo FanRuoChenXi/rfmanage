@@ -1,0 +1,25 @@
+@import '/styles/color.wxss';
+@import '/styles/layout.wxss';
+
+page {
+  background-color: #f7f7f7;
+  font-family: SourceHanSansSCVF-Regular;
+  --td-tab-bar-active-bg: #6e6f70;
+  --td-tab-bar-active-color: #fff;
+  --td-tab-border-color: #fff;
+}
+
+.avtar {
+  color: #fff;
+  background-color: #565656;
+  font-weight: 400;
+}
+
+/* .tabRoot {
+  border-radius: 22px;
+} */
+
+.tabContent {
+  padding: 32rpx;
+  height: 412px;
+}
