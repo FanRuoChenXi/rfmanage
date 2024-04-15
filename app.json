@@ -1,5 +1,9 @@
 {
-  "pages": ["pages/basic/login/login", "pages/basic/dashboard/dashboard"],
+  "pages": [
+    "pages/basic/login/login",
+    "pages/basic/dashboard/dashboard",
+    "pages/search/search/search"
+  ],
   "usingComponents": {},
   "window": {
     "navigationBarTextStyle": "black",

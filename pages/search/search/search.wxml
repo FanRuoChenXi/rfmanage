@@ -1,0 +1,7 @@
+<!-- 搜索框 -->
+<view class="search">
+    <t-search placeholder="搜索" shape="round" />
+</view>
+<!-- 搜索历史 -->
+<!-- 底栏 -->
+<tab-bar tabBarValue="search" />
