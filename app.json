@@ -3,7 +3,8 @@
     "pages/basic/login/login",
     "pages/basic/dashboard/dashboard",
     "pages/search/search/search",
-    "pages/manage/manage/manage"
+    "pages/manage/manage/manage",
+    "pages/user/user/user"
   ],
   "usingComponents": {
     "t-icon": "tdesign-miniprogram/icon/icon"

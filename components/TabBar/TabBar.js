@@ -27,8 +27,8 @@ Component({
           return wx.$replace('/pages/search/search')
         case 'manage':
           return wx.$replace('/pages/manage/manage')
-        // case 'user':
-        //   return wx.$replace('/pages/user/user')
+        case 'user':
+          return wx.$replace('/pages/user/user')
       }
     },
   },
