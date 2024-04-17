@@ -2,9 +2,12 @@
   "pages": [
     "pages/basic/login/login",
     "pages/basic/dashboard/dashboard",
-    "pages/search/search/search"
+    "pages/search/search/search",
+    "pages/manage/manage/manage"
   ],
-  "usingComponents": {},
+  "usingComponents": {
+    "t-icon": "tdesign-miniprogram/icon/icon"
+  },
   "window": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "RFmanage",

@@ -1,0 +1,11 @@
+<!-- 宫格 -->
+<view style="margin-top: 40rpx;">
+    <t-grid theme="card">
+        <t-grid-item text="分享" icon="share" bindclick="onClick" />
+        <t-grid-item text="收藏" icon="star" bindclick="onClick" />
+        <t-grid-item text="保存" icon="download" bindclick="onClick" />
+        <t-grid-item text="编辑" icon="edit-1" bindclick="onClick" />
+    </t-grid>
+</view>
+<!-- 底栏 -->
+<tab-bar tabBarValue="manage" />

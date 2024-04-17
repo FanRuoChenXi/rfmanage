@@ -25,8 +25,8 @@ Component({
           return wx.$replace('/pages/basic/dashboard')
         case 'search':
           return wx.$replace('/pages/search/search')
-        // case 'manage':
-        //   return wx.$replace('/pages/manage/manage')
+        case 'manage':
+          return wx.$replace('/pages/manage/manage')
         // case 'user':
         //   return wx.$replace('/pages/user/user')
       }
