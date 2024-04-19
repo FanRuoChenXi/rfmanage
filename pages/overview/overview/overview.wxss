@@ -5,3 +5,7 @@ page {
   background-color: #f7f7f7;
   font-family: SourceHanSansSCVF-Regular;
 }
+
+.tabContent {
+  height: 1150rpx;
+}

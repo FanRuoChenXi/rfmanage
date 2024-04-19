@@ -11,7 +11,7 @@
     <t-tabs value="{{tabValue}}" bind:change="onTabChange" theme="tag" t-class="tabRoot" t-class-content="tabContent">
         <t-tab-panel label="近期活动" value="0">
             <view>
-                <t-cell wx:for="{{actionList}}" wx:key="{{item.index}}" title="{{item.actionType}}" description="{{item['item']['name']}}" hover arrow />
+                <t-cell wx:for="{{actionList}}" wx:key="index" title="{{item.actionType}}" description="{{item['item']['name']}}" hover arrow />
             </view>
             <view class="center" style="margin-top: 24rpx">
                 <t-button size="extra-small" shape="round">查看全部</t-button>
