@@ -1,10 +1,18 @@
+<!-- 个人 -->
+<view class="flex" style="margin:40rpx 68rpx;">
+    <view class="flex-column" style="width:448rpx">
+        <text class="N1 font32 bold" style="margin-bottom: 20rpx">欢迎回来</text>
+        <text class="N1 font24">黄施能</text>
+    </view>
+    <t-avatar t-class-content="avtar" shape="round" size="72px">A</t-avatar>
+</view>
 <!-- 宫格 -->
 <view style="margin-top: 40rpx;">
     <t-grid theme="card">
-        <t-grid-item text="资产总览" icon="menu-fold" bindclick="onClick" />
-        <t-grid-item text="资产更新" icon="arrow-up-circle" bindclick="onClick" />
-        <t-grid-item text="资产盘点" icon="download" bindclick="onClick" />
-        <t-grid-item text="数据趋势" icon="chart-analytics" bindclick="onClick" />
+        <t-grid-item text="资产查询" icon="search" bindclick="toAssetSearch" />
+        <t-grid-item text="资产更新" icon="arrow-up-circle" bindclick="toAssetUpdate" />
+        <t-grid-item text="资产审计" icon="download" bindclick="toAssetAudit" />
+        <t-grid-item text="数据趋势" icon="chart-analytics" bindclick="toDataTrend" />
     </t-grid>
 </view>
 <!-- 底栏 -->

@@ -2,9 +2,10 @@
   "pages": [
     "pages/basic/login/login",
     "pages/basic/dashboard/dashboard",
-    "pages/search/search/search",
+    "pages/overview/overview/overview",
     "pages/manage/manage/manage",
-    "pages/user/user/user"
+    "pages/user/user/user",
+    "pages/manage/search/search"
   ],
   "usingComponents": {
     "t-icon": "tdesign-miniprogram/icon/icon"

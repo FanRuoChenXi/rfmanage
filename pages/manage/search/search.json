@@ -1,6 +1,5 @@
 {
   "usingComponents": {
-    "tab-bar": "/components/TabBar/TabBar",
     "t-search": "tdesign-miniprogram/search/search"
   }
 }

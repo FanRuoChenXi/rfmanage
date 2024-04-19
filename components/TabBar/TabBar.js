@@ -9,7 +9,7 @@ Component({
   data: {
     list: [
       { value: 'home', label: '首页' },
-      { value: 'search', label: '查询' },
+      { value: 'overview', label: '总览' },
       { value: 'manage', label: '管理' },
       { value: 'user', label: '我的' },
     ],
@@ -23,8 +23,8 @@ Component({
       switch (value) {
         case 'home':
           return wx.$replace('/pages/basic/dashboard')
-        case 'search':
-          return wx.$replace('/pages/search/search')
+        case 'overview':
+          return wx.$replace('/pages/overview/overview')
         case 'manage':
           return wx.$replace('/pages/manage/manage')
         case 'user':

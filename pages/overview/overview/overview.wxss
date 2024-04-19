@@ -5,9 +5,3 @@ page {
   background-color: #f7f7f7;
   font-family: SourceHanSansSCVF-Regular;
 }
-
-.avtar {
-  color: #fff;
-  background-color: #565656;
-  font-weight: 400;
-}
