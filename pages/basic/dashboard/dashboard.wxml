@@ -1,7 +1,7 @@
 <!-- 个人 -->
-<view class="flex" style="margin:66rpx 68rpx;">
+<view class="flex" style="margin:40rpx 68rpx;">
     <view class="flex-column" style="width:448rpx">
-        <text class="N1 font32 bold" style="margin-bottom: 10px">欢迎回来</text>
+        <text class="N1 font32 bold" style="margin-bottom: 20rpx">欢迎回来</text>
         <text class="N1 font24">黄施能</text>
     </view>
     <t-avatar t-class-content="avtar" shape="round" size="72px">A</t-avatar>
@@ -9,7 +9,14 @@
 <!-- 分项 -->
 <view style="padding: 0 16rpx">
     <t-tabs value="{{tabValue}}" bind:change="onTabChange" theme="tag" t-class="tabRoot" t-class-content="tabContent">
-        <t-tab-panel label="近期活动" value="0">标签一内容</t-tab-panel>
+        <t-tab-panel label="近期活动" value="0">
+            <view>
+                <t-cell wx:for="{{actionList}}" wx:key="{{item.index}}" title="{{item.actionType}}" description="{{item['item']['name']}}" hover arrow />
+            </view>
+            <view class="center" style="margin-top: 24rpx">
+                <t-button size="extra-small" shape="round">查看全部</t-button>
+            </view>
+        </t-tab-panel>
         <t-tab-panel label="资产类别" value="1">标签二内容</t-tab-panel>
     </t-tabs>
 </view>

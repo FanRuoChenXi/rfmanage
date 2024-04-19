@@ -1,10 +1,10 @@
 <!-- 宫格 -->
 <view style="margin-top: 40rpx;">
     <t-grid theme="card">
-        <t-grid-item text="分享" icon="share" bindclick="onClick" />
-        <t-grid-item text="收藏" icon="star" bindclick="onClick" />
-        <t-grid-item text="保存" icon="download" bindclick="onClick" />
-        <t-grid-item text="编辑" icon="edit-1" bindclick="onClick" />
+        <t-grid-item text="资产总览" icon="menu-fold" bindclick="onClick" />
+        <t-grid-item text="资产更新" icon="arrow-up-circle" bindclick="onClick" />
+        <t-grid-item text="资产盘点" icon="download" bindclick="onClick" />
+        <t-grid-item text="数据趋势" icon="chart-analytics" bindclick="onClick" />
     </t-grid>
 </view>
 <!-- 底栏 -->

@@ -2,13 +2,10 @@
 Page({
   data: {
     tabValue: '0',
-    tabBarValue: 'home',
-    list: [
-      { value: 'home', label: '首页' },
-      { value: 'search', label: '查询' },
-      { value: 'app', label: '应用' },
-      { value: 'user', label: '我的' },
-    ],
+  },
+  async onLoad() {
+    const list = await getActionList()
+    this.setData({ actionList: list })
   },
   // 选项卡更新
   onTabChange(e) {
@@ -16,10 +13,28 @@ Page({
       tabValue: e.detail.value,
     })
   },
-  // 导航更新
-  onTabBarChange(e) {
-    this.setData({
-      tabBarValue: e.detail.value,
-    })
-  },
 })
+
+// 获取活动列表
+async function getActionList() {
+  const param = {
+    limit: 5,
+    offset: 0,
+    sort: 'created_at',
+    order: 'desc',
+  }
+  const [res, err] = await wx.$get('reports/activity', param) // 获取房单客人列表
+  if (err) return wx.$msg(err)
+  const { total, rows } = res
+  const list = []
+  rows.forEach((e) => {
+    list.push({
+      actionDate: e['actionDate'],
+      admin: e['admin'],
+      actionType: e['actionType'],
+      item: e['item'],
+      target: e['target'],
+    })
+  })
+  return list
+}

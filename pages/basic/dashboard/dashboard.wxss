@@ -13,11 +13,6 @@ page {
   font-weight: 400;
 }
 
-/* .tabRoot {
-  border-radius: 22px;
-} */
-
 .tabContent {
-  padding: 32rpx;
-  height: 412px;
+  height: 924rpx;
 }
