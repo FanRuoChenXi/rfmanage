@@ -1,0 +1,5 @@
+<view class="detail-box">
+    <t-cell title="姓名" note="{{user['name']}}" />
+    <t-cell title="手机" note="{{user['phone'] || ''}}" />
+    <t-cell title="邮箱" note="{{user['email'] || ''}}" />
+</view>

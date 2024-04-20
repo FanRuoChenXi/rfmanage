@@ -9,7 +9,9 @@
     "pages/overview/licenses-detail/licenses-detail",
 
     "pages/manage/search/search",
-    "pages/manage/item-upload/item-upload"
+    "pages/manage/item-upload/item-upload",
+
+    "pages/user/user-detail/user-detail"
   ],
   "usingComponents": {
     "t-icon": "tdesign-miniprogram/icon/icon"

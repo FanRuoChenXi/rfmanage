@@ -16,7 +16,7 @@
     </view>
     <!-- 功能区 -->
     <view>
-        <t-cell title="个人信息" hover arrow />
+        <t-cell title="个人信息" hover arrow bind:click="toUserDetail" />
         <t-cell title="资产模型" hover arrow />
         <t-cell title="部门组织" hover arrow />
         <t-cell title="状态标签" hover arrow />
