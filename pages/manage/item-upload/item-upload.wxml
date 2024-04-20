@@ -1,0 +1,25 @@
+<view class="upload-box">
+    <t-cell title="项目类型" arrow hover note="{{itemTypeText}}" bind:click="onitemTypePicker" />
+    <view wx:if="{{itemTypeValue == 'licenses/'}}">
+        <t-input label="软件名称" placeholder="请输入名称" status="error" tips="必填" model:value="{{licensesItemName}}" />
+        <t-cell title="软件类别" required arrow hover note="{{categoryText}}" bind:click="oncategoryPicker" />
+        <t-cell title="总量" required />
+        <view class="slider">
+            <t-slider value="{{seats}}" label="${seats}" bind:change="seatsChange"></t-slider>
+        </view>
+        <t-input label="邮箱" placeholder="请输入邮箱" model:value="{{licenseEmail}}" />
+        <t-input label="联系人" placeholder="请输入名称" model:value="{{licenseName}}" />
+    </view>
+</view>
+<!-- 按钮 -->
+<view class="center" style="margin-top: 24rpx">
+    <t-button size="large" shape="round">保存</t-button>
+</view>
+<!-- 项目选择器 -->
+<t-picker visible="{{pickerName == 'itemType'}}" data-key="itemType" value="{{itemTypeValue}}" title="选择项目类型" cancelBtn="取消" confirmBtn="确认" bindchange="onPickerChange" bindcancel="onPickerCancel">
+    <t-picker-item options="{{itemType}}" />
+</t-picker>
+<!-- 类别选择器 -->
+<t-picker visible="{{pickerName == 'category'}}" data-key="category" value="{{categoryValue}}" title="选择类别" cancelBtn="取消" confirmBtn="确认" bindchange="onPickerChange" bindcancel="onPickerCancel">
+    <t-picker-item options="{{category}}" />
+</t-picker>

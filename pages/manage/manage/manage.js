@@ -2,7 +2,7 @@
 Page({
   data: {},
 
-  onClick(e) {
-    console.log(e)
+  toItemUpload() {
+    wx.$push('/pages/manage/item-upload')
   },
 })

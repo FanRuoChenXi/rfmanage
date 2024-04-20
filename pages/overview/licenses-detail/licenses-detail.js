@@ -3,7 +3,7 @@ Page({
   data: {},
 
   async onLoad(query) {
-    console.log(query)
+    // console.log(query)
     const url = 'licenses/' + query['licensesId']
     const param = {
       limit: 5,

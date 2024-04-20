@@ -1,0 +1,19 @@
+@import '/styles/color.wxss';
+@import '/styles/layout.wxss';
+
+page {
+  background-color: #f7f7f7;
+  font-family: SourceHanSansSCVF-Regular;
+}
+
+.upload-box {
+  width: 720rpx;
+  margin: 10px auto;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
+}
+
+.slider {
+  background-color: #fff;
+  padding: 20rpx 0;
+}

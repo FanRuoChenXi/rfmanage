@@ -10,7 +10,7 @@
 <view style="margin-top: 40rpx;">
     <t-grid theme="card">
         <t-grid-item text="资产查询" icon="search" bindclick="toAssetSearch" />
-        <t-grid-item text="资产更新" icon="arrow-up-circle" bindclick="toAssetUpdate" />
+        <t-grid-item text="新增项目" icon="plus" bindclick="toItemUpload" />
         <t-grid-item text="资产审计" icon="download" bindclick="toAssetAudit" />
         <t-grid-item text="数据趋势" icon="chart-analytics" bindclick="toDataTrend" />
     </t-grid>
