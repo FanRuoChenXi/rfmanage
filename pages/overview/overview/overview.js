@@ -21,6 +21,12 @@ Page({
       tabValue: newValue,
     })
   },
+
+  // 前往许可证详情页
+  tolicensesDetail(e) {
+    const licensesId = e.currentTarget.dataset.id
+    wx.$push('/pages/overview/licenses-detail', { licensesId: licensesId })
+  },
 })
 
 // 获取许可证列表

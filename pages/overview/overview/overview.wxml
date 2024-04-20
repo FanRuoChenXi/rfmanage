@@ -4,7 +4,7 @@
         <t-tab-panel label="资产" value="0">1</t-tab-panel>
         <t-tab-panel label="许可证" value="1">
             <view>
-                <t-cell wx:for="{{licensesList}}" wx:key="index" title="{{item.name}}" description="制造商：{{item['manufacturer']['name']}}" hover arrow />
+                <t-cell wx:for="{{licensesList}}" wx:key="index" title="{{item.name}}" description="制造商：{{item['manufacturer']['name']}}" bind:click="tolicensesDetail" data-id="{{item.id}}" hover arrow />
             </view>
         </t-tab-panel>
         <t-tab-panel label="辅料" value="2">3</t-tab-panel>

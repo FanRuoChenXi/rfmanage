@@ -5,6 +5,9 @@
     "pages/overview/overview/overview",
     "pages/manage/manage/manage",
     "pages/user/user/user",
+
+    "pages/overview/licenses-detail/licenses-detail",
+
     "pages/manage/search/search"
   ],
   "usingComponents": {
