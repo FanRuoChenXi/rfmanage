@@ -2,11 +2,32 @@
 Page({
   data: {
     tabValue: '0',
+    itemIcon: {
+      asset: 'barcode',
+      license: 'system-storage',
+      consumable: 'highlight-1',
+      accessory: 'keyboard',
+      component: 'component-dropdown',
+      user: 'user-1',
+    },
+    actionType: {
+      checkout: '收款',
+      checkinfrom: '签到',
+      update: '更新',
+      create: '创建',
+      delete: '删除',
+      audit: '审计',
+      uploaded: '上传',
+      accepted: '接受',
+      declined: '拒绝',
+      requested: '请求',
+    },
   },
   async onLoad() {
     const list = await getActionList()
     this.setData({ actionList: list })
   },
+
   // 选项卡更新
   onTabChange(e) {
     this.setData({
