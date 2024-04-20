@@ -2,7 +2,7 @@
     <text class="loginText">登录</text>
 </view>
 <view class="inputBox">
-    <t-input style="border-radius: 25px;" placeholder="请输入账号" />
+    <t-input style="border-radius: 25px;" placeholder="请输入账号" model:value="{{account}}" />
     <t-input style="border-radius: 25px; margin-top: 13px;" placeholder="请输入密码" type="password" model:value="{{password}}" clearable />
     <text class="forgetText">我忘记了我的密码?</text>
 </view>
