@@ -10,13 +10,6 @@
     "miniprogram": {
       "list": [
         {
-          "name": "pages/overview/licenses-detail/licenses-detail",
-          "pathName": "pages/overview/licenses-detail/licenses-detail",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
           "name": "pages/basic/dashboard/dashboard",
           "pathName": "pages/basic/dashboard/dashboard",
           "query": "",

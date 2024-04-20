@@ -7,16 +7,19 @@
                 <text class="N0 font24">黄施能</text>
                 <text class="N3 font16" style="margin-top: 4px;">111</text>
             </view>
-            <view style="margin: 32rpx 0 0 200rpx">
-                <t-button theme="primary" size="extra-small" variant="outline" icon="swap">
-                    切换
+            <view style="margin: 32rpx 0 0 150rpx">
+                <t-button theme="primary" size="extra-small" variant="outline" icon="swap" bind:tap="onSwitchAccount">
+                    切换账号
                 </t-button>
             </view>
         </view>
     </view>
     <!-- 功能区 -->
     <view>
-        <t-cell title="功能1" hover arrow />
+        <t-cell title="个人信息" hover arrow />
+        <t-cell title="资产模型" hover arrow />
+        <t-cell title="部门组织" hover arrow />
+        <t-cell title="状态标签" hover arrow />
     </view>
 </view>
 <!-- 底栏 -->
