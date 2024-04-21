@@ -2,6 +2,7 @@
 Page({
   data: {
     tabValue: '0',
+    user: wx.getStorageSync('user'),
     itemIcon: {
       asset: 'barcode',
       license: 'system-storage',

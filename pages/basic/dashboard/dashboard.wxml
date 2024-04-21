@@ -2,9 +2,9 @@
 <view class="flex" style="margin:40rpx 68rpx;">
     <view class="flex-column" style="width:448rpx">
         <text class="N1 font32 bold" style="margin-bottom: 20rpx">欢迎回来</text>
-        <text class="N1 font24">黄施能</text>
+        <text class="N1 font24">{{user['name']}}</text>
     </view>
-    <t-avatar t-class-content="avtar" shape="round" size="72px">A</t-avatar>
+    <t-avatar t-class-content="avtar" shape="round" size="72px">{{user['name'][0]}}</t-avatar>
 </view>
 <!-- 分项 -->
 <view style="padding: 0 16rpx">

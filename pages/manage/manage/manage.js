@@ -1,6 +1,8 @@
 //Page Object
 Page({
-  data: {},
+  data: {
+    user: wx.getStorageSync('user'),
+  },
 
   toItemUpload() {
     wx.$push('/pages/manage/item-upload')
