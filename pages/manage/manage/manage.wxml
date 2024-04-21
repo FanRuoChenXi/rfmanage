@@ -9,6 +9,8 @@
 <!-- 宫格 -->
 <view style="margin-top: 40rpx;">
     <t-grid theme="card">
+        <t-grid-item text="类别管理" icon="layers" bindclick="toAssetSearch" />
+        <t-grid-item text="供应商" icon="tools" bindclick="toAssetSearch" />
         <t-grid-item text="资产查询" icon="search" bindclick="toAssetSearch" />
         <t-grid-item text="新增项目" icon="plus" bindclick="toItemUpload" />
         <t-grid-item text="资产审计" icon="download" bindclick="toAssetAudit" />

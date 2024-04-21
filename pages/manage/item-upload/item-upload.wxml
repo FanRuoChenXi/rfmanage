@@ -12,7 +12,7 @@
     </view>
 </view>
 <!-- 按钮 -->
-<view class="center" style="margin-top: 24rpx">
+<view wx:if="{{itemTypeValue}}" class="center" style="margin-top: 24rpx">
     <t-button size="large" shape="round">保存</t-button>
 </view>
 <!-- 项目选择器 -->

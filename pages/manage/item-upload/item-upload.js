@@ -2,7 +2,7 @@
 Page({
   data: {
     pickerName: '', // 显示选择器类型
-    itemTypeValue: [],
+    itemTypeValue: '',
     itemTypeText: '',
     itemType: [
       { label: '资产', value: 'hardware' },

@@ -2,9 +2,9 @@
     <!-- 头像 -->
     <view style="padding: 68rpx 48rpx">
         <view class="flex">
-            <t-avatar t-class-content="avtar" size="large">A</t-avatar>
+            <t-avatar t-class-content="avtar" size="large">{{user['name'][0]}}</t-avatar>
             <view class="flex-column" style="margin: 16rpx 0 0 24rpx">
-                <text class="N0 font24">黄施能</text>
+                <text class="N0 font24">{{user['name']}}</text>
                 <text class="N3 font16" style="margin-top: 4px;">111</text>
             </view>
             <view style="margin: 32rpx 0 0 150rpx">

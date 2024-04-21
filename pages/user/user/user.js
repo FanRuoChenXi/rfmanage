@@ -1,6 +1,8 @@
 //Page Object
 Page({
-  data: {},
+  data: {
+    user: wx.getStorageSync('user'),
+  },
 
   // 切换账号
   onSwitchAccount(e) {
