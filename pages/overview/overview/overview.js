@@ -25,6 +25,21 @@ Page({
         const licensesList = await getActionList()
         this.setData({ licensesList })
         break
+      case '2':
+        if (this.data['accessoryList']) break
+        const accessoryList = await getAccessoryList()
+        this.setData({ accessoryList })
+        break
+      case '3':
+        if (this.data['consumableList']) break
+        const consumableList = await getConsumableList()
+        this.setData({ consumableList })
+        break
+      case '4':
+        if (this.data['componentList']) break
+        const componentList = await getComponentList()
+        this.setData({ componentList })
+        break
     }
     this.setData({
       tabValue: newValue,
@@ -81,4 +96,70 @@ async function getActionList() {
     })
   })
   return licensesList
+}
+
+// 获取配件列表
+async function getAccessoryList() {
+  const param = {
+    limit: 5,
+    offset: 0,
+    sort: 'created_at',
+    order: 'asc',
+  }
+  const [res, err] = await wx.$get('accessories', param) // 获取房单客人列表
+  if (err) return wx.$msg(err)
+  const { total, rows } = res
+  const accessoryList = []
+  rows.forEach((e) => {
+    accessoryList.push({
+      id: e['id'],
+      name: e['name'],
+      manufacturer: e['manufacturer'],
+    })
+  })
+  return accessoryList
+}
+
+// 获取消耗品列表
+async function getConsumableList() {
+  const param = {
+    limit: 5,
+    offset: 0,
+    sort: 'created_at',
+    order: 'asc',
+  }
+  const [res, err] = await wx.$get('consumables', param) // 获取房单客人列表
+  if (err) return wx.$msg(err)
+  const { total, rows } = res
+  const consumableList = []
+  rows.forEach((e) => {
+    consumableList.push({
+      id: e['id'],
+      name: e['name'],
+      manufacturer: e['manufacturer'],
+    })
+  })
+  return consumableList
+}
+
+// 获取组件列表
+async function getComponentList() {
+  const param = {
+    limit: 5,
+    offset: 0,
+    sort: 'created_at',
+    order: 'asc',
+  }
+  const [res, err] = await wx.$get('components', param) // 获取房单客人列表
+  if (err) return wx.$msg(err)
+  const { total, rows } = res
+  const componentList = []
+  rows.forEach((e) => {
+    componentList.push({
+      id: e['id'],
+      name: e['name'],
+      supplier: e['supplier'],
+    })
+  })
+  return componentList
 }
