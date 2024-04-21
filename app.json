@@ -10,6 +10,7 @@
 
     "pages/manage/search/search",
     "pages/manage/item-upload/item-upload",
+    "pages/manage/asset-audit/asset-audit",
 
     "pages/user/user-detail/user-detail"
   ],

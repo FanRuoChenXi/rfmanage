@@ -12,8 +12,8 @@ Page({
       user: 'user-1',
     },
     actionType: {
-      checkout: '收款',
-      checkinfrom: '签到',
+      checkout: '签出',
+      'checkin from': '签入',
       update: '更新',
       create: '创建',
       delete: '删除',
@@ -22,6 +22,7 @@ Page({
       accepted: '接受',
       declined: '拒绝',
       requested: '请求',
+      'request canceled': '请求取消',
     },
   },
   async onLoad() {
