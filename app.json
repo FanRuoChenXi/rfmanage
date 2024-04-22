@@ -6,6 +6,8 @@
     "pages/manage/manage/manage",
     "pages/user/user/user",
 
+    "pages/basic/action-list/action-list",
+
     "pages/overview/item-detail/item-detail",
 
     "pages/manage/search/search",

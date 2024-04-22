@@ -1,26 +1,32 @@
 <view class="userBox">
-    <!-- 头像 -->
-    <view style="padding: 68rpx 48rpx">
-        <view class="flex">
-            <t-avatar t-class-content="avtar" size="large">{{user['name'][0]}}</t-avatar>
-            <view class="flex-column" style="margin: 16rpx 0 0 24rpx">
-                <text class="N0 font24">{{user['name']}}</text>
-                <text class="N3 font16" style="margin-top: 4px;">111</text>
-            </view>
-            <view style="margin: 32rpx 0 0 150rpx">
-                <t-button theme="primary" size="extra-small" variant="outline" icon="swap" bind:tap="onSwitchAccount">
-                    切换账号
-                </t-button>
-            </view>
-        </view>
+  <!-- 头像 -->
+  <view style="padding: 68rpx 48rpx">
+    <view class="flex">
+      <t-avatar t-class-content="avtar" size="large">{{user['name'][0]}}</t-avatar>
+      <view class="flex-column" style="margin: 16rpx 0 0 24rpx">
+        <text class="N0 font24">{{user['name']}}</text>
+        <text class="N3 font16" style="margin-top: 4px;"></text>
+      </view>
+      <view style="margin: 32rpx 0 0 150rpx">
+        <t-button
+          theme="primary"
+          size="extra-small"
+          variant="outline"
+          icon="swap"
+          bind:tap="onSwitchAccount"
+        >
+          切换账号
+        </t-button>
+      </view>
     </view>
-    <!-- 功能区 -->
-    <view>
-        <t-cell title="个人信息" hover arrow bind:click="toUserDetail" />
-        <t-cell title="资产模型" hover arrow />
-        <t-cell title="部门组织" hover arrow />
-        <t-cell title="状态标签" hover arrow />
-    </view>
+  </view>
+  <!-- 功能区 -->
+  <view>
+    <t-cell title="个人信息" hover arrow bind:click="toUserDetail" />
+    <t-cell title="资产模型" hover arrow />
+    <t-cell title="部门组织" hover arrow />
+    <t-cell title="状态标签" hover arrow />
+  </view>
 </view>
 <!-- 底栏 -->
 <tab-bar tabBarValue="user" />

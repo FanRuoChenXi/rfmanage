@@ -15,8 +15,8 @@ Page({
       checkout: '签出',
       'checkin from': '签入',
       update: '更新',
-      create: '创建',
-      delete: '删除',
+      'create new': '新增项目',
+      delete: '删除项目',
       audit: '审计',
       uploaded: '上传',
       accepted: '接受',
@@ -35,6 +35,11 @@ Page({
     this.setData({
       tabValue: e.detail.value,
     })
+  },
+
+  // 前往活动列表页
+  toActionList() {
+    wx.$push('/pages/basic/action-list')
   },
 })
 
