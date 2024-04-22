@@ -46,10 +46,11 @@ Page({
     })
   },
 
-  // 前往许可证详情页
-  tolicensesDetail(e) {
-    const licensesId = e.currentTarget.dataset.id
-    wx.$push('/pages/overview/licenses-detail', { licensesId: licensesId })
+  // 前往项目详情页
+  toItemDetail(e) {
+    const { key, id } = e.currentTarget.dataset
+    // console.log(key, id)
+    wx.$push('/pages/overview/item-detail', { key, id })
   },
 })
 

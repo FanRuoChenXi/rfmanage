@@ -6,7 +6,7 @@
     "pages/manage/manage/manage",
     "pages/user/user/user",
 
-    "pages/overview/licenses-detail/licenses-detail",
+    "pages/overview/item-detail/item-detail",
 
     "pages/manage/search/search",
     "pages/manage/item-upload/item-upload",

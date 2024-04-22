@@ -1,10 +1,12 @@
 //Page Object
 Page({
-  data: {},
+  data: {
+    mode: '',
+  },
 
   async onLoad(query) {
     // console.log(query)
-    const url = 'licenses/' + query['licensesId']
+    const url = `${query['key']}/` + query['id']
     const param = {
       limit: 5,
       offset: 0,
@@ -13,7 +15,15 @@ Page({
     }
     const [res, err] = await wx.$get(url, param) // 获取房单客人列表
     if (err) return wx.$msg(err)
-    this.setData({
+    switch (query['key']) {
+      case 'licenses':
+        this.setLicensesData(res)
+        break
+    }
+  },
+
+  setLicensesData(res) {
+    const licenses = {
       name: res.name,
       productKey: res.productKey,
       expirationDate: res.expirationDate,
@@ -22,6 +32,7 @@ Page({
       manufacturer: res.manufacturer,
       seats: res.seats,
       freeSeatsCount: res.freeSeatsCount,
-    })
+    }
+    this.setData({ mode: 'licenses', licenses })
   },
 })
