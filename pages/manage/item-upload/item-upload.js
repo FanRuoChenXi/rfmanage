@@ -16,9 +16,16 @@ Page({
     licenseEmail: '',
     licenseName: '',
     seats: 0, // 许可证总量
-    categoryValue: [],
+    categoryValue: [], // 类别
     categoryText: '',
     category: [],
+    assetTag: '', // 资产标签
+    modelValue: [], // 模型
+    modelText: '',
+    model: [],
+    statusValue: [], // 状态
+    statusText: '',
+    status: [],
   },
 
   // 关闭选择器
@@ -78,5 +85,47 @@ Page({
     this.setData({
       seats: e.detail.value,
     })
+  },
+
+  // 选择资产模型
+  async onModelPicker() {
+    const { model } = this.data
+    const param = {
+      limit: 50,
+      offset: 0,
+      sort: 'created_at',
+      order: 'asc',
+    }
+    const [res, err] = await wx.$get('models', param) // 获取房单客人列表
+    if (err) return wx.$msg(err)
+    const { total, rows } = res
+    rows.forEach((e) => {
+      model.push({
+        label: e['name'],
+        value: e['id'],
+      })
+    })
+    this.setData({ pickerName: 'model', model })
+  },
+
+  // 选择状态标签
+  async onStatusPicker() {
+    const { status } = this.data
+    const param = {
+      limit: 50,
+      offset: 0,
+      sort: 'created_at',
+      order: 'asc',
+    }
+    const [res, err] = await wx.$get('statuslabels', param) // 获取房单客人列表
+    if (err) return wx.$msg(err)
+    const { total, rows } = res
+    rows.forEach((e) => {
+      status.push({
+        label: e['name'],
+        value: e['id'],
+      })
+    })
+    this.setData({ pickerName: 'status', status })
   },
 })

@@ -10,6 +10,13 @@
     "miniprogram": {
       "list": [
         {
+          "name": "pages/manage/item-upload/item-upload",
+          "pathName": "pages/manage/item-upload/item-upload",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "pages/basic/dashboard/dashboard",
           "pathName": "pages/basic/dashboard/dashboard",
           "query": "",
