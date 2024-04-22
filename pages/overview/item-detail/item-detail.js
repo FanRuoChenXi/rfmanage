@@ -16,12 +16,32 @@ Page({
     const [res, err] = await wx.$get(url, param) // 获取房单客人列表
     if (err) return wx.$msg(err)
     switch (query['key']) {
+      case 'hardware':
+        this.setHardwareData(res)
+        break
       case 'licenses':
         this.setLicensesData(res)
         break
     }
   },
 
+  // 资产数据
+  setHardwareData(res) {
+    const hardware = {
+      name: res.name,
+      assetTag: res.assetTag,
+      serial: res.serial,
+      model: res.model,
+      category: res.category,
+      statusLabel: res.statusLabel,
+      location: res.location,
+      purchaseCost: res.purchaseCost,
+      bookValue: res.bookValue,
+    }
+    this.setData({ mode: 'hardware', hardware })
+  },
+
+  // 许可证数据
   setLicensesData(res) {
     const licenses = {
       name: res.name,

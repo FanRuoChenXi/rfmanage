@@ -1,4 +1,17 @@
 <view class="detail-box">
+    <!-- 资产 -->
+    <view wx:if="{{mode == 'hardware'}}">
+        <t-cell title="名称" note="{{hardware['name']}}" />
+        <t-cell title="资产标签" note="{{hardware['assetTag']}}" />
+        <t-cell title="串行" description="{{hardware['serial']}}" />
+        <t-cell title="资产模型" note="{{hardware['model']['name']}}" />
+        <t-cell title="资产类别" note="{{hardware['category']['name']}}" />
+        <t-cell title="状态" note="{{hardware['statusLabel']['name']}}" />
+        <t-cell title="位置" note="{{hardware['location']['name']}}" />
+        <t-cell title="购买成本" note="{{hardware['purchaseCost']}}" />
+        <t-cell title="当前价格" note="{{hardware['bookValue']}}" />
+    </view>
+    <!-- 许可证 -->
     <view wx:if="{{mode == 'licenses'}}">
         <t-cell title="名称" note="{{licenses['name']}}" />
         <t-cell title="产品密钥" description="{{licenses['productKey']}}" />
