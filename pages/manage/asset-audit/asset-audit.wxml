@@ -1,18 +1,57 @@
 <view>
-    <t-input label="资产标签" placeholder="请输入标签" status="error" tips="必填" model:value="{{assetTag}}" />
-    <t-cell title="位置" required arrow hover note="{{locationText}}" bind:click="onlocationPicker" />
-    <t-cell title="下次审计日期" hover note="{{dateText || ''}}" arrow bindtap="onDatePicker" t-class="panel-item" />
-    <t-textarea label="备注" placeholder="请输入文字" disableDefaultPadding="{{true}}" autosize="{{autosize}}" model:value="{{note}}" />
+  <t-input
+    label="资产标签"
+    placeholder="请输入标签"
+    status="error"
+    tips="必填"
+    model:value="{{assetTag}}"
+  />
+  <t-cell title="位置" required arrow hover note="{{locationText}}" bind:click="onlocationPicker" />
+  <t-cell
+    title="下次审计日期"
+    hover
+    note="{{dateText || ''}}"
+    arrow
+    bindtap="onDatePicker"
+    t-class="panel-item"
+  />
+  <t-textarea
+    label="备注"
+    placeholder="请输入文字"
+    disableDefaultPadding="{{true}}"
+    autosize="{{autosize}}"
+    model:value="{{note}}"
+  />
 </view>
 <!-- 按钮 -->
 <view class="center" style="margin-top: 24rpx">
-    <t-button size="large" shape="round" bind:tap="onAssetAudit" disabled="{{isButtonDisabled}}">
-        审计
-    </t-button>
+  <t-button size="large" shape="round" bind:tap="onAssetAudit" disabled="{{isButtonDisabled}}">
+    审计
+  </t-button>
 </view>
 <!-- 位置选择器 -->
-<t-picker visible="{{pickerName == 'location'}}" data-key="location" value="{{locationValue}}" title="选择位置" cancelBtn="取消" confirmBtn="确认" bindchange="onPickerChange" bindcancel="onPickerCancel">
-    <t-picker-item options="{{location}}" />
+<t-picker
+  visible="{{pickerName == 'location'}}"
+  data-key="location"
+  value="{{locationValue}}"
+  title="选择位置"
+  cancelBtn="取消"
+  confirmBtn="确认"
+  bindchange="onPickerChange"
+  bindcancel="onPickerCancel"
+>
+  <t-picker-item options="{{location}}" />
 </t-picker>
 <!-- 日期选择器 -->
-<t-date-time-picker title="选择日期" visible="{{pickerName == 'date'}}" data-key="date" mode="date" defaultValue="{{date}}" format="YYYY-MM-DD" bindchange="onDateChange" bindcancel="onPickerCancel" start="{{start}}" end="{{end}}" />
+<t-date-time-picker
+  title="选择日期"
+  visible="{{pickerName == 'date'}}"
+  data-key="date"
+  mode="date"
+  defaultValue="{{date}}"
+  format="YYYY-MM-DD"
+  bindchange="onDateChange"
+  bindcancel="onPickerCancel"
+  start="{{start}}"
+  end="{{end}}"
+/>

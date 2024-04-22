@@ -1,38 +1,93 @@
 <view class="upload-box">
-    <t-cell title="项目类型" arrow hover note="{{itemTypeText}}" bind:click="onitemTypePicker" />
-    <view wx:if="{{itemTypeValue == 'hardware'}}">
-        <t-input label="资产标签" placeholder="请输入标签号" status="error" tips="必填" model:value="{{assetTag}}" />
-        <t-cell title="资产模型" required arrow hover note="{{modelText}}" bind:click="onModelPicker" />
-        <t-cell title="状态" required arrow hover note="{{statusText}}" bind:click="onStatusPicker" />
+  <t-cell title="项目类型" arrow hover note="{{itemTypeText}}" bind:click="onitemTypePicker" />
+  <view wx:if="{{itemTypeValue == 'asset'}}">
+    <t-input
+      label="资产标签"
+      placeholder="请输入标签号"
+      status="error"
+      tips="必填"
+      model:value="{{assetTag}}"
+    />
+    <t-cell title="资产模型" required arrow hover note="{{modelText}}" bind:click="onModelPicker" />
+    <t-cell title="状态" required arrow hover note="{{statusText}}" bind:click="onStatusPicker" />
+  </view>
+  <view wx:if="{{itemTypeValue == 'license'}}">
+    <t-input
+      label="软件名称"
+      placeholder="请输入名称"
+      status="error"
+      tips="必填"
+      model:value="{{licensesItemName}}"
+    />
+    <t-cell
+      title="软件类别"
+      required
+      arrow
+      hover
+      note="{{categoryText}}"
+      bind:click="oncategoryPicker"
+    />
+    <t-cell title="总量" required />
+    <view class="slider">
+      <t-slider value="{{seats}}" label="${seats}" bind:change="seatsChange"></t-slider>
     </view>
-    <view wx:if="{{itemTypeValue == 'licenses/'}}">
-        <t-input label="软件名称" placeholder="请输入名称" status="error" tips="必填" model:value="{{licensesItemName}}" />
-        <t-cell title="软件类别" required arrow hover note="{{categoryText}}" bind:click="oncategoryPicker" />
-        <t-cell title="总量" required />
-        <view class="slider">
-            <t-slider value="{{seats}}" label="${seats}" bind:change="seatsChange"></t-slider>
-        </view>
-        <t-input label="邮箱" placeholder="请输入邮箱" model:value="{{licenseEmail}}" />
-        <t-input label="联系人" placeholder="请输入名称" model:value="{{licenseName}}" />
-    </view>
+    <t-input label="邮箱" placeholder="请输入邮箱" model:value="{{licenseEmail}}" />
+    <t-input label="联系人" placeholder="请输入名称" model:value="{{licenseName}}" />
+  </view>
 </view>
 <!-- 按钮 -->
 <view wx:if="{{itemTypeValue}}" class="center" style="margin-top: 24rpx">
-    <t-button theme="primary" shape="round" variant="outline">保存</t-button>
+  <t-button theme="primary" shape="round" variant="outline" bind:tap="onCreateItem">保存</t-button>
 </view>
 <!-- 项目选择器 -->
-<t-picker visible="{{pickerName == 'itemType'}}" data-key="itemType" value="{{itemTypeValue}}" title="选择项目类型" cancelBtn="取消" confirmBtn="确认" bindchange="onPickerChange" bindcancel="onPickerCancel">
-    <t-picker-item options="{{itemType}}" />
+<t-picker
+  visible="{{pickerName == 'itemType'}}"
+  data-key="itemType"
+  value="{{itemTypeValue}}"
+  title="选择项目类型"
+  cancelBtn="取消"
+  confirmBtn="确认"
+  bindchange="onPickerChange"
+  bindcancel="onPickerCancel"
+>
+  <t-picker-item options="{{itemType}}" />
 </t-picker>
 <!-- 资产模型选择器 -->
-<t-picker visible="{{pickerName == 'model'}}" data-key="model" value="{{modelValue}}" title="选择模型" cancelBtn="取消" confirmBtn="确认" bindchange="onPickerChange" bindcancel="onPickerCancel">
-    <t-picker-item options="{{model}}" />
+<t-picker
+  visible="{{pickerName == 'model'}}"
+  data-key="model"
+  value="{{modelValue}}"
+  title="选择模型"
+  cancelBtn="取消"
+  confirmBtn="确认"
+  bindchange="onPickerChange"
+  bindcancel="onPickerCancel"
+>
+  <t-picker-item options="{{model}}" />
 </t-picker>
 <!-- 资产状态选择器 -->
-<t-picker visible="{{pickerName == 'status'}}" data-key="status" value="{{statusValue}}" title="选择状态" cancelBtn="取消" confirmBtn="确认" bindchange="onPickerChange" bindcancel="onPickerCancel">
-    <t-picker-item options="{{status}}" />
+<t-picker
+  visible="{{pickerName == 'status'}}"
+  data-key="status"
+  value="{{statusValue}}"
+  title="选择状态"
+  cancelBtn="取消"
+  confirmBtn="确认"
+  bindchange="onPickerChange"
+  bindcancel="onPickerCancel"
+>
+  <t-picker-item options="{{status}}" />
 </t-picker>
 <!-- 类别选择器 -->
-<t-picker visible="{{pickerName == 'category'}}" data-key="category" value="{{categoryValue}}" title="选择类别" cancelBtn="取消" confirmBtn="确认" bindchange="onPickerChange" bindcancel="onPickerCancel">
-    <t-picker-item options="{{category}}" />
+<t-picker
+  visible="{{pickerName == 'category'}}"
+  data-key="category"
+  value="{{categoryValue}}"
+  title="选择类别"
+  cancelBtn="取消"
+  confirmBtn="确认"
+  bindchange="onPickerChange"
+  bindcancel="onPickerCancel"
+>
+  <t-picker-item options="{{category}}" />
 </t-picker>

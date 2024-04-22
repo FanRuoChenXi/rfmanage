@@ -5,8 +5,8 @@ Page({
     itemTypeValue: '',
     itemTypeText: '',
     itemType: [
-      { label: '资产', value: 'hardware' },
-      { label: '许可证', value: 'licenses/' },
+      { label: '资产', value: 'asset' },
+      { label: '许可证', value: 'license' },
       { label: '配件', value: 'accessories' },
       { label: '消耗品', value: 'consumables' },
       { label: '组件', value: 'components' },
@@ -26,6 +26,53 @@ Page({
     statusValue: [], // 状态
     statusText: '',
     status: [],
+  },
+
+  // 保存按钮
+  async onCreateItem() {
+    wx.$loading('提交中...')
+    const { itemTypeValue } = this.data
+    switch (itemTypeValue[0]) {
+      case 'asset':
+        await this.createHardware()
+        break
+      case 'license':
+        await this.createHardware()
+        break
+    }
+  },
+
+  // 新增资产
+  async createHardware() {
+    const { assetTag, modelValue, statusValue } = this.data
+    const param = {
+      assetTag,
+      modelId: modelValue[0],
+      statusId: statusValue[0],
+    }
+    const [res, err] = await wx.$post('hardware', param)
+    if (err) return wx.$msg(err || '创建失败')
+    wx.$push('back', { delta: 1 })
+  },
+
+  // 新增许可证
+  async createLicenses() {
+    const {
+      licensesItemName,
+      categoryValue,
+      seats,
+      licenseEmail,
+      licenseName,
+    } = this.data
+    const param = {
+      name: licensesItemName,
+      categoryId: categoryValue[0],
+      seats,
+      licenseEmail,
+      licenseName,
+    }
+    const [res, err] = await wx.$post('licenses/', param)
+    if (err) return wx.$msg(err || '创建失败')
   },
 
   // 关闭选择器
@@ -53,20 +100,12 @@ Page({
   // 选择类别
   async oncategoryPicker() {
     const { itemTypeValue, category } = this.data
-    const categoryText = {
-      hardware: 'asset',
-      'licenses/': 'license',
-      accessories: 'accessories',
-      consumables: 'consumables',
-      components: 'components',
-    }
-    const categoryType = categoryText[itemTypeValue]
     const param = {
       limit: 50,
       offset: 0,
       sort: 'created_at',
       order: 'asc',
-      categoryType,
+      categoryType: itemTypeValue,
     }
     const [res, err] = await wx.$get('categories', param) // 获取房单客人列表
     if (err) return wx.$msg(err)
