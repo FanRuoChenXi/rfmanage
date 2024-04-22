@@ -5,6 +5,7 @@ page {
   background-color: #f7f7f7;
   font-family: SourceHanSansSCVF-Regular;
   --td-tab-border-color: #fff;
+  --td-cell-description-font-size: 12px;
 }
 
 .avtar {

@@ -21,7 +21,7 @@
           wx:for="{{actionList}}"
           wx:key="index"
           title="操作：{{actionType[item.actionType] ? actionType[item.actionType] : item.actionType}}"
-          description="{{item['item']['name']}}"
+          description="目标：{{item['item']['name']}}"
           left-icon="{{itemIcon[item['item']['type']] ? itemIcon[item['item']['type']] : 'error-circle'}}"
         />
       </view>

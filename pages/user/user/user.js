@@ -17,8 +17,14 @@ Page({
       wx.$relaunch('/pages/basic/login') // 跳转登录页
     })
   },
+
   // 用户详情页
   toUserDetail() {
     wx.$push('/pages/user/user-detail')
+  },
+
+  // 部门组织
+  toDepartment() {
+    wx.$push('/pages/user/departments')
   },
 })
