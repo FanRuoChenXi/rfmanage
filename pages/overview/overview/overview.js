@@ -5,8 +5,10 @@ Page({
   },
 
   async onLoad() {
+    wx.$loading('加载中...')
     const assetList = await getAssetList()
     this.setData({ assetList })
+    wx.$loading(false)
   },
 
   // 选项卡更新
@@ -14,6 +16,7 @@ Page({
     const newValue = e.detail.value
     const { tabValue } = this.data
     if (tabValue == newValue) return false
+    wx.$loading('加载中...')
     switch (newValue) {
       case '0':
         if (this.data['assetList']) break
@@ -44,6 +47,7 @@ Page({
     this.setData({
       tabValue: newValue,
     })
+    wx.$loading(false)
   },
 
   // 前往项目详情页

@@ -13,6 +13,7 @@ Page({
       sort: 'created_at',
       order: 'asc',
     }
+    wx.$loading('加载中...')
     const [res, err] = await wx.$get(url, param) // 获取房单客人列表
     if (err) return wx.$msg(err)
     switch (query['key']) {
@@ -23,6 +24,7 @@ Page({
         this.setLicensesData(res)
         break
     }
+    wx.$loading(false)
   },
 
   // 资产数据

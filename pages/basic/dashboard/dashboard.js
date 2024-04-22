@@ -26,8 +26,10 @@ Page({
     },
   },
   async onLoad() {
+    wx.$loading('加载中...')
     const list = await getActionList()
     this.setData({ actionList: list })
+    wx.$loading(false)
   },
 
   // 选项卡更新
