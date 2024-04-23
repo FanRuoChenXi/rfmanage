@@ -2,13 +2,13 @@
 Page({
   data: {
     tabValue: '0',
+    assetList: [],
+    isBottom: false, // 是否加载到底
   },
 
   async onLoad() {
-    wx.$loading('加载中...')
-    const assetList = await getAssetList()
-    this.setData({ assetList })
-    wx.$loading(false)
+    initPagination() // 重置分页器
+    this.updateAssetList() // 更新活动列表
   },
 
   // 选项卡更新
@@ -18,11 +18,6 @@ Page({
     if (tabValue == newValue) return false
     wx.$loading('加载中...')
     switch (newValue) {
-      case '0':
-        if (this.data['assetList']) break
-        const assetList = await getAssetList()
-        this.setData({ assetList })
-        break
       case '1':
         if (this.data['licensesList']) break
         const licensesList = await getActionList()
@@ -50,6 +45,25 @@ Page({
     wx.$loading(false)
   },
 
+  // 滚动到底部
+  onAssetBottom() {
+    if (this.data.isBottom) return // 如果已加载到底，拦截
+    this.updateAssetList() // 更新列表
+  },
+
+  // 更新资产列表
+  async updateAssetList() {
+    wx.$loading('加载中...')
+    const newList = await getAssetList() // 获取活动列表
+    if (newList) {
+      const { assetList } = this.data
+      this.setData({ assetList: [...assetList, ...newList] }) // 若有数据返回, 则追加到下面
+    } else {
+      this.setData({ isBottom: true }) // 若无数据返回, 则标记加载到底
+    }
+    wx.$loading(false)
+  },
+
   // 前往项目详情页
   toItemDetail(e) {
     const { key, id } = e.currentTarget.dataset
@@ -61,24 +75,29 @@ Page({
 // 获取资产列表
 async function getAssetList() {
   const param = {
-    limit: 5,
-    offset: 0,
+    limit: 10,
+    offset: pagination.offset,
     sort: 'created_at',
-    order: 'asc',
+    order: 'desc',
   }
-  const [res, err] = await wx.$get('hardware', param) // 获取房单客人列表
+  const list = []
+  if (pagination.isBottom) return false // 已加载到底时,拦截
+  const [res, err] = await wx.$get('hardware', param)
   if (err) return wx.$msg(err)
   const { total, rows } = res
-  const assetList = []
+  if (param.limit + pagination.offset >= total) {
+    pagination.isBottom = true // 判断已加载到底
+  }
+  pagination.offset += param.limit // 偏移量添加
   rows.forEach((e) => {
-    assetList.push({
+    list.push({
       id: e['id'],
       name: e['name'],
       assetTag: e['assetTag'],
       model: e['model'],
     })
   })
-  return assetList
+  return list
 }
 
 // 获取许可证列表
@@ -167,4 +186,11 @@ async function getComponentList() {
     })
   })
   return componentList
+}
+
+// 分页器及搜索条件
+const pagination = {}
+function initPagination() {
+  pagination.offset = 0 // 当前偏移量
+  pagination.isBottom = false // 是否加载到底
 }
