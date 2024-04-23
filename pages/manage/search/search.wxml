@@ -1,5 +1,18 @@
 <!-- 搜索框 -->
 <view class="search">
-    <t-search placeholder="搜索" shape="round" />
+  <t-search placeholder="搜索" shape="round" bind:submit="onSearch" />
 </view>
-<!-- 搜索历史 -->
+<!-- 搜索结果 -->
+<view style="margin-top: 10px">
+  <t-cell
+    wx:for="{{assetList}}"
+    wx:key="index"
+    title="{{item.assetTag}}"
+    description="名称：{{item['name'] ? tem['name'] : item['model']['name']}}"
+    bind:click="toItemDetail"
+    data-key="hardware"
+    data-id="{{item.id}}"
+    hover
+    arrow
+  />
+</view>

@@ -52,7 +52,7 @@ Page({
     }
     const [res, err] = await wx.$post('hardware', param)
     if (err) return wx.$msg(err || '创建失败')
-    wx.$push('back', { delta: 1 })
+    wx.$replace('/pages/overview/overview')
   },
 
   // 新增许可证
@@ -73,6 +73,7 @@ Page({
     }
     const [res, err] = await wx.$post('licenses/', param)
     if (err) return wx.$msg(err || '创建失败')
+    wx.$replace('/pages/overview/overview')
   },
 
   // 关闭选择器
