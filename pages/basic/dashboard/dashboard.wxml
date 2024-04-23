@@ -25,7 +25,7 @@
           left-icon="{{itemIcon[item['item']['type']] ? itemIcon[item['item']['type']] : 'error-circle'}}"
         />
       </view>
-      <view class="center" style="margin-top: 24rpx">
+      <view wx:if="{{actionList}}" class="center" style="margin-top: 24rpx">
         <t-button size="extra-small" shape="round" bind:tap="toActionList">查看全部</t-button>
       </view>
     </t-tab-panel>

@@ -1,0 +1,8 @@
+<view>
+  <t-cell
+    wx:for="{{categoryList}}"
+    wx:key="index"
+    title="{{item['name']}}"
+    description="所属类型：{{categoryTypeText[item['categoryType']] ? categoryTypeText[item['categoryType']] : item['categoryType']}}"
+  />
+</view>

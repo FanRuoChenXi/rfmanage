@@ -21,4 +21,9 @@ Page({
 
   // 数据趋势
   toDataTrend() {},
+
+  // 类别管理
+  toCategory() {
+    wx.$push('/pages/manage/category')
+  },
 })
