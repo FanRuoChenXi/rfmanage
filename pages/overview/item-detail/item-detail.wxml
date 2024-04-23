@@ -1,25 +1,61 @@
 <view class="detail-box">
-    <!-- 资产 -->
-    <view wx:if="{{mode == 'hardware'}}">
-        <t-cell title="名称" note="{{hardware['name']}}" />
-        <t-cell title="资产标签" note="{{hardware['assetTag']}}" />
-        <t-cell title="串行" description="{{hardware['serial']}}" />
-        <t-cell title="资产模型" note="{{hardware['model']['name']}}" />
-        <t-cell title="资产类别" note="{{hardware['category']['name']}}" />
-        <t-cell title="状态" note="{{hardware['statusLabel']['name']}}" />
-        <t-cell title="位置" note="{{hardware['location']['name']}}" />
-        <t-cell title="购买成本" note="{{hardware['purchaseCost']}}" />
-        <t-cell title="当前价格" note="{{hardware['bookValue']}}" />
-    </view>
-    <!-- 许可证 -->
-    <view wx:if="{{mode == 'licenses'}}">
-        <t-cell title="名称" note="{{licenses['name']}}" />
-        <t-cell title="产品密钥" description="{{licenses['productKey']}}" />
-        <t-cell title="授权电子邮件" description="{{licenses['licenseEmail']}}" />
-        <t-cell title="授权名" note="{{licenses['licenseName'] == null ? '' : licenses['licenseName']}}" />
-        <t-cell title="制造商" note="{{licenses['manufacturer']['name']}}" />
-        <t-cell title="有效期" note="{{licenses['expirationDate']['date']}}" />
-        <t-cell title="总量" note="{{licenses['seats']}}" />
-        <t-cell title="已用" note="{{licenses['freeSeatsCount']}}" />
-    </view>
+  <!-- 资产 -->
+  <view wx:if="{{mode == 'hardware'}}">
+    <t-cell title="名称" note="{{hardware['name']}}" />
+    <t-cell title="资产标签" note="{{hardware['assetTag']}}" />
+    <t-cell title="串行" description="{{hardware['serial']}}" />
+    <t-cell title="资产模型" note="{{hardware['model']['name']}}" />
+    <t-cell title="资产类别" note="{{hardware['category']['name']}}" />
+    <t-cell title="状态" note="{{hardware['statusLabel']['name']}}" />
+    <t-cell title="位置" note="{{hardware['location']['name']}}" />
+    <t-cell title="购买成本" note="{{hardware['purchaseCost']}}" />
+    <t-cell title="当前价格" note="{{hardware['bookValue']}}" />
+  </view>
+  <!-- 许可证 -->
+  <view wx:if="{{mode == 'licenses'}}">
+    <t-cell title="名称" note="{{licenses['name']}}" />
+    <t-cell title="产品密钥" description="{{licenses['productKey']}}" />
+    <t-cell title="授权电子邮件" description="{{licenses['licenseEmail']}}" />
+    <t-cell
+      title="授权名"
+      note="{{licenses['licenseName'] == null ? '' : licenses['licenseName']}}"
+    />
+    <t-cell title="制造商" note="{{licenses['manufacturer']['name']}}" />
+    <t-cell title="有效期" note="{{licenses['expirationDate']['date']}}" />
+    <t-cell title="总量" note="{{licenses['seats']}}" />
+    <t-cell title="已用" note="{{licenses['freeSeatsCount']}}" />
+  </view>
+  <!-- 配件 -->
+  <view wx:if="{{mode == 'accessory'}}">
+    <t-cell title="名称" note="{{accessory['name']}}" />
+    <t-cell title="配件类别" note="{{accessory['category']['name']}}" />
+    <t-cell title="模型No." note="{{accessory['modelNumber']}}" />
+    <t-cell title="位置" note="{{accessory['location']['name']}}" />
+    <t-cell title="总数" note="{{accessory['qty']}}" />
+    <t-cell title="已使用" note="{{accessory['usersCount']}}" />
+  </view>
+  <!-- 消耗品 -->
+  <view wx:if="{{mode == 'consumable'}}">
+    <t-cell title="名称" note="{{consumable['name']}}" />
+    <t-cell title="消耗品类别" note="{{consumable['category']['name']}}" />
+    <t-cell title="模型No." note="{{consumable['modelNumber']}}" />
+    <t-cell title="项目No." note="{{consumable['itemNo']}}" />
+    <t-cell title="总数" note="{{consumable['qty']}}" />
+    <t-cell title="余量" note="{{consumable['remaining']}}" />
+    <t-cell title="订单号" note="{{consumable['orderNumber']}}" />
+    <t-cell title="采购成本" note="{{consumable['purchaseCost']}}" />
+    <t-cell title="采购日期" note="{{consumable['purchaseDate']['date']}}" />
+  </view>
+  <!-- 组件 -->
+  <view wx:if="{{mode == 'component'}}">
+    <t-cell title="名称" note="{{component['name']}}" />
+    <t-cell title="串行" description="{{component['serial']}}" />
+    <t-cell title="类别." note="{{component['category']['name']}}" />
+    <t-cell title="总数" note="{{component['qty']}}" />
+    <t-cell title="余量" note="{{component['remaining']}}" />
+    <t-cell title="位置" note="{{component['location']['name']}}" />
+    <t-cell title="订单号" note="{{component['orderNumber']}}" />
+    <t-cell title="采购成本" note="{{component['purchaseCost']}}" />
+    <t-cell title="采购日期" note="{{component['purchaseDate']['date']}}" />
+  </view>
 </view>

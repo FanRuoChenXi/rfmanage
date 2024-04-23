@@ -23,6 +23,15 @@ Page({
       case 'licenses':
         this.setLicensesData(res)
         break
+      case 'accessories':
+        this.setAccessoryData(res)
+        break
+      case 'consumables':
+        this.setConsumableData(res)
+        break
+      case 'components':
+        this.setComponentData(res)
+        break
     }
     wx.$loading(false)
   },
@@ -56,5 +65,53 @@ Page({
       freeSeatsCount: res.freeSeatsCount,
     }
     this.setData({ mode: 'licenses', licenses })
+  },
+
+  // 配件数据
+  setAccessoryData(res) {
+    const accessory = {
+      name: res.name,
+      category: res.category,
+      modelNumber: res.modelNumber,
+      location: res.location,
+      qty: res.qty,
+      usersCount: res.usersCount,
+      minQty: res.minQty,
+    }
+    this.setData({ mode: 'accessory', accessory })
+  },
+
+  // 消耗品数据
+  setConsumableData(res) {
+    const consumable = {
+      name: res.name,
+      category: res.category,
+      modelNumber: res.modelNumber,
+      itemNo: res.itemNo,
+      qty: res.qty,
+      remaining: res.remaining,
+      minQty: res.minQty,
+      orderNumber: res.orderNumber,
+      purchaseDate: res.purchaseDate,
+      purchaseCost: res.purchaseCost,
+    }
+    this.setData({ mode: 'consumable', consumable })
+  },
+
+  // 组件数据
+  setComponentData(res) {
+    const component = {
+      name: res.name,
+      serial: res.serial,
+      category: res.category,
+      qty: res.qty,
+      remaining: res.remaining,
+      minQty: res.minQty,
+      location: res.location,
+      orderNumber: res.orderNumber,
+      purchaseDate: res.purchaseDate,
+      purchaseCost: res.purchaseCost,
+    }
+    this.setData({ mode: 'component', component })
   },
 })

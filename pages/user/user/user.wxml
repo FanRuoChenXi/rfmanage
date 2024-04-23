@@ -23,9 +23,9 @@
   <!-- 功能区 -->
   <view>
     <t-cell title="个人信息" hover arrow bind:click="toUserDetail" />
-    <t-cell title="资产模型" hover arrow bind:click="toAssetModel" />
+    <!-- <t-cell title="资产模型" hover arrow bind:click="toAssetModel" /> -->
     <t-cell title="部门组织" hover arrow bind:click="toDepartment" />
-    <t-cell title="状态标签" hover arrow bind:click="toStatusLabel" />
+    <!-- <t-cell title="状态标签" hover arrow bind:click="toStatusLabel" /> -->
   </view>
 </view>
 <!-- 底栏 -->

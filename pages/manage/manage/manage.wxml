@@ -14,7 +14,7 @@
     <t-grid-item text="资产查询" icon="search" bindclick="toAssetSearch" />
     <t-grid-item text="新增项目" icon="plus" bindclick="toItemUpload" />
     <t-grid-item text="资产审计" icon="download" bindclick="toAssetAudit" />
-    <t-grid-item text="数据趋势" icon="chart-analytics" bindclick="toDataTrend" />
+    <!-- <t-grid-item text="数据趋势" icon="chart-analytics" bindclick="toDataTrend" /> -->
   </t-grid>
 </view>
 <!-- 底栏 -->
