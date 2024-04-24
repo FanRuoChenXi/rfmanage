@@ -84,5 +84,7 @@ Page({
     wx.$loading('提交中...')
     const [res, err] = await wx.$post('hardware/audit', param)
     if (err) return wx.$msg(err || '审计失败')
+    wx.$msg('成功审计')
+    wx.$replace('/pages/manage/asset-audit')
   },
 })

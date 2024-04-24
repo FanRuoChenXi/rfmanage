@@ -7,9 +7,9 @@ Page({
     itemType: [
       { label: '资产', value: 'asset' },
       { label: '许可证', value: 'license' },
-      { label: '配件', value: 'accessories' },
-      { label: '消耗品', value: 'consumables' },
-      { label: '组件', value: 'components' },
+      // { label: '配件', value: 'accessories' },
+      // { label: '消耗品', value: 'consumables' },
+      // { label: '组件', value: 'components' },
       //   { label: '用户', value: 'user' },
     ],
     licensesItemName: '', // 许可证名称
@@ -37,7 +37,7 @@ Page({
         await this.createHardware()
         break
       case 'license':
-        await this.createHardware()
+        await this.createLicenses()
         break
     }
   },

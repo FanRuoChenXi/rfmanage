@@ -25,7 +25,7 @@
 </view>
 <!-- 按钮 -->
 <view class="center" style="margin-top: 24rpx">
-  <t-button size="large" shape="round" bind:tap="onAssetAudit" disabled="{{isButtonDisabled}}">
+  <t-button bind:tap="onAssetAudit" disabled="{{isButtonDisabled}}">
     审计
   </t-button>
 </view>
