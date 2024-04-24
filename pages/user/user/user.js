@@ -6,7 +6,7 @@ Page({
 
   // 切换账号
   onSwitchAccount(e) {
-    console.log(e)
+    // console.log(e)
     wx.$modal({
       title: '切换账号',
       showCancel: true,

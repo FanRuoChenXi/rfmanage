@@ -6,6 +6,7 @@ Page({
 
   async onLoad(query) {
     // console.log(query)
+    this.setData({ id: query['id'] })
     const url = `${query['key']}/` + query['id']
     const param = {
       limit: 5,
@@ -113,5 +114,43 @@ Page({
       purchaseCost: res.purchaseCost,
     }
     this.setData({ mode: 'component', component })
+  },
+
+  onDeleteAsset() {
+    wx.$modal({
+      title: '删除资产',
+      showCancel: true,
+      content: '确定要删除吗?',
+    }).then(() => {
+      wx.$loading('提交中...')
+      this.DeleteAsset()
+      // wx.$push('back', { delta: 1 })
+    })
+  },
+
+  // 删除资产
+  DeleteAsset() {
+    const { id } = this.data
+    const url = 'https://develop.snipeitapp.com/api/v1/hardware/' + id
+    wx.request({
+      url,
+      method: 'DELETE',
+      header: {
+        Authorization:
+          'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZTU2MDc0MjVmYjM5YTEwYjFjNTZlZTAxMTBmZDk4ZjQ0ZjVjODMzYjcxZWVhYjZlNDk1NGMwOThlY2YzMzU2MDY4Mzg4MmFhMDMzOTAzNzciLCJpYXQiOjE2MzI4NjU5MTgsIm5iZiI6MTYzMjg2NTkxOCwiZXhwIjoyMjY0MDIxNTE4LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.LgGVzyH67IRhXvccHd4j2Dn6TDuIuQTBoo30_wD9jPehy8v_h0xBmE1-dOUBRJyeJOI8B4gwPeALsWaudpGj9Lb5qWAtKV7eYtH9IYQKoLF_iHgOGXnAUcNwID6zBU_YyLNSI6gp8zjutLJias33CBLsHy5ZRNpxVibVrZouJ_HjYuIYbtZyLus-KFFeibtZoPiTWOeHhQFD37MR6ifx4dBqT37fN-xDS99mONtrkAplEIou5aSO1oZ4IlJIPCUyA1lixPgpn1YU7PxiBDZp1teeugD0WEmrAqxRS2I0bH4qPsuTsrVXS_lo87Sf5LBGLW7lGHKqyYH6J47OZOM0K-SrxLKtE1ww8jyLBgnnxH0lJHRLCBiwUnL5ZGTUmiOysUA-wSJ6s78o8Pc-ec6bpBvAlelHdiQ-wslE7gzEJDptbejFg-75b_CEwgJYh7J2D18ul6Qu5EFCUEgt033mm04dgVk0isWTDt6EW5ZvTo5Qhr1LY0YnEIXCTqIRN-BSQjL55sZaCrtwR_21bnBGgniyI5MRDYblFawVmFKroeClCpSjBo9vi66akdD5hjpvx67RL3r33BZQhEXmPifUPNH5wP_U-IHGFUD99TJk2c1awF0RASveZRLSunbJb1x6hGAVUaIvQV4r2quWzXqYyKLph9kGTyJYrb6iJtH5smE',
+        Accept: 'application/json',
+      },
+      success: (response) => {
+        console.log(response)
+        if (response.statusCode == 200) {
+          wx.$replace('/pages/overview/overview')
+        } else {
+          wx.$msg(response.errMsg)
+        }
+      },
+      fail: (error) => {
+        console.log(error)
+      },
+    })
   },
 })

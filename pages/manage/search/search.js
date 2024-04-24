@@ -3,7 +3,7 @@ Page({
   data: {
     assetList: [],
     isBottom: false, // 是否加载到底
-    searchValue: '',
+    searchValue: '', // Ultrasharp iPhone
   },
 
   // onLoad() {

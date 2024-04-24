@@ -10,13 +10,6 @@
     "miniprogram": {
       "list": [
         {
-          "name": "pages/manage/search/search",
-          "pathName": "pages/manage/search/search",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
           "name": "pages/manage/item-upload/item-upload",
           "pathName": "pages/manage/item-upload/item-upload",
           "query": "",

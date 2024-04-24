@@ -81,6 +81,7 @@ Page({
       locationId: locationValue[0],
       nextAuditDate: date,
     }
+    wx.$loading('提交中...')
     const [res, err] = await wx.$post('hardware/audit', param)
     if (err) return wx.$msg(err || '审计失败')
   },
