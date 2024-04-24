@@ -3,7 +3,7 @@
   <view wx:if="{{mode == 'hardware'}}">
     <t-cell title="名称" note="{{hardware['name']}}" />
     <t-cell title="资产标签" note="{{hardware['assetTag']}}" />
-    <t-cell title="串行" description="{{hardware['serial']}}" />
+    <t-cell title="序列号" description="{{hardware['serial']}}" />
     <t-cell title="资产模型" note="{{hardware['model']['name']}}" />
     <t-cell title="资产类别" note="{{hardware['category']['name']}}" />
     <t-cell title="状态" note="{{hardware['statusLabel']['name']}}" />
@@ -49,7 +49,7 @@
   <!-- 组件 -->
   <view wx:if="{{mode == 'component'}}">
     <t-cell title="名称" note="{{component['name']}}" />
-    <t-cell title="串行" description="{{component['serial']}}" />
+    <t-cell title="序列号" description="{{component['serial']}}" />
     <t-cell title="类别." note="{{component['category']['name']}}" />
     <t-cell title="总数" note="{{component['qty']}}" />
     <t-cell title="余量" note="{{component['remaining']}}" />

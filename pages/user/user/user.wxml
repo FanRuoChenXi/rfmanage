@@ -22,10 +22,12 @@
   </view>
   <!-- 功能区 -->
   <view>
-    <t-cell title="个人信息" hover arrow bind:click="toUserDetail" />
-    <!-- <t-cell title="资产模型" hover arrow bind:click="toAssetModel" /> -->
-    <t-cell title="部门组织" hover arrow bind:click="toDepartment" />
-    <!-- <t-cell title="状态标签" hover arrow bind:click="toStatusLabel" /> -->
+    <t-cell title="个人信息" hover arrow left-icon="user-1" bind:click="toUserDetail" />
+    <t-cell title="部门组织" hover arrow left-icon="usergroup" bind:click="toDepartment" />
+    <t-cell title="资产模型" hover arrow left-icon="module" bind:click="toAssetModel" />
+    <t-cell title="状态标签" hover arrow left-icon="palette-1" bind:click="toStatusLabel" />
+    <t-cell title="企业列表" hover arrow left-icon="city-12" />
+    <t-cell title="地点列表" hover arrow left-icon="location" />
   </view>
 </view>
 <!-- 底栏 -->
