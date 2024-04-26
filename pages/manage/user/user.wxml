@@ -1,0 +1,8 @@
+<view>
+  <t-cell
+    wx:for="{{userList}}"
+    wx:key="index"
+    title="{{item['name']}}"
+    description="部门：{{item['department']['name']}}"
+  />
+</view>

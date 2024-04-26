@@ -26,4 +26,9 @@ Page({
   toCategory() {
     wx.$push('/pages/manage/category')
   },
+
+  // 用户管理
+  toUser() {
+    wx.$push('/pages/manage/user')
+  },
 })

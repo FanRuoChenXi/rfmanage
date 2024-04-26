@@ -14,6 +14,7 @@
     "pages/manage/item-upload/item-upload",
     "pages/manage/asset-audit/asset-audit",
     "pages/manage/category/category",
+    "pages/manage/user/user",
 
     "pages/user/user-detail/user-detail",
     "pages/user/departments/departments"

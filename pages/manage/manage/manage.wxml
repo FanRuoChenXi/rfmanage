@@ -14,8 +14,8 @@
     <t-grid-item text="资产审计" icon="download" bindclick="toAssetAudit" />
     <t-grid-item text="数据趋势" icon="chart-analytics" bindclick="toDataTrend" />
     <t-grid-item text="类别管理" icon="layers" bindclick="toCategory" />
-    <t-grid-item text="用户管理" icon="user-setting" />
-    <t-grid-item text="制造商管理" icon="tools" />
+    <t-grid-item text="用户管理" icon="user-setting" bindclick="toUser" />
+    <t-grid-item text="制造商管理" icon="tools" bindclick="toManufacturer" />
     <t-grid-item text="供应商管理" icon="pen-ball" bindclick="toSupplier" />
   </t-grid>
 </view>
