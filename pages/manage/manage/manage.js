@@ -36,4 +36,9 @@ Page({
   toManufacturer() {
     wx.$push('/pages/manage/manufacturer')
   },
+
+  // 制造商管理
+  toSupplier() {
+    wx.$push('/pages/manage/supplier')
+  },
 })

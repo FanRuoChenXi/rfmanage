@@ -1,0 +1,8 @@
+<view>
+  <t-cell
+    wx:for="{{supplierList}}"
+    wx:key="index"
+    title="{{item['name']}}"
+    description="地址：{{item['address']}}"
+  />
+</view>
