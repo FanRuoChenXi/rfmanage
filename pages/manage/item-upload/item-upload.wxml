@@ -1,5 +1,6 @@
 <view class="upload-box">
   <t-cell title="项目类型" arrow hover note="{{itemTypeText}}" bind:click="onitemTypePicker" />
+  <!-- 资产 -->
   <view wx:if="{{itemTypeValue == 'asset'}}">
     <t-input
       label="资产标签"
@@ -11,6 +12,7 @@
     <t-cell title="资产模型" required arrow hover note="{{modelText}}" bind:click="onModelPicker" />
     <t-cell title="状态" required arrow hover note="{{statusText}}" bind:click="onStatusPicker" />
   </view>
+  <!-- 许可证 -->
   <view wx:if="{{itemTypeValue == 'license'}}">
     <t-input
       label="软件名称"
@@ -34,6 +36,34 @@
     <t-input label="邮箱" placeholder="请输入邮箱" model:value="{{licenseEmail}}" />
     <t-input label="联系人" placeholder="请输入名称" model:value="{{licenseName}}" />
   </view>
+  <!-- 配件 -->
+  <view wx:if="{{itemTypeValue == 'accessory'}}">
+    <t-input
+      label="配件名称"
+      placeholder="请输入名称"
+      status="error"
+      tips="必填"
+      model:value="{{accessoryItemName}}"
+    />
+    <t-cell
+      title="配件类别"
+      required
+      arrow
+      hover
+      note="{{categoryText}}"
+      bind:click="oncategoryPicker"
+    />
+    <t-cell title="总量" required>
+      <t-stepper
+        defaultValue="0"
+        theme="filled"
+        slot="note"
+        bind:change="accessoryQuantityChange"
+      />
+    </t-cell>
+  </view>
+  <!-- 消耗品 -->
+  <!-- 组件 -->
 </view>
 <!-- 按钮 -->
 <view wx:if="{{itemTypeValue}}" class="center" style="margin-top: 24rpx">

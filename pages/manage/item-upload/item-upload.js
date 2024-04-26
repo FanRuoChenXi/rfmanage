@@ -7,10 +7,9 @@ Page({
     itemType: [
       { label: '资产', value: 'asset' },
       { label: '许可证', value: 'license' },
-      { label: '配件', value: 'accessories' },
-      { label: '消耗品', value: 'consumables' },
-      { label: '组件', value: 'components' },
-      { label: '用户', value: 'user' },
+      { label: '配件', value: 'accessory' },
+      { label: '消耗品', value: 'consumable' },
+      { label: '组件', value: 'component' },
     ],
     licensesItemName: '', // 许可证名称
     licenseEmail: '',
@@ -26,6 +25,8 @@ Page({
     statusValue: [], // 状态
     statusText: '',
     status: [],
+    accessoryItemName: '', // 配件名称
+    accessoryQuantity: 0, // 配件数量
   },
 
   // 保存按钮
@@ -38,6 +39,9 @@ Page({
         break
       case 'license':
         await this.createLicenses()
+        break
+      case 'accessory':
+        await this.createAccessory()
         break
     }
   },
@@ -76,6 +80,19 @@ Page({
     wx.$replace('/pages/overview/overview')
   },
 
+  // 新增配件
+  async createAccessory() {
+    const { accessoryItemName, categoryValue, accessoryQuantity } = this.data
+    const param = {
+      name: accessoryItemName,
+      categoryId: categoryValue[0],
+      qty: accessoryQuantity,
+    }
+    const [res, err] = await wx.$post('accessories', param)
+    if (err) return wx.$msg(err || '创建失败')
+    wx.$replace('/pages/overview/overview')
+  },
+
   // 关闭选择器
   onPickerCancel() {
     this.setData({ pickerName: '' })
@@ -95,7 +112,7 @@ Page({
 
   // 选择项目类型
   onitemTypePicker() {
-    this.setData({ pickerName: 'itemType' })
+    this.setData({ pickerName: 'itemType', categoryText: '' })
   },
 
   // 选择类别
@@ -118,13 +135,6 @@ Page({
       })
     })
     this.setData({ pickerName: 'category', category })
-  },
-
-  // 滑块选择器
-  seatsChange(e) {
-    this.setData({
-      seats: e.detail.value,
-    })
   },
 
   // 选择资产模型
@@ -167,5 +177,19 @@ Page({
       })
     })
     this.setData({ pickerName: 'status', status })
+  },
+
+  // 滑块选择器
+  seatsChange(e) {
+    this.setData({
+      seats: e.detail.value,
+    })
+  },
+
+  // 步进器
+  accessoryQuantityChange(e) {
+    this.setData({
+      accessoryQuantity: e.detail.value,
+    })
   },
 })
