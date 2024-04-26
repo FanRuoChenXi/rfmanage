@@ -72,7 +72,7 @@
       model:value="{{consumableItemName}}"
     />
     <t-cell
-      title="配件类别"
+      title="消耗品类别"
       required
       arrow
       hover
@@ -88,8 +88,32 @@
       />
     </t-cell>
   </view>
-
   <!-- 组件 -->
+  <view wx:if="{{itemTypeValue == 'component'}}">
+    <t-input
+      label="组件名称"
+      placeholder="请输入名称"
+      status="error"
+      tips="必填"
+      model:value="{{componentItemName}}"
+    />
+    <t-cell
+      title="组件类别"
+      required
+      arrow
+      hover
+      note="{{categoryText}}"
+      bind:click="oncategoryPicker"
+    />
+    <t-cell title="总量" required>
+      <t-stepper
+        defaultValue="0"
+        theme="filled"
+        slot="note"
+        bind:change="componentQuantityChange"
+      />
+    </t-cell>
+  </view>
 </view>
 <!-- 按钮 -->
 <view wx:if="{{itemTypeValue}}" class="center" style="margin-top: 24rpx">

@@ -29,6 +29,8 @@ Page({
     accessoryQuantity: 0, // 配件数量
     consumableItemName: '', // 消耗品名称
     consumableQuantity: 0, // 消耗品数量
+    componentItemName: '', // 组件名称
+    componentQuantity: 0, // 组件数量
   },
 
   // 保存按钮
@@ -47,6 +49,9 @@ Page({
         break
       case 'consumable':
         await this.createConsumable()
+        break
+      case 'component':
+        await this.createComponent()
         break
     }
   },
@@ -107,6 +112,19 @@ Page({
       qty: consumableQuantity,
     }
     const [res, err] = await wx.$post('consumables', param)
+    if (err) return wx.$msg(err || '创建失败')
+    wx.$replace('/pages/overview/overview')
+  },
+
+  // 新增组件
+  async createComponent() {
+    const { componentItemName, categoryValue, componentQuantity } = this.data
+    const param = {
+      name: componentItemName,
+      categoryId: categoryValue[0],
+      qty: componentQuantity,
+    }
+    const [res, err] = await wx.$post('components', param)
     if (err) return wx.$msg(err || '创建失败')
     wx.$replace('/pages/overview/overview')
   },
@@ -214,6 +232,12 @@ Page({
   consumableQuantityChange(e) {
     this.setData({
       consumableQuantity: e.detail.value,
+    })
+  },
+
+  componentQuantityChange(e) {
+    this.setData({
+      componentQuantity: e.detail.value,
     })
   },
 })
