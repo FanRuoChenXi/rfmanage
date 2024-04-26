@@ -63,6 +63,32 @@
     </t-cell>
   </view>
   <!-- 消耗品 -->
+  <view wx:if="{{itemTypeValue == 'consumable'}}">
+    <t-input
+      label="消耗品名称"
+      placeholder="请输入名称"
+      status="error"
+      tips="必填"
+      model:value="{{consumableItemName}}"
+    />
+    <t-cell
+      title="配件类别"
+      required
+      arrow
+      hover
+      note="{{categoryText}}"
+      bind:click="oncategoryPicker"
+    />
+    <t-cell title="总量" required>
+      <t-stepper
+        defaultValue="0"
+        theme="filled"
+        slot="note"
+        bind:change="consumableQuantityChange"
+      />
+    </t-cell>
+  </view>
+
   <!-- 组件 -->
 </view>
 <!-- 按钮 -->

@@ -27,6 +27,8 @@ Page({
     status: [],
     accessoryItemName: '', // 配件名称
     accessoryQuantity: 0, // 配件数量
+    consumableItemName: '', // 消耗品名称
+    consumableQuantity: 0, // 消耗品数量
   },
 
   // 保存按钮
@@ -42,6 +44,9 @@ Page({
         break
       case 'accessory':
         await this.createAccessory()
+        break
+      case 'consumable':
+        await this.createConsumable()
         break
     }
   },
@@ -93,6 +98,19 @@ Page({
     wx.$replace('/pages/overview/overview')
   },
 
+  // 新增消耗品
+  async createConsumable() {
+    const { consumableItemName, categoryValue, consumableQuantity } = this.data
+    const param = {
+      name: consumableItemName,
+      categoryId: categoryValue[0],
+      qty: consumableQuantity,
+    }
+    const [res, err] = await wx.$post('consumables', param)
+    if (err) return wx.$msg(err || '创建失败')
+    wx.$replace('/pages/overview/overview')
+  },
+
   // 关闭选择器
   onPickerCancel() {
     this.setData({ pickerName: '' })
@@ -100,7 +118,7 @@ Page({
 
   // 确认
   onPickerChange(e) {
-    console.log(e)
+    // console.log(e)
     const { key } = e.currentTarget.dataset
     const { label, value } = e.detail
     this.setData({
@@ -190,6 +208,12 @@ Page({
   accessoryQuantityChange(e) {
     this.setData({
       accessoryQuantity: e.detail.value,
+    })
+  },
+
+  consumableQuantityChange(e) {
+    this.setData({
+      consumableQuantity: e.detail.value,
     })
   },
 })
