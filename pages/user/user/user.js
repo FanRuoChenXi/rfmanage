@@ -42,4 +42,9 @@ Page({
   toCompany() {
     wx.$push('/pages/user/company')
   },
+
+  // 地点
+  toLocation() {
+    wx.$push('/pages/user/location')
+  },
 })

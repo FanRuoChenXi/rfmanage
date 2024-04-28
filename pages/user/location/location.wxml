@@ -1,0 +1,8 @@
+<view>
+  <t-cell
+    wx:for="{{locationList}}"
+    wx:key="index"
+    title="{{item['name']}}"
+    description="父级：{{item['parent'] == null ? '' : item['parent']}}"
+  />
+</view>
