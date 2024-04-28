@@ -37,4 +37,9 @@ Page({
   toStatusLabel() {
     wx.$push('/pages/user/status-label')
   },
+
+  // 企业
+  toCompany() {
+    wx.$push('/pages/user/company')
+  },
 })

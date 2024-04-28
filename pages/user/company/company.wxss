@@ -1,0 +1,7 @@
+@import '/styles/color.wxss';
+@import '/styles/layout.wxss';
+
+page {
+  background-color: #f7f7f7;
+  font-family: SourceHanSansSCVF-Regular;
+}

@@ -21,7 +21,8 @@
     "pages/user/user-detail/user-detail",
     "pages/user/departments/departments",
     "pages/user/asset-model/asset-model",
-    "pages/user/status-label/status-label"
+    "pages/user/status-label/status-label",
+    "pages/user/company/company"
   ],
   "usingComponents": {
     "t-icon": "tdesign-miniprogram/icon/icon"
