@@ -27,4 +27,9 @@ Page({
   toDepartment() {
     wx.$push('/pages/user/departments')
   },
+
+  // 资产模型
+  toAssetModel() {
+    wx.$push('/pages/user/asset-model')
+  },
 })

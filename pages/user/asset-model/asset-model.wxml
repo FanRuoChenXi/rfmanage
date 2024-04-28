@@ -1,0 +1,8 @@
+<view>
+  <t-cell
+    wx:for="{{modelList}}"
+    wx:key="index"
+    title="{{item['modelNumber']}}"
+    description="名称：{{item['name']}}"
+  />
+</view>

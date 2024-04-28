@@ -19,7 +19,8 @@
     "pages/manage/supplier/supplier",
 
     "pages/user/user-detail/user-detail",
-    "pages/user/departments/departments"
+    "pages/user/departments/departments",
+    "pages/user/asset-model/asset-model"
   ],
   "usingComponents": {
     "t-icon": "tdesign-miniprogram/icon/icon"
