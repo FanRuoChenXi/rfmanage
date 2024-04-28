@@ -1,0 +1,8 @@
+<view>
+  <t-cell
+    wx:for="{{statusLabelList}}"
+    wx:key="index"
+    title="{{item['name']}}"
+    description="类型：{{item['type']}}"
+  />
+</view>

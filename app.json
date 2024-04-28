@@ -20,7 +20,8 @@
 
     "pages/user/user-detail/user-detail",
     "pages/user/departments/departments",
-    "pages/user/asset-model/asset-model"
+    "pages/user/asset-model/asset-model",
+    "pages/user/status-label/status-label"
   ],
   "usingComponents": {
     "t-icon": "tdesign-miniprogram/icon/icon"

@@ -32,4 +32,9 @@ Page({
   toAssetModel() {
     wx.$push('/pages/user/asset-model')
   },
+
+  // 状态标签
+  toStatusLabel() {
+    wx.$push('/pages/user/status-label')
+  },
 })
