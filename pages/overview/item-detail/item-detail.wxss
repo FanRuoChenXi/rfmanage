@@ -4,6 +4,8 @@
 page {
   background-color: #f7f7f7;
   font-family: SourceHanSansSCVF-Regular;
+  --td-button-primary-bg-color: #575757;
+  --td-button-primary-active-bg-color: #6e6f70;
 }
 
 .detail-box {

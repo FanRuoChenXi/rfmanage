@@ -26,7 +26,7 @@
     <t-cell title="已用" note="{{licenses['freeSeatsCount']}}" />
   </view>
   <!-- 配件 -->
-  <view wx:if="{{mode == 'accessory'}}">
+  <view wx:if="{{mode == 'accessories'}}">
     <t-cell title="名称" note="{{accessory['name']}}" />
     <t-cell title="配件类别" note="{{accessory['category']['name']}}" />
     <t-cell title="模型No." note="{{accessory['modelNumber']}}" />
@@ -35,7 +35,7 @@
     <t-cell title="已使用" note="{{accessory['usersCount']}}" />
   </view>
   <!-- 消耗品 -->
-  <view wx:if="{{mode == 'consumable'}}">
+  <view wx:if="{{mode == 'consumables'}}">
     <t-cell title="名称" note="{{consumable['name']}}" />
     <t-cell title="消耗品类别" note="{{consumable['category']['name']}}" />
     <t-cell title="模型No." note="{{consumable['modelNumber']}}" />
@@ -47,7 +47,7 @@
     <t-cell title="采购日期" note="{{consumable['purchaseDate']['date']}}" />
   </view>
   <!-- 组件 -->
-  <view wx:if="{{mode == 'component'}}">
+  <view wx:if="{{mode == 'components'}}">
     <t-cell title="名称" note="{{component['name']}}" />
     <t-cell title="序列号" description="{{component['serial']}}" />
     <t-cell title="类别." note="{{component['category']['name']}}" />
@@ -59,7 +59,18 @@
     <t-cell title="采购日期" note="{{component['purchaseDate']['date']}}" />
   </view>
 </view>
-<!-- 删除 -->
-<view wx:if="{{mode == 'hardware'}}" class="center" style="margin-top: 10px">
-  <t-button theme="danger" bind:tap="onDeleteAsset">删除</t-button>
+<!-- 操作按钮 -->
+<view class="flex-between center" style="margin: 10px">
+  <view wx:if="{{availableActions['update']}}">
+    <t-button theme="primary" bind:tap="onUpdate">更新</t-button>
+  </view>
+  <view wx:if="{{availableActions['checkin']}}">
+    <t-button theme="primary" bind:tap="onCheckIn">签入</t-button>
+  </view>
+  <view wx:if="{{availableActions['checkout']}}">
+    <t-button theme="primary" bind:tap="onCheckOut">签出</t-button>
+  </view>
+  <view wx:if="{{availableActions['delete']}}">
+    <t-button theme="danger" bind:tap="onDelete">删除</t-button>
+  </view>
 </view>

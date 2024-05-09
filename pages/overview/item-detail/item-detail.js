@@ -50,7 +50,8 @@ Page({
       purchaseCost: res.purchaseCost,
       bookValue: res.bookValue,
     }
-    this.setData({ mode: 'hardware', hardware })
+    const availableActions = res.availableActions
+    this.setData({ mode: 'hardware', hardware, availableActions })
   },
 
   // 许可证数据
@@ -65,7 +66,8 @@ Page({
       seats: res.seats,
       freeSeatsCount: res.freeSeatsCount,
     }
-    this.setData({ mode: 'licenses', licenses })
+    const availableActions = res.availableActions
+    this.setData({ mode: 'licenses', licenses, availableActions })
   },
 
   // 配件数据
@@ -79,7 +81,8 @@ Page({
       usersCount: res.usersCount,
       minQty: res.minQty,
     }
-    this.setData({ mode: 'accessory', accessory })
+    const availableActions = res.availableActions
+    this.setData({ mode: 'accessories', accessory, availableActions })
   },
 
   // 消耗品数据
@@ -96,7 +99,8 @@ Page({
       purchaseDate: res.purchaseDate,
       purchaseCost: res.purchaseCost,
     }
-    this.setData({ mode: 'consumable', consumable })
+    const availableActions = res.availableActions
+    this.setData({ mode: 'consumables', consumable, availableActions })
   },
 
   // 组件数据
@@ -113,25 +117,34 @@ Page({
       purchaseDate: res.purchaseDate,
       purchaseCost: res.purchaseCost,
     }
-    this.setData({ mode: 'component', component })
+    const availableActions = res.availableActions
+    this.setData({ mode: 'components', component, availableActions })
   },
 
-  onDeleteAsset() {
+  onDelete() {
+    const { mode } = this.data
+    const modeText = {
+      hardware: '资产',
+      licenses: '许可证',
+      accessories: '配件',
+      consumables: '消耗品',
+      components: '组件',
+    }
     wx.$modal({
-      title: '删除资产',
+      title: `删除${modeText[mode]}`,
       showCancel: true,
       content: '确定要删除吗?',
     }).then(() => {
       wx.$loading('提交中...')
-      this.DeleteAsset()
+      this.DeleteItem()
       // wx.$push('back', { delta: 1 })
     })
   },
 
-  // 删除资产
-  DeleteAsset() {
-    const { id } = this.data
-    const url = 'https://develop.snipeitapp.com/api/v1/hardware/' + id
+  // 删除项目
+  DeleteItem() {
+    const { mode, id } = this.data
+    const url = `https://develop.snipeitapp.com/api/v1/${mode}/${id}`
     wx.request({
       url,
       method: 'DELETE',
@@ -143,6 +156,7 @@ Page({
       success: (response) => {
         console.log(response)
         if (response.statusCode == 200) {
+          wx.$msg('删除成功')
           wx.$replace('/pages/overview/overview')
         } else {
           wx.$msg(response.errMsg)
