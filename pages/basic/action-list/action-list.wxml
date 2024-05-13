@@ -1,9 +1,14 @@
 <view>
-  <t-cell
-    wx:for="{{actionList}}"
-    wx:key="index"
-    title="操作：{{actionType[item.actionType] ? actionType[item.actionType] : item.actionType}}"
-    description="对象：{{item['item']['name']}}"
-    left-icon="{{itemIcon[item['item']['type']] ? itemIcon[item['item']['type']] : 'error-circle'}}"
-  />
+  <!-- 活动日志 -->
+  <view style="margin-top: 10px" wx:for="{{actionList}}" wx:key="index">
+    <t-cell-group theme="card" bordered>
+      <t-cell title="{{item['actionDate']['datetime']}}" leftIcon="time" />
+      <t-cell title="{{item['admin']['name']}}" leftIcon="user" />
+      <t-cell
+        title="{{actionType[item.actionType] ? actionType[item.actionType] : item.actionType}}"
+        description="{{item['item']['name']}}"
+        leftIcon="{{itemIcon[item['item']['type']] ? itemIcon[item['item']['type']] : 'error-circle'}}"
+      />
+    </t-cell-group>
+  </view>
 </view>
