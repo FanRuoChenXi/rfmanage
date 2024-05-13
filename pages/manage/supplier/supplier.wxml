@@ -1,8 +1,23 @@
 <view>
-  <t-cell
+  <!-- <t-cell
     wx:for="{{supplierList}}"
     wx:key="index"
     title="{{item['name']}}"
     description="地址：{{item['address']}}"
-  />
+  /> -->
+
+  <view style="margin-top: 10px" wx:for="{{supplierList}}" wx:key="index">
+    <t-cell-group theme="card" bordered>
+      <t-cell title="名称：{{item['name']}}" />
+      <t-cell title="地址：{{item['address']}}" leftIcon="location" />
+      <t-cell title="联系人：{{item['contact']}}" leftIcon="user-1" />
+      <t-cell title="联系电话：{{item['phone']}}" leftIcon="call" />
+      <t-cell title="联系邮箱：{{item['email']}}" leftIcon="mail" />
+      <t-cell title="相关资产：{{item['assetsCount']}}" leftIcon="barcode" />
+      <t-cell title="相关许可证：{{item['licensesCount']}}" leftIcon="system-storage" />
+      <t-cell title="相关配件：{{item['accessoriesCount']}}" leftIcon="keyboard" />
+      <t-cell title="相关消耗品：{{item['consumablesCount']}}" leftIcon="highlight-1" />
+      <t-cell title="相关组件：{{item['componentsCount']}}" leftIcon="component-dropdown" />
+    </t-cell-group>
+  </view>
 </view>

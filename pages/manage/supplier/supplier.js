@@ -21,6 +21,14 @@ async function getSupplierList() {
       id: e['id'],
       name: e['name'],
       address: e['address'],
+      contact: e['contact'],
+      email: e['email'],
+      phone: ['phone'],
+      assetsCount: e['assetsCount'],
+      licensesCount: e['licensesCount'],
+      accessoriesCount: e['accessoriesCount'],
+      consumablesCount: e['consumablesCount'],
+      componentsCount: e['componentsCount'],
     })
   })
   return list
