@@ -1,8 +1,22 @@
 <view>
-  <t-cell
+  <!-- <t-cell
     wx:for="{{locationList}}"
     wx:key="index"
     title="{{item['name']}}"
     description="父级：{{item['parent'] == null ? '' : item['parent']}}"
-  />
+  /> -->
+
+  <view style="margin-top: 10px" wx:for="{{locationList}}" wx:key="index">
+    <t-cell-group theme="card" bordered>
+      <t-cell title="{{item['name']}}" image="{{item['image']}}" />
+      <t-cell title="地址：{{item['address']}}" />
+      <t-cell title="所属城市：{{item['city']}}" />
+      <t-cell title="所属区域：{{item['state']}}" />
+      <t-cell title="分配资产：{{item['assignedAssetsCount']}}" />
+      <t-cell title="用户数：{{item['usersCount']}}" />
+      <t-cell title="货币种类：{{item['currency']}}" />
+    </t-cell-group>
+  </view>
+
+  <t-fab icon="add" bind:click="toCreate" aria-label="增加"></t-fab>
 </view>

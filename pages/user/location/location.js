@@ -26,7 +26,14 @@ async function getLocationList() {
     list.push({
       id: e['id'],
       name: e['name'],
-      parent: e['parent'],
+      image: e['image'],
+      address: e['address'],
+      city: e['city'],
+      assignedAssetsCount: e['assignedAssetsCount'],
+      usersCount: e['usersCount'],
+      currency: e['currency'],
+      state: e['state'],
+      availableActions: e['availableActions'],
     })
   })
   return list
