@@ -52,6 +52,14 @@ async function getUserList() {
       id: e['id'],
       name: e['name'],
       department: e['department'],
+      phone: e['phone'],
+      email: e['email'],
+      assetsCount: e['assetsCount'],
+      licensesCount: e['licensesCount'],
+      accessoriesCount: e['accessoriesCount'],
+      consumablesCount: e['consumablesCount'],
+      activated: e['activated'],
+      availableActions: e['availableActions'],
     })
   })
   return list

@@ -1,8 +1,30 @@
 <view>
-  <t-cell
+  <!-- <t-cell
     wx:for="{{userList}}"
     wx:key="index"
     title="{{item['name']}}"
     description="部门：{{item['department']['name']}}"
-  />
+  /> -->
+
+  <view style="margin-top: 10px" wx:for="{{userList}}" wx:key="index">
+    <t-cell-group theme="card" bordered>
+      <t-cell title="{{item['name']}}">
+        <t-tag wx:if="{{item['activated'] == true}}" variant="light" theme="success" slot="note"
+          >正常</t-tag
+        >
+        <t-tag wx:else variant="light" theme="danger" slot="note">已删除</t-tag>
+      </t-cell>
+      <t-cell title="{{item['department']['name']}}" leftIcon="usergroup" />
+      <t-cell title="{{item['phone']}}" leftIcon="call" />
+      <t-cell title="{{item['email']}}" leftIcon="mail" />
+      <t-cell title="拥有资产：{{item['assetsCount']}}" leftIcon="barcode" />
+      <t-cell title="拥有许可证：{{item['licensesCount']}}" leftIcon="system-storage" />
+      <t-cell title="拥有配件：{{item['accessoriesCount']}}" leftIcon="keyboard" />
+      <t-cell title="拥有消耗品：{{item['consumablesCount']}}" leftIcon="highlight-1" />
+    </t-cell-group>
+  </view>
+
+  <!-- <t-tag class="margin-16" variant="light" theme="success">成功</t-tag> -->
+
+  <t-fab icon="add" bind:click="toCreate" aria-label="增加"></t-fab>
 </view>
