@@ -1,4 +1,5 @@
 {
+  "navigationBarBackgroundColor": "#6090dc",
   "usingComponents": {
     "tab-bar": "/components/TabBar/TabBar",
     "t-grid": "tdesign-miniprogram/grid/grid",

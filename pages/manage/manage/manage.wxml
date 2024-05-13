@@ -1,23 +1,37 @@
 <!-- 个人 -->
-<view class="flex" style="margin:40rpx 68rpx;">
+<!-- <view class="flex" style="margin:40rpx 68rpx;">
   <view class="flex-column" style="width:448rpx">
     <text class="N1 font32 bold" style="margin-bottom: 20rpx">欢迎回来</text>
     <text class="N1 font24">{{user['name']}}</text>
   </view>
   <t-avatar t-class-content="avtar" shape="round" size="72px">{{user['name'][0]}}</t-avatar>
-</view>
+</view> -->
 <!-- 宫格 -->
-<view style="margin-top: 40rpx;">
-  <t-grid theme="card">
-    <t-grid-item text="资产查询" icon="search" bindclick="toAssetSearch" />
-    <t-grid-item text="新增项目" icon="plus" bindclick="toItemUpload" />
-    <t-grid-item text="资产审计" icon="download" bindclick="toAssetAudit" />
-    <t-grid-item text="数据趋势" icon="chart-analytics" bindclick="toDataTrend" />
-    <t-grid-item text="类别管理" icon="layers" bindclick="toCategory" />
-    <t-grid-item text="用户管理" icon="user-setting" bindclick="toUser" />
-    <t-grid-item text="制造商管理" icon="tools" bindclick="toManufacturer" />
-    <t-grid-item text="供应商管理" icon="pen-ball" bindclick="toSupplier" />
-  </t-grid>
+<view class="grid-box" style="padding-top: 40rpx">
+  <view>
+    <view class="card-text">
+      <text>资产服务</text>
+    </view>
+    <t-grid theme="card">
+      <t-grid-item text="资产查询" icon="search" bindclick="toAssetSearch" />
+      <t-grid-item text="新增项目" icon="plus" bindclick="toItemUpload" />
+      <t-grid-item text="资产审计" icon="download" bindclick="toAssetAudit" />
+      <t-grid-item text="数据趋势" icon="chart-analytics" bindclick="toDataTrend" />
+    </t-grid>
+  </view>
+
+  <view style="margin-top: 40rpx;">
+    <view class="card-text">
+      <text>通用管理</text>
+    </view>
+    <t-grid theme="card">
+      <t-grid-item text="类别管理" icon="layers" bindclick="toCategory" />
+      <t-grid-item text="用户管理" icon="user-setting" bindclick="toUser" />
+      <t-grid-item text="制造商管理" icon="tools" bindclick="toManufacturer" />
+      <t-grid-item text="供应商管理" icon="pen-ball" bindclick="toSupplier" />
+    </t-grid>
+  </view>
 </view>
+
 <!-- 底栏 -->
 <tab-bar tabBarValue="manage" />

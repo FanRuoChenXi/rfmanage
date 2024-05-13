@@ -2,7 +2,7 @@
 @import '/styles/layout.wxss';
 
 page {
-  background-color: #f7f7f7;
+  background-color: #6090dc;
   font-family: SourceHanSansSCVF-Regular;
 }
 
@@ -10,4 +10,21 @@ page {
   color: #fff;
   background-color: #565656;
   font-weight: 400;
+}
+
+.card-text {
+  margin: 0 32rpx;
+  background-color: #fff;
+  border-top-left-radius: 18rpx;
+  border-top-right-radius: 18rpx;
+  padding: 32rpx;
+}
+
+.grid-box {
+  background-color: #f7f7f7;
+  width: 100%;
+  height: 648px;
+  margin-top: 30px;
+  border-top-left-radius: 22px;
+  border-top-right-radius: 22px;
 }
