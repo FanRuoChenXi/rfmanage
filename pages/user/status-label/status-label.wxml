@@ -1,8 +1,55 @@
 <view>
-  <t-cell
+  <!-- <t-cell
     wx:for="{{statusLabelList}}"
     wx:key="index"
     title="{{item['name']}}"
     description="类型：{{item['type']}}"
-  />
+  /> -->
+
+  <view style="margin-top: 10px" wx:for="{{statusLabelList}}" wx:key="index">
+    <t-cell-group theme="card" bordered>
+      <t-cell title="状态名称：{{item['name']}}">
+        <t-tag wx:if="{{item['defaultLabel'] == true}}" variant="light" theme="success" slot="note"
+          >默认标签</t-tag
+        >
+      </t-cell>
+      <t-cell title="类型">
+        <t-tag
+          wx:if="{{item['type'] == 'deployable'}}"
+          variant="light"
+          theme="success"
+          slot="note"
+          size="large"
+          >部署</t-tag
+        >
+        <t-tag
+          wx:if="{{item['type'] == 'pending'}}"
+          variant="light"
+          theme="warning"
+          slot="note"
+          size="large"
+          >待定</t-tag
+        >
+        <t-tag
+          wx:if="{{item['type'] == 'undeployable'}}"
+          variant="light"
+          theme="danger"
+          slot="note"
+          size="large"
+          >不可部署</t-tag
+        >
+        <t-tag
+          wx:if="{{item['type'] == 'archived'}}"
+          variant="light"
+          theme="danger"
+          slot="note"
+          size="large"
+          >已存档</t-tag
+        >
+      </t-cell>
+      <t-cell title="资产数量：{{item['assetsCount']}}" />
+    </t-cell-group>
+  </view>
+
+  <t-fab icon="add" bind:click="toCreate" aria-label="增加"></t-fab>
 </view>

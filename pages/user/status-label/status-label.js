@@ -27,6 +27,9 @@ async function getStatusLabelList() {
       id: e['id'],
       name: e['name'],
       type: e['type'],
+      assetsCount: e['assetsCount'],
+      availableActions: e['availableActions'],
+      defaultLabel: e['defaultLabel'],
     })
   })
   return list
