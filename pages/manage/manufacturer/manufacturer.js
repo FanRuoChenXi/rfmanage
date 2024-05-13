@@ -20,7 +20,16 @@ async function getManufacturerList() {
     list.push({
       id: e['id'],
       name: e['name'],
+      image: e['image'],
       url: e['url'],
+      supportUrl: e['supportUrl'],
+      supportPhone: e['supportPhone'],
+      supportEmail: e['supportEmail'],
+      assetsCount: e['assetsCount'],
+      licensesCount: e['licensesCount'],
+      accessoriesCount: e['accessoriesCount'],
+      consumablesCount: e['consumablesCount'],
+      availableActions: e['availableActions'],
     })
   })
   return list
