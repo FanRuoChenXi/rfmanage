@@ -20,6 +20,13 @@ async function getCompanyList() {
     list.push({
       id: e['id'],
       name: e['name'],
+      usersCount: e['usersCount'],
+      assetsCount: e['assets_count'],
+      licensesCount: e['licensesCount'],
+      accessoriesCount: e['accessoriesCount'],
+      consumablesCount: e['consumablesCount'],
+      componentsCount: e['componentsCount'],
+      availableActions: e['availableActions'],
     })
   })
   return list

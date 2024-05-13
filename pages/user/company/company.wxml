@@ -1,3 +1,17 @@
 <view>
-  <t-cell wx:for="{{companyList}}" wx:key="index" title="{{item['name']}}" />
+  <!-- <t-cell wx:for="{{companyList}}" wx:key="index" title="{{item['name']}}" /> -->
+
+  <view style="margin-top: 10px" wx:for="{{companyList}}" wx:key="index">
+    <t-cell-group theme="card" bordered>
+      <t-cell title="企业名称：{{item['name']}}" />
+      <t-cell title="用户数量：{{item['usersCount']}}" leftIcon="user-list" />
+      <t-cell title="资产数量：{{item['assetsCount']}}" leftIcon="barcode" />
+      <t-cell title="许可证数量：{{item['licensesCount']}}" leftIcon="system-storage" />
+      <t-cell title="配件数量：{{item['accessoriesCount']}}" leftIcon="keyboard" />
+      <t-cell title="消耗品数量：{{item['consumablesCount']}}" leftIcon="highlight-1" />
+      <t-cell title="组件数量：{{item['componentsCount']}}" leftIcon="component-dropdown" />
+    </t-cell-group>
+  </view>
+
+  <t-fab icon="add" bind:click="toCreate" aria-label="增加"></t-fab>
 </view>
