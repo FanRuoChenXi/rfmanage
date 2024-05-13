@@ -1,0 +1,8 @@
+<view class="ec-pie">
+  <ec-canvas
+    id="mychart-dom-pie"
+    canvas-id="mychart-pie"
+    ec="{{ ec }}"
+    force-use-old-canvas="true"
+  ></ec-canvas>
+</view>

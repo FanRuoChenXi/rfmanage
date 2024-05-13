@@ -20,7 +20,9 @@ Page({
   },
 
   // 数据趋势
-  toDataTrend() {},
+  toDataTrend() {
+    wx.$push('/pages/manage/data-trend')
+  },
 
   // 类别管理
   toCategory() {

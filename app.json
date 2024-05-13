@@ -13,6 +13,7 @@
     "pages/manage/search/search",
     "pages/manage/item-upload/item-upload",
     "pages/manage/asset-audit/asset-audit",
+    "pages/manage/data-trend/data-trend",
     "pages/manage/category/category",
     "pages/manage/user/user",
     "pages/manage/manufacturer/manufacturer",
