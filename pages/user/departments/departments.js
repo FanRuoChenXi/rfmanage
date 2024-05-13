@@ -21,6 +21,7 @@ async function getDepartmentList() {
       id: e['id'],
       name: e['name'],
       usersCount: e['usersCount'],
+      location: e['location'],
     })
   })
   return list

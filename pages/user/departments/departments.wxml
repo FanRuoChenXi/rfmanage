@@ -1,8 +1,18 @@
 <view>
-  <t-cell
+  <!-- <t-cell
     wx:for="{{departmentList}}"
     wx:key="index"
     title="部门：{{item['name']}}"
     description="用户数：{{item['usersCount']}}"
-  />
+  /> -->
+
+  <view style="margin-top: 10px" wx:for="{{departmentList}}" wx:key="index">
+    <t-cell-group theme="card" bordered>
+      <t-cell title="部门名称：{{item['name']}}" />
+      <t-cell title="位置：{{item['location']['name']}}" leftIcon="location" />
+      <t-cell title="用户数：{{item['usersCount']}}" leftIcon="user-list" />
+    </t-cell-group>
+  </view>
+
+  <t-fab icon="add" bind:click="toCreate" aria-label="增加"></t-fab>
 </view>
