@@ -10,6 +10,13 @@ Page({
       Component: '组件',
       License: '许可证',
     },
+    itemIcon: {
+      Asset: 'barcode',
+      License: 'system-storage',
+      Consumable: 'highlight-1',
+      Accessory: 'keyboard',
+      Component: 'component-dropdown',
+    },
   },
 
   onLoad() {
@@ -60,6 +67,7 @@ async function getCategoryList() {
       name: e['name'],
       categoryType: e['categoryType'],
       availableActions: e['availableActions'],
+      itemCount: e['itemCount'],
     })
   })
   return list
