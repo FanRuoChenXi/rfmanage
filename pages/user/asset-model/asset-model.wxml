@@ -1,8 +1,20 @@
 <view>
-  <t-cell
+  <!-- <t-cell
     wx:for="{{modelList}}"
     wx:key="index"
     title="{{item['modelNumber']}}"
     description="名称：{{item['name']}}"
-  />
+  /> -->
+
+  <view style="margin-top: 10px" wx:for="{{modelList}}" wx:key="index">
+    <t-cell-group theme="card" bordered>
+      <t-cell title="{{item['name']}}" image="{{item['image']}}" />
+      <t-cell title="模型编号：{{item['modelNumber']}}" />
+      <t-cell title="资产数量：{{item['assetsCount']}}" />
+      <t-cell title="所属类别：{{item['category']['name']}}" />
+      <t-cell title="生命周期：{{item['eol']}}" />
+    </t-cell-group>
+  </view>
+
+  <t-fab icon="add" bind:click="toCreate" aria-label="增加"></t-fab>
 </view>

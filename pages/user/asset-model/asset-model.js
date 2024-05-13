@@ -26,7 +26,11 @@ async function getModelList() {
     list.push({
       id: e['id'],
       name: e['name'],
+      image: e['image'],
       modelNumber: e['modelNumber'],
+      assetsCount: e['assetsCount'],
+      category: e['category'],
+      eol: e['eol'],
     })
   })
   return list
