@@ -93,8 +93,16 @@ async function getAssetList() {
     list.push({
       id: e['id'],
       name: e['name'],
+      image: e['image'],
       assetTag: e['assetTag'],
+      serial: e['serial'],
       model: e['model'],
+      category: e['category'],
+      statusLabel: e['statusLabel'],
+      location: e['location'],
+      purchaseCost: e['purchaseCost'],
+      bookValue: e['bookValue'],
+      availableActions: e['availableActions'],
     })
   })
   return list

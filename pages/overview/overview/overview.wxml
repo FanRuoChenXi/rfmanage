@@ -1,9 +1,9 @@
 <!-- 分类 -->
 <view style="padding: 0 16rpx">
-  <t-tabs value="{{tabValue}}" bind:change="onTabChange" t-class-content="tabContent">
+  <t-tabs value="{{tabValue}}" bind:change="onTabChange" t-class-content="tabContent" theme="tag">
     <t-tab-panel label="资产" value="0">
       <scroll-view class="" scroll-y bindscrolltolower="onAssetBottom" style="height: 1150rpx;">
-        <t-cell
+        <!-- <t-cell
           wx:for="{{assetList}}"
           wx:key="index"
           title="{{item.assetTag}}"
@@ -13,7 +13,54 @@
           data-id="{{item.id}}"
           hover
           arrow
-        />
+        /> -->
+
+        <view style="margin-top: 20px" wx:for="{{assetList}}" wx:key="index">
+          <t-cell-group theme="card" bordered>
+            <t-cell title="{{item['name']}}" image="{{item['image']}}" />
+            <t-cell title="资产编号：{{item['assetTag']}}" />
+            <t-cell title="序列号：{{item['serial']}}" />
+            <t-cell title="资产模型：{{item['model']['name']}}" />
+            <t-cell title="资产类别：{{item['category']['name']}}" />
+            <t-cell title="状态">
+              <t-tag
+                wx:if="{{item['statusLabel']['statusType'] == 'deployable'}}"
+                variant="light"
+                theme="success"
+                slot="note"
+                size="large"
+                >{{item['statusLabel']['name']}}</t-tag
+              >
+              <t-tag
+                wx:if="{{item['statusLabel']['statusType'] == 'pending'}}"
+                variant="light"
+                theme="warning"
+                slot="note"
+                size="large"
+                >{{item['statusLabel']['name']}}</t-tag
+              >
+              <t-tag
+                wx:if="{{item['statusLabel']['statusType'] == 'undeployable'}}"
+                variant="light"
+                theme="danger"
+                slot="note"
+                size="large"
+                >{{item['statusLabel']['name']}}</t-tag
+              >
+              <t-tag
+                wx:if="{{item['statusLabel']['statusType'] == 'archived'}}"
+                variant="light"
+                theme="danger"
+                slot="note"
+                size="large"
+                >{{item['statusLabel']['name']}}</t-tag
+              >
+            </t-cell>
+            <t-cell title="位置：{{item['location']['name']}}" leftIcon="location" />
+            <t-cell title="购买成本：{{item['purchaseCost']}}" leftIcon="cart" />
+            <t-cell title="当前价值：{{item['bookValue']}}" leftIcon="currency-exchange" />
+          </t-cell-group>
+        </view>
       </scroll-view>
     </t-tab-panel>
     <t-tab-panel label="许可证" value="1">

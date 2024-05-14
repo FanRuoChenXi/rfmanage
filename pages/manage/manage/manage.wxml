@@ -12,7 +12,7 @@
     <view class="card-text">
       <text>资产服务</text>
     </view>
-    <t-grid theme="card">
+    <t-grid theme="card" t-class="grid-card">
       <t-grid-item text="资产查询" icon="search" bindclick="toAssetSearch" />
       <t-grid-item text="新增项目" icon="plus" bindclick="toItemUpload" />
       <t-grid-item text="资产审计" icon="download" bindclick="toAssetAudit" />
@@ -22,7 +22,7 @@
 
   <view style="margin-top: 40rpx;">
     <view class="card-text">
-      <text>通用管理</text>
+      <text>附加管理</text>
     </view>
     <t-grid theme="card">
       <t-grid-item text="类别管理" icon="layers" bindclick="toCategory" />

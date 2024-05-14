@@ -4,6 +4,7 @@
 page {
   background-color: #6090dc;
   font-family: SourceHanSansSCVF-Regular;
+  --td-grid-card-radius: 0;
 }
 
 .avtar {

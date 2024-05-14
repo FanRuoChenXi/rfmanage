@@ -7,5 +7,6 @@ page {
 }
 
 .tabContent {
+  background-color: #f7f7f7;
   height: 1150rpx;
 }
