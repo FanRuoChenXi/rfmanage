@@ -12,14 +12,15 @@ Page({
   // 登录
   async onSubmitPassword() {
     const { account, password, buttonLoading, buttonText } = this.data
-    const user = {
-      name: account,
-    }
+    // const user = {
+    //   name: account,
+    // }
     if (account == 'admin' && password == 'password') {
       this.setData({
         buttonLoading: true,
         buttonText: '登录中',
       })
+      const user = await getUserDetail()
       wx.setStorageSync('user', user)
       wx.$replace('/pages/basic/dashboard')
     } else {
@@ -27,3 +28,10 @@ Page({
     }
   },
 })
+
+// 获取个人信息
+async function getUserDetail() {
+  const [res, err] = await wx.$get('users/1')
+  if (err) return wx.$msg(err)
+  return res
+}

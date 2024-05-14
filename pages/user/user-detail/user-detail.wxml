@@ -1,5 +1,13 @@
-<view class="detail-box">
-    <t-cell title="姓名" note="{{user['name']}}" />
-    <t-cell title="手机" note="{{user['phone'] || ''}}" />
-    <t-cell title="邮箱" note="{{user['email'] || ''}}" />
+<view style="margin-top: 20px">
+  <t-cell-group theme="card" bordered>
+    <t-cell title="{{userDetail['name']}}" image="{{userDetail['avatar']}}" />
+    <t-cell title="{{userDetail['location']}}" leftIcon="location" />
+    <t-cell title="{{userDetail['company']['name']}}" leftIcon="city-12" />
+    <t-cell title="{{userDetail['phone']}}" leftIcon="call" />
+    <t-cell title="{{userDetail['email']}}" leftIcon="mail" />
+    <t-cell title="拥有资产：{{userDetail['assetsCount']}}" leftIcon="barcode" />
+    <t-cell title="拥有许可证：{{userDetail['licensesCount']}}" leftIcon="system-storage" />
+    <t-cell title="拥有配件：{{userDetail['accessoriesCount']}}" leftIcon="keyboard" />
+    <t-cell title="拥有消耗品：{{userDetail['consumablesCount']}}" leftIcon="highlight-1" />
+  </t-cell-group>
 </view>

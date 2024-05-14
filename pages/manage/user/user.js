@@ -36,7 +36,8 @@ async function getUserList() {
     limit: 10,
     offset: pagination.offset,
     sort: 'created_at',
-    order: 'desc',
+    order: 'asc',
+    all: 'true',
   }
   const list = []
   if (pagination.isBottom) return false // 已加载到底时,拦截
