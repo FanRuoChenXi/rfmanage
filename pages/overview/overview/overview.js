@@ -124,7 +124,13 @@ async function getActionList() {
     licensesList.push({
       id: e['id'],
       name: e['name'],
+      productKey: e['productKey'],
+      expirationDate: e['expirationDate'],
+      licenseEmail: e['licenseEmail'],
+      licenseName: e['licenseName'],
       manufacturer: e['manufacturer'],
+      seats: e['seats'],
+      freeSeatsCount: e['freeSeatsCount'],
     })
   })
   return licensesList
