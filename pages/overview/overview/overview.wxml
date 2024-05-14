@@ -60,6 +60,35 @@
             <t-cell title="购买成本：{{item['purchaseCost']}}" leftIcon="cart" />
             <t-cell title="当前价值：{{item['bookValue']}}" leftIcon="currency-exchange" />
           </t-cell-group>
+          <view class="button-box flex-between">
+            <t-button
+              theme="primary"
+              size="small"
+              variant="outline"
+              disabled="{{!item['availableActions']['update']}}"
+              >更新</t-button
+            >
+            <t-button
+              theme="light"
+              size="small"
+              variant="outline"
+              disabled="{{!item['availableActions']['checkout']}}"
+              >签出</t-button
+            >
+            <t-button
+              size="small"
+              variant="outline"
+              disabled="{{!item['availableActions']['checkin']}}"
+              >签入</t-button
+            >
+            <t-button
+              theme="danger"
+              size="small"
+              variant="outline"
+              disabled="{{!item['availableActions']['delete']}}"
+              >删除</t-button
+            >
+          </view>
         </view>
       </scroll-view>
     </t-tab-panel>
@@ -88,6 +117,22 @@
             <t-cell title="总量：{{item['seats']}}" />
             <t-cell title="余量：{{item['freeSeatsCount']}}" />
           </t-cell-group>
+          <view class="button-box flex-between">
+            <t-button
+              theme="primary"
+              size="small"
+              variant="outline"
+              disabled="{{!item['availableActions']['update']}}"
+              >更新</t-button
+            >
+            <t-button
+              theme="danger"
+              size="small"
+              variant="outline"
+              disabled="{{!item['availableActions']['delete']}}"
+              >删除</t-button
+            >
+          </view>
         </view>
       </scroll-view>
     </t-tab-panel>
@@ -114,6 +159,29 @@
             <t-cell title="总量：{{item['qty']}}" />
             <t-cell title="余量：{{item['remainingQty']}}" />
           </t-cell-group>
+          <view class="button-box flex-between">
+            <t-button
+              theme="primary"
+              size="small"
+              variant="outline"
+              disabled="{{!item['availableActions']['update']}}"
+              >更新</t-button
+            >
+            <t-button
+              theme="light"
+              size="small"
+              variant="outline"
+              disabled="{{!item['availableActions']['checkout']}}"
+              >签出</t-button
+            >
+            <t-button
+              theme="danger"
+              size="small"
+              variant="outline"
+              disabled="{{!item['availableActions']['delete']}}"
+              >删除</t-button
+            >
+          </view>
         </view>
       </scroll-view>
     </t-tab-panel>
@@ -144,6 +212,29 @@
             <t-cell title="购买日期：{{item['purchaseDate']['date']}}" />
             <t-cell title="购买价格：{{item['purchaseCost']}}" />
           </t-cell-group>
+          <view class="button-box flex-between">
+            <t-button
+              theme="primary"
+              size="small"
+              variant="outline"
+              disabled="{{!item['availableActions']['update']}}"
+              >更新</t-button
+            >
+            <t-button
+              theme="light"
+              size="small"
+              variant="outline"
+              disabled="{{!item['availableActions']['checkout']}}"
+              >签出</t-button
+            >
+            <t-button
+              theme="danger"
+              size="small"
+              variant="outline"
+              disabled="{{!item['availableActions']['delete']}}"
+              >删除</t-button
+            >
+          </view>
         </view>
       </scroll-view>
     </t-tab-panel>
@@ -175,6 +266,29 @@
             <t-cell title="购买日期：{{item['purchaseDate']['date']}}" />
             <t-cell title="购买价格：{{item['purchaseCost']}}" />
           </t-cell-group>
+          <view class="button-box flex-between">
+            <t-button
+              theme="primary"
+              size="small"
+              variant="outline"
+              disabled="{{!item['availableActions']['update']}}"
+              >更新</t-button
+            >
+            <t-button
+              theme="light"
+              size="small"
+              variant="outline"
+              disabled="{{!item['availableActions']['checkout']}}"
+              >签出</t-button
+            >
+            <t-button
+              theme="danger"
+              size="small"
+              variant="outline"
+              disabled="{{!item['availableActions']['delete']}}"
+              >删除</t-button
+            >
+          </view>
         </view>
       </scroll-view>
     </t-tab-panel>

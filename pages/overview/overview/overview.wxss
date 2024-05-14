@@ -10,3 +10,11 @@ page {
   background-color: #f7f7f7;
   height: 1150rpx;
 }
+
+.button-box {
+  background-color: #fff;
+  border-bottom-left-radius: 18rpx;
+  border-bottom-right-radius: 18rpx;
+  margin: 0 32rpx;
+  padding: 32rpx;
+}
