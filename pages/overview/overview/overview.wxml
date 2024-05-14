@@ -86,6 +86,9 @@
               size="small"
               variant="outline"
               disabled="{{!item['availableActions']['delete']}}"
+              bind:tap="onDelete"
+              data-key="hardware"
+              data-id="{{item.id}}"
               >删除</t-button
             >
           </view>
@@ -130,6 +133,9 @@
               size="small"
               variant="outline"
               disabled="{{!item['availableActions']['delete']}}"
+              bind:tap="onDelete"
+              data-key="licenses"
+              data-id="{{item.id}}"
               >删除</t-button
             >
           </view>
@@ -179,6 +185,9 @@
               size="small"
               variant="outline"
               disabled="{{!item['availableActions']['delete']}}"
+              bind:tap="onDelete"
+              data-key="accessories"
+              data-id="{{item.id}}"
               >删除</t-button
             >
           </view>
@@ -232,6 +241,9 @@
               size="small"
               variant="outline"
               disabled="{{!item['availableActions']['delete']}}"
+              bind:tap="onDelete"
+              data-key="consumables"
+              data-id="{{item.id}}"
               >删除</t-button
             >
           </view>
@@ -286,6 +298,9 @@
               size="small"
               variant="outline"
               disabled="{{!item['availableActions']['delete']}}"
+              bind:tap="onDelete"
+              data-key="components"
+              data-id="{{item.id}}"
               >删除</t-button
             >
           </view>
