@@ -19,7 +19,7 @@ Page({
     },
   },
 
-  onLoad() {
+  onShow() {
     initPagination() // 重置分页器
     this.updateCategoryList() // 更新列表
   },
@@ -42,6 +42,12 @@ Page({
     }
     wx.$loading(false)
   },
+
+  // 前往新增页
+  toCreate(e) {
+    const { key } = e.currentTarget.dataset
+    wx.$push('/pages/manage/create', { key })
+  },
 })
 
 // 获取类别列表
@@ -49,7 +55,7 @@ async function getCategoryList() {
   const param = {
     limit: 10,
     offset: pagination.offset,
-    sort: 'created_at',
+    sort: 'id',
     order: 'desc',
   }
   const list = []

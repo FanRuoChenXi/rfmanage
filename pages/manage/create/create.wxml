@@ -1,0 +1,38 @@
+<view class="create-box">
+  <view wx:if="{{mode == 'categories'}}">
+    <t-input
+      label="名称"
+      placeholder="请输入类别名称"
+      status="error"
+      tips="必填"
+      model:value="{{categoryName}}"
+    />
+    <t-cell
+      title="类型"
+      required
+      arrow
+      hover
+      note="{{categoryTypeText}}"
+      bind:click="onCategoryTypePicker"
+    />
+  </view>
+</view>
+
+<!-- 按钮 -->
+<view class="center" style="margin-top: 24rpx">
+  <t-button theme="primary" variant="outline" bind:tap="onCreateItem">保存</t-button>
+</view>
+
+<!-- 类型选择器 -->
+<t-picker
+  visible="{{pickerName == 'categoryType'}}"
+  data-key="categoryType"
+  value="{{categoryTypeValue}}"
+  title="选择类型"
+  cancelBtn="取消"
+  confirmBtn="确认"
+  bindchange="onPickerChange"
+  bindcancel="onPickerCancel"
+>
+  <t-picker-item options="{{categoryType}}" />
+</t-picker>
