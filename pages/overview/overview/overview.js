@@ -183,6 +183,14 @@ async function getConsumableList() {
       id: e['id'],
       name: e['name'],
       manufacturer: e['manufacturer'],
+      category: e['category'],
+      itemNo: e['itemNo'],
+      qty: e['qty'],
+      remaining: e['remaining'],
+      orderNumber: e['orderNumber'],
+      purchaseDate: e['purchaseDate'],
+      purchaseCost: e['purchaseCost'],
+      availableActions: e['availableActions'],
     })
   })
   return consumableList
