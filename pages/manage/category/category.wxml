@@ -15,6 +15,22 @@
       />
       <t-cell title="当前总量：{{item['itemCount']}}" />
     </t-cell-group>
+    <view class="button-box flex-between">
+      <t-button
+        theme="primary"
+        size="small"
+        variant="outline"
+        disabled="{{!item['availableActions']['update']}}"
+        >更新</t-button
+      >
+      <t-button
+        theme="danger"
+        size="small"
+        variant="outline"
+        disabled="{{!item['availableActions']['delete']}}"
+        >删除</t-button
+      >
+    </view>
   </view>
 
   <t-fab icon="add" bind:click="toCreate" aria-label="增加"></t-fab>
