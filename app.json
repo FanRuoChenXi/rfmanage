@@ -10,6 +10,7 @@
 
     "pages/overview/item-detail/item-detail",
     "pages/overview/item-update/item-update",
+    "pages/overview/item-checkout/item-checkout",
 
     "pages/manage/search/search",
     "pages/manage/item-upload/item-upload",

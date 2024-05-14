@@ -1,0 +1,97 @@
+<view class="checkout-box">
+  <t-cell title="签出至" arrow hover note="{{typeText}}" bind:click="onTypePicker" />
+  <view wx:if="{{typeValue == 'user'}}">
+    <t-cell title="选择用户" required arrow hover note="{{userText}}" bind:click="onUserPicker" />
+  </view>
+  <view wx:if="{{typeValue == 'location'}}">
+    <t-cell
+      title="选择位置"
+      required
+      arrow
+      hover
+      note="{{locationText}}"
+      bind:click="onLocationPicker"
+    />
+  </view>
+  <view wx:if="{{typeValue == 'asset'}}">
+    <t-cell title="选择资产" required arrow hover note="{{assetText}}" bind:click="onAssetPicker" />
+  </view>
+  <t-cell title="状态标签" required arrow hover note="{{statusText}}" bind:click="onStatusPicker" />
+</view>
+
+<!-- 按钮 -->
+<view class="center" style="margin-top: 24rpx">
+  <t-button theme="danger" variant="outline" bind:tap="onCheckOut" disabled="{{typeText == ''}}"
+    >签出</t-button
+  >
+</view>
+
+<!-- 类型选择器 -->
+<t-picker
+  visible="{{pickerName == 'type'}}"
+  data-key="type"
+  value="{{typeValue}}"
+  title="选择类型"
+  cancelBtn="取消"
+  confirmBtn="确认"
+  bindchange="onPickerChange"
+  bindcancel="onPickerCancel"
+>
+  <t-picker-item options="{{type}}" />
+</t-picker>
+
+<!-- 用户选择器 -->
+<t-picker
+  visible="{{pickerName == 'user'}}"
+  data-key="user"
+  value="{{userValue}}"
+  title="选择用户"
+  cancelBtn="取消"
+  confirmBtn="确认"
+  bindchange="onPickerChange"
+  bindcancel="onPickerCancel"
+>
+  <t-picker-item options="{{user}}" />
+</t-picker>
+
+<!-- 地点选择器 -->
+<t-picker
+  visible="{{pickerName == 'location'}}"
+  data-key="location"
+  value="{{userValue}}"
+  title="选择地点"
+  cancelBtn="取消"
+  confirmBtn="确认"
+  bindchange="onPickerChange"
+  bindcancel="onPickerCancel"
+>
+  <t-picker-item options="{{location}}" />
+</t-picker>
+
+<!-- 资产选择器 -->
+<t-picker
+  visible="{{pickerName == 'asset'}}"
+  data-key="asset"
+  value="{{assetValue}}"
+  title="选择地点"
+  cancelBtn="取消"
+  confirmBtn="确认"
+  bindchange="onPickerChange"
+  bindcancel="onPickerCancel"
+>
+  <t-picker-item options="{{asset}}" />
+</t-picker>
+
+<!-- 状态标签选择器 -->
+<t-picker
+  visible="{{pickerName == 'status'}}"
+  data-key="status"
+  value="{{statusValue}}"
+  title="选择状态标签"
+  cancelBtn="取消"
+  confirmBtn="确认"
+  bindchange="onPickerChange"
+  bindcancel="onPickerCancel"
+>
+  <t-picker-item options="{{status}}" />
+</t-picker>

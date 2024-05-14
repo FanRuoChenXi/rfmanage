@@ -146,6 +146,12 @@ Page({
     const { key, id } = e.currentTarget.dataset
     wx.$push('/pages/overview/item-update', { key, id })
   },
+
+  // 前往资产签出页
+  toItemCheckOut(e) {
+    const { key, id } = e.currentTarget.dataset
+    wx.$push('/pages/overview/item-checkout', { key, id })
+  },
 })
 
 // 获取资产列表

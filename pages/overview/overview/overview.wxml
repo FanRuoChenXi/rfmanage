@@ -76,6 +76,9 @@
               size="small"
               variant="outline"
               disabled="{{!item['availableActions']['checkout']}}"
+              bind:tap="toItemCheckOut"
+              data-key="hardware"
+              data-id="{{item.id}}"
               >签出</t-button
             >
             <t-button
