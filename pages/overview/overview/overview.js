@@ -131,6 +131,7 @@ async function getActionList() {
       manufacturer: e['manufacturer'],
       seats: e['seats'],
       freeSeatsCount: e['freeSeatsCount'],
+      availableActions: e['availableActions'],
     })
   })
   return licensesList
@@ -152,7 +153,14 @@ async function getAccessoryList() {
     accessoryList.push({
       id: e['id'],
       name: e['name'],
+      image: e['image'],
+      category: e['category'],
+      modelNumber: e['modelNumber'],
+      location: e['location'],
+      qty: e['qty'],
+      remainingQty: e['remainingQty'],
       manufacturer: e['manufacturer'],
+      availableActions: e['availableActions'],
     })
   })
   return accessoryList

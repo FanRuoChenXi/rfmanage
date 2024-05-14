@@ -92,8 +92,8 @@
       </scroll-view>
     </t-tab-panel>
     <t-tab-panel label="配件" value="2">
-      <view>
-        <t-cell
+      <scroll-view scroll-y style="height: 1150rpx;">
+        <!-- <t-cell
           wx:for="{{accessoryList}}"
           wx:key="index"
           title="{{item.name}}"
@@ -103,8 +103,19 @@
           data-id="{{item.id}}"
           hover
           arrow
-        />
-      </view>
+        /> -->
+
+        <view style="margin-top: 20px" wx:for="{{accessoryList}}" wx:key="index">
+          <t-cell-group theme="card" bordered>
+            <t-cell title="{{item['name']}}" image="{{item['image']}}" rightIcon="keyboard" />
+            <t-cell title="所属类别：{{item['category']['name']}}" />
+            <t-cell title="编号：{{item['modelNumber']}}" />
+            <t-cell title="位置：{{item['location']['name']}}" />
+            <t-cell title="总量：{{item['qty']}}" />
+            <t-cell title="余量：{{item['remainingQty']}}" />
+          </t-cell-group>
+        </view>
+      </scroll-view>
     </t-tab-panel>
     <t-tab-panel label="消耗品" value="3">
       <view>
