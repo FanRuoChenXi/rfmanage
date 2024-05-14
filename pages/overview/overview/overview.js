@@ -140,6 +140,12 @@ Page({
       },
     })
   },
+
+  // 前往资产更新页
+  toItemUpdate(e) {
+    const { key, id } = e.currentTarget.dataset
+    wx.$push('/pages/overview/item-update', { key, id })
+  },
 })
 
 // 获取资产列表

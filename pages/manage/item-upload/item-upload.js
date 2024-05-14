@@ -153,7 +153,8 @@ Page({
 
   // 选择类别
   async oncategoryPicker() {
-    const { itemTypeValue, category } = this.data
+    const { itemTypeValue } = this.data
+    const category = []
     const param = {
       limit: 50,
       offset: 0,
@@ -175,7 +176,7 @@ Page({
 
   // 选择资产模型
   async onModelPicker() {
-    const { model } = this.data
+    const model = []
     const param = {
       limit: 50,
       offset: 0,
@@ -196,7 +197,7 @@ Page({
 
   // 选择状态标签
   async onStatusPicker() {
-    const { status } = this.data
+    const status = []
     const param = {
       limit: 50,
       offset: 0,

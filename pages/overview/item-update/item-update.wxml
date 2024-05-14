@@ -1,0 +1,47 @@
+<!-- 主体 -->
+<view class="update-box">
+  <view wx:if="{{mode == 'hardware'}}">
+    <t-input
+      label="资产标签"
+      placeholder="请输入资产标签"
+      status="error"
+      tips="必填"
+      model:value="{{assetTag}}"
+    />
+    <t-cell title="资产模型" required arrow hover note="{{modelText}}" bind:click="onModelPicker" />
+    <t-cell title="状态" required arrow hover note="{{statusText}}" bind:click="onStatusPicker" />
+  </view>
+</view>
+
+<!-- 按钮 -->
+<view wx:if="{{mode}}" class="center" style="margin-top: 24rpx">
+  <t-button theme="light" variant="outline" bind:tap="onUpdate">更新</t-button>
+</view>
+
+<!-- 资产模型选择器 -->
+<t-picker
+  visible="{{pickerName == 'model'}}"
+  data-key="model"
+  value="{{modelValue}}"
+  title="选择模型"
+  cancelBtn="取消"
+  confirmBtn="确认"
+  bindchange="onPickerChange"
+  bindcancel="onPickerCancel"
+>
+  <t-picker-item options="{{model}}" />
+</t-picker>
+
+<!-- 资产状态选择器 -->
+<t-picker
+  visible="{{pickerName == 'status'}}"
+  data-key="status"
+  value="{{statusValue}}"
+  title="选择状态"
+  cancelBtn="取消"
+  confirmBtn="确认"
+  bindchange="onPickerChange"
+  bindcancel="onPickerCancel"
+>
+  <t-picker-item options="{{status}}" />
+</t-picker>

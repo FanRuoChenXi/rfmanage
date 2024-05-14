@@ -66,6 +66,9 @@
               size="small"
               variant="outline"
               disabled="{{!item['availableActions']['update']}}"
+              bind:tap="toItemUpdate"
+              data-key="hardware"
+              data-id="{{item.id}}"
               >更新</t-button
             >
             <t-button

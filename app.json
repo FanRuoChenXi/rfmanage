@@ -9,6 +9,7 @@
     "pages/basic/action-list/action-list",
 
     "pages/overview/item-detail/item-detail",
+    "pages/overview/item-update/item-update",
 
     "pages/manage/search/search",
     "pages/manage/item-upload/item-upload",
