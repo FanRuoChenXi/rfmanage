@@ -212,7 +212,15 @@ async function getComponentList() {
     componentList.push({
       id: e['id'],
       name: e['name'],
-      supplier: e['supplier'],
+      serial: e['serial'],
+      category: e['category'],
+      qty: e['qty'],
+      remaining: e['remaining'],
+      location: e['location'],
+      orderNumber: e['orderNumber'],
+      purchaseDate: e['purchaseDate'],
+      purchaseCost: e['purchaseCost'],
+      availableActions: e['availableActions'],
     })
   })
   return componentList
