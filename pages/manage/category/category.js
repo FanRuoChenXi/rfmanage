@@ -49,6 +49,12 @@ Page({
     wx.$push('/pages/manage/create', { key })
   },
 
+  // 前往更新页
+  toUpdate(e) {
+    const { key, id } = e.currentTarget.dataset
+    wx.$push('/pages/manage/update', { key, id })
+  },
+
   // 删除
   onDelete(e) {
     const { id } = e.currentTarget.dataset

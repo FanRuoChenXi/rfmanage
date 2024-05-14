@@ -1,0 +1,17 @@
+<view class="update-box">
+  <view wx:if="{{mode == 'categories'}}">
+    <t-input
+      label="类别名称"
+      placeholder="请输入名称"
+      status="error"
+      tips="必填"
+      model:value="{{categoryName}}"
+    />
+    <t-cell title="类别类型" description="无法更改类别类型" note="{{categoryType}}" />
+  </view>
+</view>
+
+<!-- 按钮 -->
+<view wx:if="{{mode}}" class="center" style="margin-top: 24rpx">
+  <t-button theme="light" variant="outline" bind:tap="onUpdate">更新</t-button>
+</view>

@@ -21,6 +21,7 @@
     "pages/manage/manufacturer/manufacturer",
     "pages/manage/supplier/supplier",
     "pages/manage/create/create",
+    "pages/manage/update/update",
 
     "pages/user/user-detail/user-detail",
     "pages/user/departments/departments",

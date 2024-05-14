@@ -21,6 +21,9 @@
         size="small"
         variant="outline"
         disabled="{{!item['availableActions']['update']}}"
+        bind:tap="toUpdate"
+        data-key="categories"
+        data-id="{{item.id}}"
         >更新</t-button
       >
       <t-button
