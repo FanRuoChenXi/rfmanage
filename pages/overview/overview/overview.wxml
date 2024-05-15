@@ -81,12 +81,17 @@
               data-id="{{item.id}}"
               >签出</t-button
             >
-            <t-button
-              size="small"
-              variant="outline"
-              disabled="{{!item['availableActions']['checkin']}}"
-              >签入</t-button
-            >
+            <view wx:if="{{item['statusLabel']['statusMeta'] == 'deployed'}}">
+              <t-button
+                size="small"
+                variant="outline"
+                disabled="{{!item['availableActions']['checkin']}}"
+                bind:tap="toItemCheckIn"
+                data-key="hardware"
+                data-id="{{item.id}}"
+                >签入</t-button
+              >
+            </view>
             <t-button
               theme="danger"
               size="small"

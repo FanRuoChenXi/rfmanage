@@ -1,0 +1,55 @@
+<view class="checkiin-box">
+  <view wx:if="{{mode == 'hardware'}}">
+    <t-cell
+      title="状态标签"
+      required
+      arrow
+      hover
+      note="{{statusText}}"
+      bind:click="onStatusPicker"
+    />
+    <t-cell
+      title="签入日期"
+      hover
+      note="{{dateText || ''}}"
+      arrow
+      bindtap="onDatePicker"
+      t-class="panel-item"
+    />
+  </view>
+</view>
+
+<!-- 按钮 -->
+<view class="center" style="margin-top: 24rpx">
+  <t-button theme="danger" variant="outline" bind:tap="onCheckIn" disabled="{{typeText == ''}}"
+    >签入</t-button
+  >
+</view>
+
+<!-- 状态标签选择器 -->
+<t-picker
+  visible="{{pickerName == 'status'}}"
+  data-key="status"
+  value="{{statusValue}}"
+  title="选择状态标签"
+  cancelBtn="取消"
+  confirmBtn="确认"
+  bindchange="onPickerChange"
+  bindcancel="onPickerCancel"
+>
+  <t-picker-item options="{{status}}" />
+</t-picker>
+
+<!-- 日期选择器 -->
+<t-date-time-picker
+  title="选择日期"
+  visible="{{pickerName == 'date'}}"
+  data-key="date"
+  mode="date"
+  defaultValue="{{date}}"
+  format="YYYY-MM-DD"
+  bindchange="onDateChange"
+  bindcancel="onPickerCancel"
+  start="{{start}}"
+  end="{{end}}"
+/>
