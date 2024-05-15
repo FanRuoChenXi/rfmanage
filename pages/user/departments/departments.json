@@ -5,6 +5,7 @@
   "usingComponents": {
     "t-cell": "tdesign-miniprogram/cell/cell",
     "t-cell-group": "tdesign-miniprogram/cell-group/cell-group",
-    "t-fab": "tdesign-miniprogram/fab/fab"
+    "t-fab": "tdesign-miniprogram/fab/fab",
+    "t-button": "tdesign-miniprogram/button/button"
   }
 }

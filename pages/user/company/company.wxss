@@ -5,3 +5,11 @@ page {
   background-color: #f7f7f7;
   font-family: SourceHanSansSCVF-Regular;
 }
+
+.button-box {
+  background-color: #fff;
+  border-bottom-left-radius: 18rpx;
+  border-bottom-right-radius: 18rpx;
+  margin: 0 32rpx;
+  padding: 32rpx;
+}

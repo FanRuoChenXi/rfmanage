@@ -9,8 +9,8 @@ page {
 .userBox {
   background-color: #fff;
   width: 100%;
-  height: 648px;
-  margin-top: 20px;
+  height: 1296rpx;
+  margin-top: 40rpx;
   border-top-left-radius: 22px;
   border-top-right-radius: 22px;
 }

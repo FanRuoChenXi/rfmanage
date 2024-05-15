@@ -22,6 +22,27 @@
       <t-cell title="拥有配件：{{item['accessoriesCount']}}" leftIcon="keyboard" />
       <t-cell title="拥有消耗品：{{item['consumablesCount']}}" leftIcon="highlight-1" />
     </t-cell-group>
+    <view class="button-box flex-between">
+      <t-button
+        theme="primary"
+        size="small"
+        variant="outline"
+        disabled="{{!item['availableActions']['update']}}"
+        bind:tap="toUpdate"
+        data-key="categories"
+        data-id="{{item.id}}"
+        >更新</t-button
+      >
+      <t-button
+        theme="danger"
+        size="small"
+        variant="outline"
+        disabled="{{!item['availableActions']['delete']}}"
+        bind:tap="onDelete"
+        data-id="{{item.id}}"
+        >删除</t-button
+      >
+    </view>
   </view>
 
   <!-- <t-tag class="margin-16" variant="light" theme="success">成功</t-tag> -->

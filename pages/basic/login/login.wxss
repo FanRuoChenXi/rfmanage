@@ -13,8 +13,8 @@ page {
 }
 
 .inputBox {
-  width: 345px;
-  height: 145px;
+  width: 690rpx;
+  height: 290rpx;
   margin: 0 0 0 30rpx;
 }
 
