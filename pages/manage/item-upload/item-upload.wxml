@@ -115,10 +115,12 @@
     </t-cell>
   </view>
 </view>
+
 <!-- 按钮 -->
 <view wx:if="{{itemTypeValue}}" class="center" style="margin-top: 24rpx">
-  <t-button theme="primary" shape="round" variant="outline" bind:tap="onCreateItem">保存</t-button>
+  <t-button theme="primary" variant="outline" bind:tap="onCreateItem">保存</t-button>
 </view>
+
 <!-- 项目选择器 -->
 <t-picker
   visible="{{pickerName == 'itemType'}}"
@@ -132,6 +134,7 @@
 >
   <t-picker-item options="{{itemType}}" />
 </t-picker>
+
 <!-- 资产模型选择器 -->
 <t-picker
   visible="{{pickerName == 'model'}}"
@@ -145,6 +148,7 @@
 >
   <t-picker-item options="{{model}}" />
 </t-picker>
+
 <!-- 资产状态选择器 -->
 <t-picker
   visible="{{pickerName == 'status'}}"
@@ -158,6 +162,7 @@
 >
   <t-picker-item options="{{status}}" />
 </t-picker>
+
 <!-- 类别选择器 -->
 <t-picker
   visible="{{pickerName == 'category'}}"

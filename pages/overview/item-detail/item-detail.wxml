@@ -60,17 +60,14 @@
   </view>
 </view>
 <!-- 操作按钮 -->
-<view class="flex-between center" style="margin: 10px">
+<view class="flex-between center" style="margin: 10px; padding: 10px;">
   <view wx:if="{{availableActions['update']}}">
-    <t-button theme="primary" bind:tap="onUpdate">更新</t-button>
-  </view>
-  <view wx:if="{{availableActions['checkin']}}">
-    <t-button theme="primary" bind:tap="onCheckIn">签入</t-button>
+    <t-button theme="light" variant="outline" bind:tap="onUpdate">更新</t-button>
   </view>
   <view wx:if="{{availableActions['checkout']}}">
-    <t-button theme="primary" bind:tap="onCheckOut">签出</t-button>
+    <t-button theme="primary" variant="outline" bind:tap="onCheckOut">签出</t-button>
   </view>
   <view wx:if="{{availableActions['delete']}}">
-    <t-button theme="danger" bind:tap="onDelete">删除</t-button>
+    <t-button theme="danger" variant="outline" bind:tap="onDelete">删除</t-button>
   </view>
 </view>

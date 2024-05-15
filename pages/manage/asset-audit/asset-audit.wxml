@@ -23,12 +23,14 @@
     model:value="{{note}}"
   />
 </view>
+
 <!-- 按钮 -->
 <view class="center" style="margin-top: 24rpx">
-  <t-button bind:tap="onAssetAudit" disabled="{{isButtonDisabled}}">
+  <t-button variant="outline" bind:tap="onAssetAudit" disabled="{{isButtonDisabled}}">
     审计
   </t-button>
 </view>
+
 <!-- 位置选择器 -->
 <t-picker
   visible="{{pickerName == 'location'}}"
@@ -42,6 +44,7 @@
 >
   <t-picker-item options="{{location}}" />
 </t-picker>
+
 <!-- 日期选择器 -->
 <t-date-time-picker
   title="选择日期"
