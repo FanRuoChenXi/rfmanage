@@ -2,7 +2,10 @@
 Page({
   data: {
     pickerName: '', // 显示选择器类型
-    categoryName: '',
+    categoryName: '', // 类别名称
+    userFirstName: '', // 用户名称
+    userLastName: '',
+    userPassword: '', // 密码
   },
 
   async onLoad(query) {
@@ -14,6 +17,9 @@ Page({
     switch (query['key']) {
       case 'categories':
         this.setCategoryData(res)
+        break
+      case 'users':
+        this.setUserData(res)
         break
     }
     wx.$loading(false)
@@ -29,6 +35,13 @@ Page({
       case 'categories':
         param = {
           name: this.data.categoryName,
+        }
+        break
+      case 'users':
+        param = {
+          first_name: this.data.userFirstName,
+          last_name: this.data.userLastName,
+          password: this.data.userPassword,
         }
         break
     }
@@ -66,5 +79,12 @@ Page({
     const categoryName = res['name']
     const categoryType = res['categoryType']
     this.setData({ categoryName, categoryType })
+  },
+
+  // 用户数据
+  setUserData(res) {
+    const userFirstName = res['firstName']
+    const userLastName = res['lastName']
+    this.setData({ userFirstName, userLastName })
   },
 })

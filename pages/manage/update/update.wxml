@@ -1,4 +1,5 @@
 <view class="update-box">
+  <!-- 更新类别 -->
   <view wx:if="{{mode == 'categories'}}">
     <t-input
       label="类别名称"
@@ -8,6 +9,30 @@
       model:value="{{categoryName}}"
     />
     <t-cell title="类别类型" description="无法更改类别类型" note="{{categoryType}}" />
+  </view>
+  <!-- 更新用户 -->
+  <view wx:if="{{mode == 'users'}}">
+    <t-input
+      label="姓"
+      placeholder="请输入姓"
+      status="error"
+      tips="必填"
+      model:value="{{userFirstName}}"
+    />
+    <t-input
+      label="名"
+      placeholder="请输入名"
+      status="error"
+      tips="必填"
+      model:value="{{userLastName}}"
+    />
+    <t-input
+      label="密码"
+      placeholder="请输入密码"
+      type="password"
+      model:value="{{userPassword}}"
+      clearable
+    />
   </view>
 </view>
 

@@ -12,6 +12,10 @@ Page({
       { label: '消耗品', value: 'consumable' },
       { label: '组件', value: 'component' },
     ],
+    userFirstName: '', // 用户名称
+    userLastName: '',
+    userName: '',
+    userPassword: '', // 用户密码
   },
 
   async onLoad(query) {
@@ -26,16 +30,22 @@ Page({
   // 新增
   async onCreateItem() {
     wx.$loading('提交中...')
-    const { mode, categoryName, categoryTypeValue } = this.data
+    const { mode } = this.data
     let param = {}
     switch (mode) {
       case 'categories':
         param = {
-          name: categoryName,
-          categoryType: categoryTypeValue[0],
+          name: this.data.categoryName,
+          categoryType: this.data.categoryTypeValue[0],
         }
         break
-      case 'licenses':
+      case 'users':
+        param = {
+          firstName: this.data.userFirstName,
+          lastName: this.data.userLastName,
+          username: this.data.userName,
+          password: this.data.userPassword,
+        }
         break
       case 'accessories':
         break

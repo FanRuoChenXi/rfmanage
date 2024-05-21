@@ -1,13 +1,26 @@
 <view class="center" style="padding: 156px 0 17px 0">
-    <text class="loginText">登录</text>
+  <text class="loginText">登录</text>
 </view>
 <view class="inputBox">
-    <t-input style="border-radius: 25px;" placeholder="请输入账号" model:value="{{account}}" />
-    <t-input style="border-radius: 25px; margin-top: 13px;" placeholder="请输入密码" type="password" model:value="{{password}}" clearable />
-    <text class="forgetText">我忘记了我的密码?</text>
+  <t-input style="border-radius: 25px;" placeholder="请输入账号" model:value="{{account}}" />
+  <t-input
+    style="border-radius: 25px; margin-top: 13px;"
+    placeholder="请输入密码"
+    type="password"
+    model:value="{{password}}"
+    clearable
+  />
+  <text class="forgetText">我忘记了我的密码?</text>
 </view>
 <view class="center" style="padding-top: 40px">
-    <t-button style="color: #565656; font-size: 18px;" size="large" shape="round" block loading="{{buttonLoading}}" bind:tap="onSubmitPassword">
-        {{buttonText}}
-    </t-button>
+  <t-button
+    style="color: #565656; font-size: 18px;"
+    size="large"
+    shape="round"
+    block
+    loading="{{buttonLoading}}"
+    bind:tap="onSubmitPassword"
+  >
+    {{buttonText}}
+  </t-button>
 </view>

@@ -1,4 +1,5 @@
 <view class="create-box">
+  <!-- 新增类别 -->
   <view wx:if="{{mode == 'categories'}}">
     <t-input
       label="名称"
@@ -14,6 +15,37 @@
       hover
       note="{{categoryTypeText}}"
       bind:click="onCategoryTypePicker"
+    />
+  </view>
+  <!-- 新增用户 -->
+  <view wx:if="{{mode == 'users'}}">
+    <t-input
+      label="姓"
+      placeholder="请输入姓"
+      status="error"
+      tips="必填"
+      model:value="{{userFirstName}}"
+    />
+    <t-input
+      label="名"
+      placeholder="请输入名"
+      status="error"
+      tips="必填"
+      model:value="{{userLastName}}"
+    />
+    <t-input
+      label="用户名称"
+      placeholder="请输入用户名称"
+      status="error"
+      tips="必填"
+      model:value="{{userName}}"
+    />
+    <t-input
+      label="密码"
+      placeholder="请输入密码"
+      type="password"
+      model:value="{{userPassword}}"
+      clearable
     />
   </view>
 </view>
