@@ -17,6 +17,7 @@ Page({
     userName: '',
     userPassword: '', // 用户密码
     manufacturerName: '', // 制造商名称
+    departmentName: '', // 制造商名称
   },
 
   async onLoad(query) {
@@ -51,6 +52,11 @@ Page({
       case 'manufacturers':
         param = {
           name: this.data.manufacturerName,
+        }
+        break
+      case 'departments':
+        param = {
+          name: this.data.departmentName,
         }
         break
     }

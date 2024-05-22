@@ -2,15 +2,30 @@
 Page({
   data: {
     pickerName: '', // 显示选择器类型
+    companyValue: [], // 企业
+    companyText: '',
+    company: [],
+    userValue: [], // 用户
+    userText: '',
+    user: [],
+    locationValue: [], // 位置
+    locationText: '',
+    location: [],
+
     categoryName: '', // 类别名称
+
     userFirstName: '', // 用户名称
     userLastName: '',
     userPassword: '', // 密码
+
     manufacturerName: '', // 制造商名称
     manufacturerUrl: '', // 制造商网址
     manufacturerSupportUrl: '', // 售后网址
     manufacturerSupportPhone: '', // 售后电话
     manufacturerSupportEmail: '', // 售后邮箱
+
+    departmentName: '', // 部门名称
+    departmentPhone: '', // 部门电话
   },
 
   async onLoad(query) {
@@ -28,6 +43,9 @@ Page({
         break
       case 'manufacturers':
         this.setManufacturerData(res)
+        break
+      case 'departments':
+        this.setDepartmentData(res)
         break
     }
     wx.$loading(false)
@@ -59,6 +77,15 @@ Page({
           support_url: this.data.manufacturerSupportUrl,
           support_phone: this.data.manufacturerSupportPhone,
           support_email: this.data.manufacturerSupportEmail,
+        }
+        break
+      case 'departments':
+        param = {
+          name: this.data.departmentName,
+          company_id: this.data.companyValue[0],
+          phone: this.data.departmentPhone,
+          manager_id: this.data.userValue[0],
+          location_id: this.data.locationValue[0],
         }
         break
     }
@@ -118,6 +145,96 @@ Page({
       manufacturerSupportUrl,
       manufacturerSupportPhone,
       manufacturerSupportEmail,
+    })
+  },
+
+  // 部门数据
+  setDepartmentData(res) {
+    const departmentName = res['name']
+    const departmentCompany = res['company'] == null ? '' : res['company']
+    const departmentPhone = res['phone'] == null ? '' : res['phone']
+    const departmentManager = res['manager'] == null ? '' : res['manager']
+    const departmentLocation = res['location']
+    this.setData({
+      departmentName,
+      departmentPhone,
+      companyText: departmentCompany,
+      userText: departmentManager,
+      locationText: departmentLocation['name'],
+    })
+  },
+
+  // 选择企业
+  async onCompanyPicker() {
+    const company = []
+    const [res, err] = await wx.$get('companies') // 获取企业列表
+    if (err) return wx.$msg(err)
+    const { total, rows } = res
+    rows.forEach((e) => {
+      company.push({
+        label: e['name'],
+        value: e['id'],
+      })
+    })
+    this.setData({ pickerName: 'company', company })
+  },
+
+  // 选择用户
+  async onUserPicker() {
+    const param = {
+      limit: 10,
+      offset: 0,
+      sort: 'created_at',
+      order: 'asc',
+    }
+    const user = []
+    const [res, err] = await wx.$get('users', param) // 获取企业列表
+    if (err) return wx.$msg(err)
+    const { total, rows } = res
+    rows.forEach((e) => {
+      user.push({
+        label: e['name'],
+        value: e['id'],
+      })
+    })
+    this.setData({ pickerName: 'user', user })
+  },
+
+  // 选择位置
+  async onLocationPicker() {
+    const param = {
+      limit: 10,
+      offset: 0,
+      sort: 'created_at',
+      order: 'asc',
+    }
+    const location = []
+    const [res, err] = await wx.$get('locations', param) // 获取企业列表
+    if (err) return wx.$msg(err)
+    const { total, rows } = res
+    rows.forEach((e) => {
+      location.push({
+        label: e['name'],
+        value: e['id'],
+      })
+    })
+    this.setData({ pickerName: 'location', location })
+  },
+
+  // 关闭选择器
+  onPickerCancel() {
+    this.setData({ pickerName: '' })
+  },
+
+  // 确认
+  onPickerChange(e) {
+    // console.log(e)
+    const { key } = e.currentTarget.dataset
+    const { label, value } = e.detail
+    this.setData({
+      pickerName: '',
+      [`${key}Value`]: value,
+      [`${key}Text`]: label.join(' '),
     })
   },
 })

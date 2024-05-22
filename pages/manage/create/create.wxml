@@ -58,6 +58,16 @@
       model:value="{{manufacturerName}}"
     />
   </view>
+  <!-- 新增部门 -->
+  <view wx:if="{{mode == 'departments'}}">
+    <t-input
+      label="部门名称"
+      placeholder="请输入部门名称"
+      status="error"
+      tips="必填"
+      model:value="{{departmentName}}"
+    />
+  </view>
 </view>
 
 <!-- 按钮 -->

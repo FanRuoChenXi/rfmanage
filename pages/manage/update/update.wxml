@@ -60,9 +60,65 @@
       model:value="{{manufacturerSupportEmail}}"
     />
   </view>
+  <!-- 更新部门 -->
+  <view wx:if="{{mode == 'departments'}}">
+    <t-input
+      label="部门名称"
+      placeholder="请输入名称"
+      status="error"
+      tips="必填"
+      model:value="{{departmentName}}"
+    />
+    <t-cell title="企业" arrow hover note="{{companyText}}" bind:click="onCompanyPicker" />
+    <t-input label="部门电话" placeholder="请输入电话号码" model:value="{{departmentPhone}}" />
+    <t-cell title="管理员" arrow hover note="{{userText}}" bind:click="onUserPicker" />
+    <t-cell title="位置" arrow hover note="{{locationText}}" bind:click="onLocationPicker" />
+  </view>
 </view>
 
 <!-- 按钮 -->
 <view wx:if="{{mode}}" class="center" style="margin-top: 24rpx">
   <t-button theme="light" variant="outline" bind:tap="onUpdate">更新</t-button>
 </view>
+
+<!-- 企业选择器 -->
+<t-picker
+  visible="{{pickerName == 'company'}}"
+  data-key="company"
+  value="{{companyValue}}"
+  title="选择企业"
+  cancelBtn="取消"
+  confirmBtn="确认"
+  bindchange="onPickerChange"
+  bindcancel="onPickerCancel"
+>
+  <t-picker-item options="{{company}}" />
+</t-picker>
+
+<!-- 用户选择器 -->
+<t-picker
+  visible="{{pickerName == 'user'}}"
+  data-key="user"
+  value="{{userValue}}"
+  title="选择用户"
+  cancelBtn="取消"
+  confirmBtn="确认"
+  bindchange="onPickerChange"
+  bindcancel="onPickerCancel"
+>
+  <t-picker-item options="{{user}}" />
+</t-picker>
+
+<!-- 位置选择器 -->
+<t-picker
+  visible="{{pickerName == 'location'}}"
+  data-key="location"
+  value="{{locationValue}}"
+  title="选择位置"
+  cancelBtn="取消"
+  confirmBtn="确认"
+  bindchange="onPickerChange"
+  bindcancel="onPickerCancel"
+>
+  <t-picker-item options="{{location}}" />
+</t-picker>
