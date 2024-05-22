@@ -6,6 +6,11 @@ Page({
     userFirstName: '', // 用户名称
     userLastName: '',
     userPassword: '', // 密码
+    manufacturerName: '', // 制造商名称
+    manufacturerUrl: '', // 制造商网址
+    manufacturerSupportUrl: '', // 售后网址
+    manufacturerSupportPhone: '', // 售后电话
+    manufacturerSupportEmail: '', // 售后邮箱
   },
 
   async onLoad(query) {
@@ -20,6 +25,9 @@ Page({
         break
       case 'users':
         this.setUserData(res)
+        break
+      case 'manufacturers':
+        this.setManufacturerData(res)
         break
     }
     wx.$loading(false)
@@ -42,6 +50,15 @@ Page({
           first_name: this.data.userFirstName,
           last_name: this.data.userLastName,
           password: this.data.userPassword,
+        }
+        break
+      case 'manufacturers':
+        param = {
+          name: this.data.manufacturerName,
+          url: this.data.manufacturerUrl,
+          support_url: this.data.manufacturerSupportUrl,
+          support_phone: this.data.manufacturerSupportPhone,
+          support_email: this.data.manufacturerSupportEmail,
         }
         break
     }
@@ -86,5 +103,21 @@ Page({
     const userFirstName = res['firstName']
     const userLastName = res['lastName']
     this.setData({ userFirstName, userLastName })
+  },
+
+  // 制造商数据
+  setManufacturerData(res) {
+    const manufacturerName = res['name']
+    const manufacturerUrl = res['url']
+    const manufacturerSupportUrl = res['supportUrl']
+    const manufacturerSupportPhone = res['supportPhone']
+    const manufacturerSupportEmail = res['supportEmail']
+    this.setData({
+      manufacturerName,
+      manufacturerUrl,
+      manufacturerSupportUrl,
+      manufacturerSupportPhone,
+      manufacturerSupportEmail,
+    })
   },
 })

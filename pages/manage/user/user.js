@@ -5,7 +5,7 @@ Page({
     isBottom: false, // 是否加载到底
   },
 
-  onLoad() {
+  onShow() {
     initPagination() // 重置分页器
     this.updateUserList() // 更新列表
   },

@@ -34,6 +34,32 @@
       clearable
     />
   </view>
+  <!-- 更新制造商 -->
+  <view wx:if="{{mode == 'manufacturers'}}">
+    <t-input
+      label="制造商名称"
+      placeholder="请输入名称"
+      status="error"
+      tips="必填"
+      model:value="{{manufacturerName}}"
+    />
+    <t-input label="网址" placeholder="请输入网址" model:value="{{manufacturerUrl}}" />
+    <t-input
+      label="售后网址"
+      placeholder="请输入售后网址"
+      model:value="{{manufacturerSupportUrl}}"
+    />
+    <t-input
+      label="售后电话"
+      placeholder="请输入售后电话"
+      model:value="{{manufacturerSupportPhone}}"
+    />
+    <t-input
+      label="售后邮箱"
+      placeholder="请输入售后邮箱"
+      model:value="{{manufacturerSupportEmail}}"
+    />
+  </view>
 </view>
 
 <!-- 按钮 -->

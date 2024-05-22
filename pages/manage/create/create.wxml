@@ -48,6 +48,16 @@
       clearable
     />
   </view>
+  <!-- 新增制造商 -->
+  <view wx:if="{{mode == 'manufacturers'}}">
+    <t-input
+      label="制造商名称"
+      placeholder="请输入制造商名称"
+      status="error"
+      tips="必填"
+      model:value="{{manufacturerName}}"
+    />
+  </view>
 </view>
 
 <!-- 按钮 -->

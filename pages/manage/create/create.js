@@ -16,6 +16,7 @@ Page({
     userLastName: '',
     userName: '',
     userPassword: '', // 用户密码
+    manufacturerName: '', // 制造商名称
   },
 
   async onLoad(query) {
@@ -47,11 +48,10 @@ Page({
           password: this.data.userPassword,
         }
         break
-      case 'accessories':
-        break
-      case 'consumables':
-        break
-      case 'components':
+      case 'manufacturers':
+        param = {
+          name: this.data.manufacturerName,
+        }
         break
     }
     const [res, err] = await wx.$post(mode, param)
