@@ -74,6 +74,24 @@
     <t-cell title="管理员" arrow hover note="{{userText}}" bind:click="onUserPicker" />
     <t-cell title="位置" arrow hover note="{{locationText}}" bind:click="onLocationPicker" />
   </view>
+  <!-- 更新模型 -->
+  <view wx:if="{{mode == 'models'}}">
+    <t-input
+      label="模型名称"
+      placeholder="请输入名称"
+      status="error"
+      tips="必填"
+      model:value="{{modelName}}"
+    />
+    <t-cell
+      title="类别"
+      arrow
+      hover
+      note="{{modelCategoryText}}"
+      bind:click="onModelCategoryPicker"
+    />
+    <t-input label="模型编号" placeholder="请输入模型编号" model:value="{{modelNumber}}" />
+  </view>
 </view>
 
 <!-- 按钮 -->
@@ -121,4 +139,18 @@
   bindcancel="onPickerCancel"
 >
   <t-picker-item options="{{location}}" />
+</t-picker>
+
+<!-- 类别选择器 -->
+<t-picker
+  visible="{{pickerName == 'modelCategory'}}"
+  data-key="modelCategory"
+  value="{{modelCategoryValue}}"
+  title="选择位置"
+  cancelBtn="取消"
+  confirmBtn="确认"
+  bindchange="onPickerChange"
+  bindcancel="onPickerCancel"
+>
+  <t-picker-item options="{{modelCategory}}" />
 </t-picker>

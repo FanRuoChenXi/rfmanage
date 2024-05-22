@@ -68,6 +68,24 @@
       model:value="{{departmentName}}"
     />
   </view>
+  <!-- 新增模型 -->
+  <view wx:if="{{mode == 'models'}}">
+    <t-input
+      label="模型名称"
+      placeholder="请输入模型名称"
+      status="error"
+      tips="必填"
+      model:value="{{modelName}}"
+    />
+    <t-cell
+      title="类别"
+      required
+      arrow
+      hover
+      note="{{modelCategoryText}}"
+      bind:click="onModelCategoryPicker"
+    />
+  </view>
 </view>
 
 <!-- 按钮 -->
@@ -87,4 +105,18 @@
   bindcancel="onPickerCancel"
 >
   <t-picker-item options="{{categoryType}}" />
+</t-picker>
+
+<!-- 模型类别选择器 -->
+<t-picker
+  visible="{{pickerName == 'modelCategory'}}"
+  data-key="modelCategory"
+  value="{{modelCategoryValue}}"
+  title="选择类型"
+  cancelBtn="取消"
+  confirmBtn="确认"
+  bindchange="onPickerChange"
+  bindcancel="onPickerCancel"
+>
+  <t-picker-item options="{{modelCategory}}" />
 </t-picker>

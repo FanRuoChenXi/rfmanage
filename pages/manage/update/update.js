@@ -11,6 +11,9 @@ Page({
     locationValue: [], // 位置
     locationText: '',
     location: [],
+    modelCategoryValue: [], // 类别
+    modelCategoryText: '',
+    modelCategory: [],
 
     categoryName: '', // 类别名称
 
@@ -26,6 +29,9 @@ Page({
 
     departmentName: '', // 部门名称
     departmentPhone: '', // 部门电话
+
+    modelName: '', // 模型名称
+    modelNumber: '', // 模型编号
   },
 
   async onLoad(query) {
@@ -46,6 +52,9 @@ Page({
         break
       case 'departments':
         this.setDepartmentData(res)
+        break
+      case 'models':
+        this.setModelData(res)
         break
     }
     wx.$loading(false)
@@ -86,6 +95,13 @@ Page({
           phone: this.data.departmentPhone,
           manager_id: this.data.userValue[0],
           location_id: this.data.locationValue[0],
+        }
+        break
+      case 'models':
+        param = {
+          name: this.data.modelName,
+          model_number: this.data.modelNumber,
+          category_id: this.data.modelCategoryValue[0],
         }
         break
     }
@@ -164,6 +180,18 @@ Page({
     })
   },
 
+  // 模型数据
+  setModelData(res) {
+    const modelName = res['name']
+    const modelCategory = res['category']
+    const modelNumber = res['modelNumber']
+    this.setData({
+      modelName,
+      modelCategoryText: modelCategory['name'],
+      modelNumber,
+    })
+  },
+
   // 选择企业
   async onCompanyPicker() {
     const company = []
@@ -219,6 +247,28 @@ Page({
       })
     })
     this.setData({ pickerName: 'location', location })
+  },
+
+  // 选择模型类别
+  async onModelCategoryPicker() {
+    const param = {
+      limit: 10,
+      offset: 0,
+      sort: 'created_at',
+      order: 'asc',
+      categoryType: 'asset',
+    }
+    const modelCategory = []
+    const [res, err] = await wx.$get('categories', param) // 获取类别列表
+    if (err) return wx.$msg(err)
+    const { total, rows } = res
+    rows.forEach((e) => {
+      modelCategory.push({
+        label: e['name'],
+        value: e['id'],
+      })
+    })
+    this.setData({ pickerName: 'modelCategory', modelCategory })
   },
 
   // 关闭选择器

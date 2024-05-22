@@ -2,6 +2,7 @@
 Page({
   data: {
     pickerName: '', // 显示选择器类型
+
     categoryName: '', // 类别名称
     categoryTypeValue: [], // 类别类型
     categoryTypeText: '',
@@ -12,12 +13,20 @@ Page({
       { label: '消耗品', value: 'consumable' },
       { label: '组件', value: 'component' },
     ],
+
     userFirstName: '', // 用户名称
     userLastName: '',
     userName: '',
     userPassword: '', // 用户密码
+
     manufacturerName: '', // 制造商名称
-    departmentName: '', // 制造商名称
+
+    departmentName: '', // 部门名称
+
+    modelName: '', // 模型名称
+    modelCategoryValue: [], // 模型类别
+    modelCategoryText: '',
+    modelCategory: [],
   },
 
   async onLoad(query) {
@@ -59,10 +68,38 @@ Page({
           name: this.data.departmentName,
         }
         break
+      case 'models':
+        param = {
+          name: this.data.modelName,
+          categoryId: this.data.modelCategoryValue[0],
+        }
+        break
     }
     const [res, err] = await wx.$post(mode, param)
     if (err) return wx.$msg(err || '创建失败')
     wx.$push('back', { delta: 1 })
+  },
+
+  // 选择模型类别
+  async onModelCategoryPicker() {
+    const param = {
+      limit: 10,
+      offset: 0,
+      sort: 'created_at',
+      order: 'asc',
+      categoryType: 'asset',
+    }
+    const modelCategory = []
+    const [res, err] = await wx.$get('categories', param) // 获取企业列表
+    if (err) return wx.$msg(err)
+    const { total, rows } = res
+    rows.forEach((e) => {
+      modelCategory.push({
+        label: e['name'],
+        value: e['id'],
+      })
+    })
+    this.setData({ pickerName: 'modelCategory', modelCategory })
   },
 
   // 关闭选择器
