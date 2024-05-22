@@ -32,6 +32,16 @@ Page({
 
     modelName: '', // 模型名称
     modelNumber: '', // 模型编号
+
+    statusLabelName: '', // 状态标签名称
+    statusTypeValue: [], // 类别类型
+    statusTypeText: '',
+    statusType: [
+      { label: '部署', value: 'deployable' },
+      { label: '不可部署', value: 'undeployable' },
+      { label: '待定', value: 'pending' },
+      { label: '已存档', value: 'archived' },
+    ],
   },
 
   async onLoad(query) {
@@ -55,6 +65,9 @@ Page({
         break
       case 'models':
         this.setModelData(res)
+        break
+      case 'statuslabels':
+        this.setStatusLabelData(res)
         break
     }
     wx.$loading(false)
@@ -102,6 +115,12 @@ Page({
           name: this.data.modelName,
           model_number: this.data.modelNumber,
           category_id: this.data.modelCategoryValue[0],
+        }
+        break
+      case 'statuslabels':
+        param = {
+          name: this.data.statusLabelName,
+          type: this.data.statusTypeValue[0],
         }
         break
     }
@@ -192,6 +211,22 @@ Page({
     })
   },
 
+  // 状态标签数据
+  setStatusLabelData(res) {
+    const statusLabelName = res['name']
+    const statusLabelType = res['type']
+    const statusValue = {
+      deployable: '部署',
+      undeployable: '不可部署',
+      pending: '待定',
+      archived: '已存档',
+    }
+    this.setData({
+      statusLabelName,
+      statusTypeText: statusValue[statusLabelType],
+    })
+  },
+
   // 选择企业
   async onCompanyPicker() {
     const company = []
@@ -269,6 +304,11 @@ Page({
       })
     })
     this.setData({ pickerName: 'modelCategory', modelCategory })
+  },
+
+  // 选择状态类型
+  onStatusTypePicker() {
+    this.setData({ pickerName: 'statusType' })
   },
 
   // 关闭选择器

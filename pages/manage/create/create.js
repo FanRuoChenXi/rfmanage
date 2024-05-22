@@ -27,15 +27,20 @@ Page({
     modelCategoryValue: [], // 模型类别
     modelCategoryText: '',
     modelCategory: [],
+
+    statusLabelName: '', // 状态标签名称
+    statusTypeValue: [], // 类别类型
+    statusTypeText: '',
+    statusType: [
+      { label: '部署', value: 'deployable' },
+      { label: '不可部署', value: 'undeployable' },
+      { label: '待定', value: 'pending' },
+      { label: '已存档', value: 'archived' },
+    ],
   },
 
   async onLoad(query) {
     this.setData({ mode: query['key'] })
-  },
-
-  // 选择类别类型
-  onCategoryTypePicker() {
-    this.setData({ pickerName: 'categoryType' })
   },
 
   // 新增
@@ -74,10 +79,21 @@ Page({
           categoryId: this.data.modelCategoryValue[0],
         }
         break
+      case 'statuslabels':
+        param = {
+          name: this.data.statusLabelName,
+          type: this.data.statusTypeValue[0],
+        }
+        break
     }
     const [res, err] = await wx.$post(mode, param)
     if (err) return wx.$msg(err || '创建失败')
     wx.$push('back', { delta: 1 })
+  },
+
+  // 选择类别类型
+  onCategoryTypePicker() {
+    this.setData({ pickerName: 'categoryType' })
   },
 
   // 选择模型类别
@@ -100,6 +116,11 @@ Page({
       })
     })
     this.setData({ pickerName: 'modelCategory', modelCategory })
+  },
+
+  // 选择状态类型
+  onStatusTypePicker() {
+    this.setData({ pickerName: 'statusType' })
   },
 
   // 关闭选择器

@@ -92,6 +92,23 @@
     />
     <t-input label="模型编号" placeholder="请输入模型编号" model:value="{{modelNumber}}" />
   </view>
+  <!-- 更新状态标签 -->
+  <view wx:if="{{mode == 'statuslabels'}}">
+    <t-input
+      label="状态标签名称"
+      placeholder="请输入名称"
+      status="error"
+      tips="必填"
+      model:value="{{statusLabelName}}"
+    />
+    <t-cell
+      title="状态类型"
+      arrow
+      hover
+      note="{{statusTypeText}}"
+      bind:click="onStatusTypePicker"
+    />
+  </view>
 </view>
 
 <!-- 按钮 -->
@@ -153,4 +170,18 @@
   bindcancel="onPickerCancel"
 >
   <t-picker-item options="{{modelCategory}}" />
+</t-picker>
+
+<!-- 状态类型选择器 -->
+<t-picker
+  visible="{{pickerName == 'statusType'}}"
+  data-key="statusType"
+  value="{{statusTypeValue}}"
+  title="选择类型"
+  cancelBtn="取消"
+  confirmBtn="确认"
+  bindchange="onPickerChange"
+  bindcancel="onPickerCancel"
+>
+  <t-picker-item options="{{statusType}}" />
 </t-picker>
