@@ -1,4 +1,5 @@
 {
+  "navigationBarTitleText": "数据趋势",
   "usingComponents": {
     "ec-canvas": "../../../ec-canvas/ec-canvas"
   }
