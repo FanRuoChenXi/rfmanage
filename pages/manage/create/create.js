@@ -39,6 +39,8 @@ Page({
     ],
 
     companyName: '', // 企业名称
+
+    locationName: '', // 地点名称
   },
 
   async onLoad(query) {
@@ -90,6 +92,11 @@ Page({
       case 'companies':
         param = {
           name: this.data.companyName,
+        }
+        break
+      case 'locations':
+        param = {
+          name: this.data.locationName,
         }
         break
     }

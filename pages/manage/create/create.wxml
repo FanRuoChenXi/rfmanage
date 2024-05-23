@@ -114,6 +114,16 @@
       model:value="{{companyName}}"
     />
   </view>
+  <!-- 新增地点 -->
+  <view wx:if="{{mode == 'locations'}}">
+    <t-input
+      label="地点名称"
+      placeholder="请输入地点名称"
+      status="error"
+      tips="必填"
+      model:value="{{locationName}}"
+    />
+  </view>
 </view>
 
 <!-- 按钮 -->

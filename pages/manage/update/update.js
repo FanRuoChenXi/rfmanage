@@ -44,6 +44,8 @@ Page({
     ],
 
     companyName: '', // 企业名称
+
+    locationName: '', // 地点名称
   },
 
   async onLoad(query) {
@@ -73,6 +75,9 @@ Page({
         break
       case 'companies':
         this.setCompanyData(res)
+        break
+      case 'locations':
+        this.setLocationData(res)
         break
     }
     wx.$loading(false)
@@ -131,6 +136,11 @@ Page({
       case 'companies':
         param = {
           name: this.data.companyName,
+        }
+        break
+      case 'locations':
+        param = {
+          name: this.data.locationName,
         }
         break
     }
@@ -244,6 +254,16 @@ Page({
     const companyEmail = res['email']
     this.setData({
       companyName,
+    })
+  },
+
+  // 地点数据
+  setLocationData(res) {
+    const locationName = res['name']
+    const locationPhone = res['phone']
+    const locationManager = res['manager']
+    this.setData({
+      locationName,
     })
   },
 
