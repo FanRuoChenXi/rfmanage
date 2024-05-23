@@ -104,6 +104,16 @@
       bind:click="onStatusTypePicker"
     />
   </view>
+  <!-- 新增企业 -->
+  <view wx:if="{{mode == 'companies'}}">
+    <t-input
+      label="企业名称"
+      placeholder="请输入企业名称"
+      status="error"
+      tips="必填"
+      model:value="{{companyName}}"
+    />
+  </view>
 </view>
 
 <!-- 按钮 -->

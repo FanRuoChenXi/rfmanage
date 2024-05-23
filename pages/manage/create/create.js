@@ -37,6 +37,8 @@ Page({
       { label: '待定', value: 'pending' },
       { label: '已存档', value: 'archived' },
     ],
+
+    companyName: '', // 企业名称
   },
 
   async onLoad(query) {
@@ -83,6 +85,11 @@ Page({
         param = {
           name: this.data.statusLabelName,
           type: this.data.statusTypeValue[0],
+        }
+        break
+      case 'companies':
+        param = {
+          name: this.data.companyName,
         }
         break
     }

@@ -42,6 +42,8 @@ Page({
       { label: '待定', value: 'pending' },
       { label: '已存档', value: 'archived' },
     ],
+
+    companyName: '', // 企业名称
   },
 
   async onLoad(query) {
@@ -68,6 +70,9 @@ Page({
         break
       case 'statuslabels':
         this.setStatusLabelData(res)
+        break
+      case 'companies':
+        this.setCompanyData(res)
         break
     }
     wx.$loading(false)
@@ -121,6 +126,11 @@ Page({
         param = {
           name: this.data.statusLabelName,
           type: this.data.statusTypeValue[0],
+        }
+        break
+      case 'companies':
+        param = {
+          name: this.data.companyName,
         }
         break
     }
@@ -224,6 +234,16 @@ Page({
     this.setData({
       statusLabelName,
       statusTypeText: statusValue[statusLabelType],
+    })
+  },
+
+  // 企业数据
+  setCompanyData(res) {
+    const companyName = res['name']
+    const companyPhone = res['phone']
+    const companyEmail = res['email']
+    this.setData({
+      companyName,
     })
   },
 

@@ -18,7 +18,7 @@
         variant="outline"
         disabled="{{!item['availableActions']['update']}}"
         bind:tap="toUpdate"
-        data-key="categories"
+        data-key="companies"
         data-id="{{item.id}}"
         >更新</t-button
       >
@@ -34,5 +34,5 @@
     </view>
   </view>
 
-  <t-fab icon="add" bind:click="toCreate" aria-label="增加"></t-fab>
+  <t-fab icon="add" bind:click="toCreate" data-key="companies"></t-fab>
 </view>
