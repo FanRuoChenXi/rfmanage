@@ -26,13 +26,9 @@
       tips="必填"
       model:value="{{userLastName}}"
     />
-    <t-input
-      label="密码"
-      placeholder="请输入密码"
-      type="password"
-      model:value="{{userPassword}}"
-      clearable
-    />
+    <t-input label="手机" placeholder="请输入手机号" model:value="{{userPhone}}" />
+    <t-input label="邮箱" placeholder="请输入邮箱" model:value="{{userEmail}}" />
+    <t-cell title="部门" arrow hover note="{{departmentText}}" bind:click="onDepartmentPicker" />
   </view>
   <!-- 更新制造商 -->
   <view wx:if="{{mode == 'manufacturers'}}">
@@ -204,4 +200,18 @@
   bindcancel="onPickerCancel"
 >
   <t-picker-item options="{{statusType}}" />
+</t-picker>
+
+<!-- 部门选择器 -->
+<t-picker
+  visible="{{pickerName == 'department'}}"
+  data-key="department"
+  value="{{departmentValue}}"
+  title="选择部门"
+  cancelBtn="取消"
+  confirmBtn="确认"
+  bindchange="onPickerChange"
+  bindcancel="onPickerCancel"
+>
+  <t-picker-item options="{{department}}" />
 </t-picker>

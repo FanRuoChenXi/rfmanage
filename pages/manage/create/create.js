@@ -18,6 +18,10 @@ Page({
     userLastName: '',
     userName: '',
     userPassword: '', // 用户密码
+    userEmail: '', // 用户邮箱
+    departmentValue: [], // 部门
+    departmentText: '',
+    department: [],
 
     manufacturerName: '', // 制造商名称
 
@@ -65,6 +69,11 @@ Page({
           lastName: this.data.userLastName,
           username: this.data.userName,
           password: this.data.userPassword,
+          passwordConfirmation: this.data.userPassword,
+          email: this.data.userEmail,
+          department_id: this.data.departmentValue[0]
+            ? this.data.departmentValue[0]
+            : '',
         }
         break
       case 'manufacturers':
@@ -120,7 +129,7 @@ Page({
       categoryType: 'asset',
     }
     const modelCategory = []
-    const [res, err] = await wx.$get('categories', param) // 获取企业列表
+    const [res, err] = await wx.$get('categories', param)
     if (err) return wx.$msg(err)
     const { total, rows } = res
     rows.forEach((e) => {
@@ -135,6 +144,21 @@ Page({
   // 选择状态类型
   onStatusTypePicker() {
     this.setData({ pickerName: 'statusType' })
+  },
+
+  // 选择部门
+  async onDepartmentPicker() {
+    const department = []
+    const [res, err] = await wx.$get('departments')
+    if (err) return wx.$msg(err)
+    const { total, rows } = res
+    rows.forEach((e) => {
+      department.push({
+        label: e['name'],
+        value: e['id'],
+      })
+    })
+    this.setData({ pickerName: 'department', department })
   },
 
   // 关闭选择器

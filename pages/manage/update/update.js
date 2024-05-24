@@ -14,12 +14,16 @@ Page({
     modelCategoryValue: [], // 类别
     modelCategoryText: '',
     modelCategory: [],
+    departmentValue: [], // 部门
+    departmentText: '',
+    department: [],
 
     categoryName: '', // 类别名称
 
     userFirstName: '', // 用户名称
     userLastName: '',
-    userPassword: '', // 密码
+    userPhone: '', // 用户手机
+    userEmail: '', // 用户邮箱
 
     manufacturerName: '', // 制造商名称
     manufacturerUrl: '', // 制造商网址
@@ -99,7 +103,11 @@ Page({
         param = {
           first_name: this.data.userFirstName,
           last_name: this.data.userLastName,
-          password: this.data.userPassword,
+          phone: this.data.userPhone,
+          email: this.data.userEmail,
+          department_id: this.data.departmentValue[0]
+            ? this.data.departmentValue[0]
+            : '',
         }
         break
       case 'manufacturers':
@@ -184,7 +192,16 @@ Page({
   setUserData(res) {
     const userFirstName = res['firstName']
     const userLastName = res['lastName']
-    this.setData({ userFirstName, userLastName })
+    const userPhone = res['phone']
+    const userEmail = res['email']
+    const department = res['department']
+    this.setData({
+      userFirstName,
+      userLastName,
+      userPhone,
+      userEmail,
+      departmentText: department['name'],
+    })
   },
 
   // 制造商数据
@@ -291,7 +308,7 @@ Page({
       order: 'asc',
     }
     const user = []
-    const [res, err] = await wx.$get('users', param) // 获取企业列表
+    const [res, err] = await wx.$get('users', param) // 获取用户列表
     if (err) return wx.$msg(err)
     const { total, rows } = res
     rows.forEach((e) => {
@@ -312,7 +329,7 @@ Page({
       order: 'asc',
     }
     const location = []
-    const [res, err] = await wx.$get('locations', param) // 获取企业列表
+    const [res, err] = await wx.$get('locations', param) // 获取位置列表
     if (err) return wx.$msg(err)
     const { total, rows } = res
     rows.forEach((e) => {
@@ -349,6 +366,21 @@ Page({
   // 选择状态类型
   onStatusTypePicker() {
     this.setData({ pickerName: 'statusType' })
+  },
+
+  // 选择部门
+  async onDepartmentPicker() {
+    const department = []
+    const [res, err] = await wx.$get('departments') // 获取部门列表
+    if (err) return wx.$msg(err)
+    const { total, rows } = res
+    rows.forEach((e) => {
+      department.push({
+        label: e['name'],
+        value: e['id'],
+      })
+    })
+    this.setData({ pickerName: 'department', department })
   },
 
   // 关闭选择器
