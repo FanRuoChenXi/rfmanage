@@ -24,6 +24,10 @@ Page({
     department: [],
 
     manufacturerName: '', // 制造商名称
+    manufacturerUrl: '', // 网址
+    manufacturerSupportUrl: '', // 售后网址
+    manufacturerSupportPhone: '', // 售后电话
+    manufacturerSupportEmail: '', // 售后邮箱
 
     departmentName: '', // 部门名称
 
@@ -79,6 +83,10 @@ Page({
       case 'manufacturers':
         param = {
           name: this.data.manufacturerName,
+          url: this.data.manufacturerUrl,
+          supportUrl: this.data.manufacturerSupportUrl,
+          supportPhone: this.data.manufacturerSupportPhone,
+          supportEmail: this.data.manufacturerSupportEmail,
         }
         break
       case 'departments':
