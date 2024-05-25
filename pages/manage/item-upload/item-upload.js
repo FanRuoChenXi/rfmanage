@@ -11,24 +11,29 @@ Page({
       { label: '消耗品', value: 'consumable' },
       { label: '组件', value: 'component' },
     ],
-    licensesItemName: '', // 许可证名称
-    licenseEmail: '',
-    licenseName: '',
-    seats: 0, // 许可证总量
     categoryValue: [], // 类别
     categoryText: '',
     category: [],
-    assetTag: '', // 资产标签
     modelValue: [], // 模型
     modelText: '',
     model: [],
     statusValue: [], // 状态
     statusText: '',
     status: [],
+
+    assetTag: '', // 资产标签
+
+    licensesItemName: '', // 许可证名称
+    licenseEmail: '',
+    licenseName: '',
+    licenseSeats: 0, // 许可证总量
+
     accessoryItemName: '', // 配件名称
     accessoryQuantity: 0, // 配件数量
+
     consumableItemName: '', // 消耗品名称
     consumableQuantity: 0, // 消耗品数量
+
     componentItemName: '', // 组件名称
     componentQuantity: 0, // 组件数量
   },
@@ -74,16 +79,16 @@ Page({
     const {
       licensesItemName,
       categoryValue,
-      seats,
       licenseEmail,
       licenseName,
+      licenseSeats,
     } = this.data
     const param = {
       name: licensesItemName,
       categoryId: categoryValue[0],
-      seats,
       licenseEmail,
       licenseName,
+      seats: licenseSeats,
     }
     const [res, err] = await wx.$post('licenses/', param)
     if (err) return wx.$msg(err || '创建失败')
@@ -216,14 +221,13 @@ Page({
     this.setData({ pickerName: 'status', status })
   },
 
-  // 滑块选择器
-  seatsChange(e) {
+  // 步进器
+  licenseSeatsChange(e) {
     this.setData({
-      seats: e.detail.value,
+      licenseSeats: e.detail.value,
     })
   },
 
-  // 步进器
   accessoryQuantityChange(e) {
     this.setData({
       accessoryQuantity: e.detail.value,

@@ -29,10 +29,9 @@
       note="{{categoryText}}"
       bind:click="oncategoryPicker"
     />
-    <t-cell title="总量" required />
-    <view class="slider">
-      <t-slider value="{{seats}}" label="${seats}" bind:change="seatsChange"></t-slider>
-    </view>
+    <t-cell title="总量" required>
+      <t-stepper defaultValue="0" theme="filled" slot="note" bind:change="licenseSeatsChange" />
+    </t-cell>
     <t-input label="邮箱" placeholder="请输入邮箱" model:value="{{licenseEmail}}" />
     <t-input label="联系人" placeholder="请输入名称" model:value="{{licenseName}}" />
   </view>
