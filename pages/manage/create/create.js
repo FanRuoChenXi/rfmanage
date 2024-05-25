@@ -30,6 +30,9 @@ Page({
     manufacturerSupportEmail: '', // 售后邮箱
 
     departmentName: '', // 部门名称
+    locationValue: [], // 位置
+    locationText: '',
+    location: [],
 
     modelName: '', // 模型名称
     modelCategoryValue: [], // 模型类别
@@ -92,6 +95,7 @@ Page({
       case 'departments':
         param = {
           name: this.data.departmentName,
+          locationId: this.data.locationValue[0],
         }
         break
       case 'models':
@@ -167,6 +171,27 @@ Page({
       })
     })
     this.setData({ pickerName: 'department', department })
+  },
+
+  // 选择位置
+  async onLocationPicker() {
+    const param = {
+      limit: 10,
+      offset: 0,
+      sort: 'created_at',
+      order: 'asc',
+    }
+    const location = []
+    const [res, err] = await wx.$get('locations', param)
+    if (err) return wx.$msg(err)
+    const { total, rows } = res
+    rows.forEach((e) => {
+      location.push({
+        label: e['name'],
+        value: e['id'],
+      })
+    })
+    this.setData({ pickerName: 'location', location })
   },
 
   // 关闭选择器

@@ -85,6 +85,7 @@
       tips="必填"
       model:value="{{departmentName}}"
     />
+    <t-cell title="位置" arrow hover note="{{locationText}}" bind:click="onLocationPicker" />
   </view>
   <!-- 新增模型 -->
   <view wx:if="{{mode == 'models'}}">
@@ -203,4 +204,18 @@
   bindcancel="onPickerCancel"
 >
   <t-picker-item options="{{department}}" />
+</t-picker>
+
+<!-- 位置选择器 -->
+<t-picker
+  visible="{{pickerName == 'location'}}"
+  data-key="location"
+  value="{{locationValue}}"
+  title="选择部门"
+  cancelBtn="取消"
+  confirmBtn="确认"
+  bindchange="onPickerChange"
+  bindcancel="onPickerCancel"
+>
+  <t-picker-item options="{{location}}" />
 </t-picker>
