@@ -24,6 +24,27 @@ Page({
       requested: '请求',
       'request canceled': '请求取消',
     },
+    type: {
+      value: 'all',
+      options: [
+        {
+          value: 'all',
+          label: '全部日志',
+        },
+        {
+          value: 'checkout',
+          label: '签出日志',
+        },
+        {
+          value: 'update',
+          label: '更新日志',
+        },
+        {
+          value: 'audit',
+          label: '审计日志',
+        },
+      ],
+    },
   },
 
   onLoad() {
@@ -38,9 +59,9 @@ Page({
   },
 
   // 更新活动列表
-  async updateActionList() {
+  async updateActionList(actionType = 'all') {
     wx.$loading('加载中...')
-    const newList = await getActionList() // 获取活动列表
+    const newList = await getActionList(actionType) // 获取活动列表
     if (newList) {
       const { actionList } = this.data
       this.setData({ actionList: [...actionList, ...newList] }) // 若有数据返回, 则追加到下面
@@ -49,15 +70,28 @@ Page({
     }
     wx.$loading(false)
   },
+
+  // 筛选器
+  async onTypeChange(e) {
+    const actionType = e.detail.value
+    if (actionType == this.data.type.value) return
+    this.setData({
+      actionList: [],
+      'type.value': actionType,
+    })
+    initPagination() // 重置分页器
+    this.updateActionList(actionType) // 更新活动列表
+  },
 })
 
 // 获取活动列表
-async function getActionList() {
+async function getActionList(actionType) {
   const param = {
     limit: 10,
     offset: pagination.offset,
     sort: 'created_at',
     order: 'desc',
+    actionType: actionType == 'all' ? '' : actionType,
   }
   const list = []
   if (pagination.isBottom) return false // 已加载到底时,拦截

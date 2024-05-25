@@ -1,4 +1,8 @@
 <view>
+  <!-- 选择器 -->
+  <t-dropdown-menu>
+    <t-dropdown-item options="{{type.options}}" value="{{type.value}}" bindchange="onTypeChange" />
+  </t-dropdown-menu>
   <!-- 活动日志 -->
   <view style="margin-top: 10px" wx:for="{{actionList}}" wx:key="index">
     <t-cell-group theme="card" bordered>
@@ -11,4 +15,9 @@
       />
     </t-cell-group>
   </view>
+</view>
+
+<!-- 空状态 -->
+<view wx:if="{{actionList.length == 0}}" style="margin-top: 450rpx">
+  <t-empty icon="error-circle-filled" description="没有更多了" />
 </view>
