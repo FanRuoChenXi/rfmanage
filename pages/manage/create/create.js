@@ -35,6 +35,8 @@ Page({
     location: [],
 
     modelName: '', // 模型名称
+    modelNumber: '', // 模型编号
+    modelEol: 0, // 生命周期
     modelCategoryValue: [], // 模型类别
     modelCategoryText: '',
     modelCategory: [],
@@ -102,6 +104,8 @@ Page({
         param = {
           name: this.data.modelName,
           categoryId: this.data.modelCategoryValue[0],
+          modelNumber: this.data.modelNumber,
+          eol: this.data.modelEol,
         }
         break
       case 'statuslabels':
@@ -208,6 +212,13 @@ Page({
       pickerName: '',
       [`${key}Value`]: value,
       [`${key}Text`]: label.join(' '),
+    })
+  },
+
+  // 步进器
+  modelEolChange(e) {
+    this.setData({
+      modelEol: e.detail.value,
     })
   },
 })

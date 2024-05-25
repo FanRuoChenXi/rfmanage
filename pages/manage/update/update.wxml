@@ -81,6 +81,7 @@
     />
     <t-cell
       title="类别"
+      required
       arrow
       hover
       note="{{modelCategoryText}}"

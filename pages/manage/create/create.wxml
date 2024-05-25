@@ -104,6 +104,10 @@
       note="{{modelCategoryText}}"
       bind:click="onModelCategoryPicker"
     />
+    <t-input label="模型编号" placeholder="请输入模型编号" model:value="{{modelNumber}}" />
+    <t-cell title="生命周期（月）">
+      <t-stepper defaultValue="0" theme="filled" slot="note" bind:change="modelEolChange" />
+    </t-cell>
   </view>
   <!-- 新增状态标签 -->
   <view wx:if="{{mode == 'statuslabels'}}">
