@@ -48,6 +48,8 @@ Page({
     ],
 
     companyName: '', // 企业名称
+    companyPhone: '', // 企业电话
+    companyEmail: '', // 企业邮箱
 
     locationName: '', // 地点名称
   },
@@ -144,6 +146,8 @@ Page({
       case 'companies':
         param = {
           name: this.data.companyName,
+          phone: this.data.companyPhone,
+          email: this.data.companyEmail,
         }
         break
       case 'locations':
@@ -267,10 +271,12 @@ Page({
   // 企业数据
   setCompanyData(res) {
     const companyName = res['name']
-    const companyPhone = res['phone']
-    const companyEmail = res['email']
+    const companyPhone = res['phone'] == null ? '' : res['phone']
+    const companyEmail = res['email'] == null ? '' : res['email']
     this.setData({
       companyName,
+      companyPhone,
+      companyEmail,
     })
   },
 

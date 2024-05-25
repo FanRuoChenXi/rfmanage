@@ -52,6 +52,8 @@ Page({
     ],
 
     companyName: '', // 企业名称
+    companyPhone: '', // 企业电话
+    companyEmail: '', // 企业邮箱
 
     locationName: '', // 地点名称
   },
@@ -117,6 +119,8 @@ Page({
       case 'companies':
         param = {
           name: this.data.companyName,
+          phone: this.data.companyPhone,
+          email: this.data.companyEmail,
         }
         break
       case 'locations':

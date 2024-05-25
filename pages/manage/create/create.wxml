@@ -136,6 +136,8 @@
       tips="必填"
       model:value="{{companyName}}"
     />
+    <t-input label="企业电话" placeholder="请输入企业电话" model:value="{{companyPhone}}" />
+    <t-input label="企业邮箱" placeholder="请输入企业邮箱" model:value="{{companyEmail}}" />
   </view>
   <!-- 新增地点 -->
   <view wx:if="{{mode == 'locations'}}">
