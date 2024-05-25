@@ -18,7 +18,7 @@
         <view style="margin-top: 20px" wx:for="{{assetList}}" wx:key="index">
           <t-cell-group theme="card" bordered>
             <t-cell title="{{item['name']}}" image="{{item['image']}}" rightIcon="barcode" />
-            <t-cell title="资产编号：{{item['assetTag']}}" />
+            <t-cell title="资产标签：{{item['assetTag']}}" />
             <t-cell title="序列号：{{item['serial']}}" />
             <t-cell title="资产模型：{{item['model']['name']}}" />
             <t-cell title="资产类别：{{item['category']['name']}}" />

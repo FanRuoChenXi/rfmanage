@@ -41,6 +41,7 @@ Page({
   setHardwareData(res) {
     const hardware = {
       name: res.name,
+      image: res.image,
       assetTag: res.assetTag,
       serial: res.serial,
       model: res.model,

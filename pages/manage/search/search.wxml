@@ -9,10 +9,11 @@
     wx:key="index"
     title="{{item.assetTag}}"
     description="名称：{{item['name'] ? tem['name'] : item['model']['name']}}"
+    image="{{item['image']}}"
+    rightIcon="barcode"
     bind:click="toItemDetail"
     data-key="hardware"
     data-id="{{item.id}}"
     hover
-    arrow
   />
 </view>

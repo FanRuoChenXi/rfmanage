@@ -68,6 +68,7 @@ async function getAssetList(searchValue) {
     list.push({
       id: e['id'],
       name: e['name'],
+      image: e['image'],
       assetTag: e['assetTag'],
       model: e['model'],
     })
