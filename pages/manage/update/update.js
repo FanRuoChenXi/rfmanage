@@ -52,6 +52,9 @@ Page({
     companyEmail: '', // 企业邮箱
 
     locationName: '', // 地点名称
+    locationAddress: '', // 地址
+    locationCity: '', // 城市
+    locationState: '', // 区域
   },
 
   async onLoad(query) {
@@ -153,6 +156,9 @@ Page({
       case 'locations':
         param = {
           name: this.data.locationName,
+          address: this.data.locationAddress,
+          city: this.data.locationCity,
+          state: this.data.locationState,
         }
         break
     }
@@ -283,10 +289,14 @@ Page({
   // 地点数据
   setLocationData(res) {
     const locationName = res['name']
-    const locationPhone = res['phone']
-    const locationManager = res['manager']
+    const locationAddress = res['address']
+    const locationCity = res['city']
+    const locationState = res['state']
     this.setData({
       locationName,
+      locationAddress,
+      locationCity,
+      locationState,
     })
   },
 

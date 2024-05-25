@@ -148,6 +148,10 @@
       tips="必填"
       model:value="{{locationName}}"
     />
+    <t-input label="地址" placeholder="请输入地址" model:value="{{locationAddress}}" />
+    <t-input label="城市" placeholder="请输入城市" model:value="{{locationCity}}" />
+    <t-input label="区域" placeholder="请输入区域" model:value="{{locationState}}" />
+    <t-input label="货币种类" placeholder="请输入货币种类" model:value="{{locationCurrency}}" />
   </view>
 </view>
 
