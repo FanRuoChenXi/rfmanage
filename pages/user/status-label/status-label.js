@@ -71,7 +71,7 @@ async function getStatusLabelList() {
     limit: 50,
     offset: 0,
     sort: 'created_at',
-    order: 'asc',
+    order: 'desc',
   }
   const [res, err] = await wx.$get('statuslabels', param)
   if (err) return wx.$msg(err)

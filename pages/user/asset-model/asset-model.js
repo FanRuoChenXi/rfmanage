@@ -71,7 +71,7 @@ async function getModelList() {
     limit: 50,
     offset: 0,
     sort: 'created_at',
-    order: 'asc',
+    order: 'desc',
   }
   const [res, err] = await wx.$get('models', param)
   if (err) return wx.$msg(err)
