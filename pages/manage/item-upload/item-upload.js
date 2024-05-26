@@ -21,7 +21,7 @@ Page({
     statusText: '',
     status: [],
 
-    assetTag: '', // 资产标签
+    assetTag: wx.getStorageSync('assetTag'), // 资产标签
 
     licensesItemName: '', // 许可证名称
     licenseEmail: '',

@@ -2,13 +2,14 @@
   <t-cell title="项目类型" arrow hover note="{{itemTypeText}}" bind:click="onitemTypePicker" />
   <!-- 资产 -->
   <view wx:if="{{itemTypeValue == 'asset'}}">
-    <t-input
+    <!-- <t-input
       label="资产标签"
       placeholder="请输入标签号"
       status="error"
       tips="必填"
       model:value="{{assetTag}}"
-    />
+    /> -->
+    <t-cell title="资产模型" required note="{{assetTag}}" />
     <t-cell title="资产模型" required arrow hover note="{{modelText}}" bind:click="onModelPicker" />
     <t-cell title="状态" required arrow hover note="{{statusText}}" bind:click="onStatusPicker" />
   </view>

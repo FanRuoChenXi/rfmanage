@@ -8,7 +8,11 @@ Page({
 
   async onLoad() {
     initPagination() // 重置分页器
-    this.updateAssetList() // 更新活动列表
+    await this.updateAssetList() // 更新活动列表
+    wx.setStorageSync(
+      'assetTag',
+      Number(this.data.assetList[0]['assetTag']) + 1
+    )
   },
 
   // 选项卡更新
@@ -165,7 +169,7 @@ async function getAssetList() {
   const param = {
     limit: 10,
     offset: pagination.offset,
-    sort: 'created_at',
+    sort: 'asset_tag',
     order: 'desc',
   }
   const list = []
