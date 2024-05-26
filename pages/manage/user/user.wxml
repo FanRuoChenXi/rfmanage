@@ -12,7 +12,7 @@
         <t-tag wx:if="{{item['activated'] == true}}" variant="light" theme="success" slot="note"
           >正常</t-tag
         >
-        <t-tag wx:else variant="light" theme="danger" slot="note">已删除</t-tag>
+        <t-tag wx:else variant="light" theme="danger" slot="note">未启用</t-tag>
       </t-cell>
       <t-cell title="{{item['department']['name']}}" leftIcon="usergroup" />
       <t-cell title="{{item['phone']}}" leftIcon="call" />

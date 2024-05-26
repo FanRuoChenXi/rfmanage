@@ -20,6 +20,7 @@ Page({
   },
 
   onShow() {
+    this.setData({ categoryList: [] })
     initPagination() // 重置分页器
     this.updateCategoryList() // 更新列表
   },

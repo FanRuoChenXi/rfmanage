@@ -32,7 +32,8 @@
     "pages/user/location/location"
   ],
   "usingComponents": {
-    "t-icon": "tdesign-miniprogram/icon/icon"
+    "t-icon": "tdesign-miniprogram/icon/icon",
+    "t-message": "tdesign-miniprogram/message/message"
   },
   "window": {
     "navigationBarTextStyle": "black",

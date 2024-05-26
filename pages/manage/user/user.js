@@ -6,6 +6,7 @@ Page({
   },
 
   onShow() {
+    this.setData({ userList: [] })
     initPagination() // 重置分页器
     this.updateUserList() // 更新列表
   },
@@ -88,8 +89,8 @@ async function getUserList() {
     limit: 10,
     offset: pagination.offset,
     sort: 'created_at',
-    order: 'asc',
-    all: 'true',
+    order: 'desc',
+    all: 'false',
   }
   const list = []
   if (pagination.isBottom) return false // 已加载到底时,拦截
