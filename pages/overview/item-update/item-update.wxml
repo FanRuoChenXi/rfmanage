@@ -1,5 +1,6 @@
 <!-- 主体 -->
 <view class="update-box">
+  <!-- 资产 -->
   <view wx:if="{{mode == 'hardware'}}">
     <t-input
       label="资产标签"
@@ -10,6 +11,24 @@
     />
     <t-cell title="资产模型" required arrow hover note="{{modelText}}" bind:click="onModelPicker" />
     <t-cell title="状态" required arrow hover note="{{statusText}}" bind:click="onStatusPicker" />
+  </view>
+  <!-- 许可证 -->
+  <view wx:if="{{mode == 'licenses'}}">
+    <t-input
+      label="软件名称"
+      placeholder="请输入软件名称"
+      status="error"
+      tips="必填"
+      model:value="{{licenseName}}"
+    />
+    <t-cell title="总量" required>
+      <t-stepper
+        defaultValue="{{licenseSeats}}"
+        theme="filled"
+        slot="note"
+        bind:change="licenseSeatsChange"
+      />
+    </t-cell>
   </view>
 </view>
 
