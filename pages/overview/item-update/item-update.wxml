@@ -22,7 +22,7 @@
       model:value="{{licenseName}}"
     />
     <t-cell
-      title="配件类别"
+      title="许可证类别"
       required
       arrow
       hover
@@ -49,6 +49,42 @@
     />
     <t-cell
       title="配件类别"
+      required
+      arrow
+      hover
+      note="{{categoryText}}"
+      bind:click="onCategoryPicker"
+    />
+  </view>
+  <!-- 消耗品 -->
+  <view wx:if="{{mode == 'consumables'}}">
+    <t-input
+      label="消耗品名称"
+      placeholder="请输入消耗品名称"
+      status="error"
+      tips="必填"
+      model:value="{{consumableName}}"
+    />
+    <t-cell
+      title="消耗品类别"
+      required
+      arrow
+      hover
+      note="{{categoryText}}"
+      bind:click="onCategoryPicker"
+    />
+  </view>
+  <!-- 组件 -->
+  <view wx:if="{{mode == 'components'}}">
+    <t-input
+      label="组件名称"
+      placeholder="请输入组件名称"
+      status="error"
+      tips="必填"
+      model:value="{{componentName}}"
+    />
+    <t-cell
+      title="组件类别"
       required
       arrow
       hover

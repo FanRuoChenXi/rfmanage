@@ -18,6 +18,10 @@ Page({
     licenseSeats: 0, // 许可证总量
 
     accessoryName: '', // 配件名称
+
+    consumableName: '', // 消耗品名称
+
+    componentName: '', // 组件名称
   },
 
   async onLoad(query) {
@@ -74,8 +78,16 @@ Page({
         }
         break
       case 'consumables':
+        param = {
+          name: this.data.consumableName,
+          category_id: this.data.categoryValue[0],
+        }
         break
       case 'components':
+        param = {
+          name: this.data.componentName,
+          category_id: this.data.categoryValue[0],
+        }
         break
     }
     await this.updateItem(url, param)
@@ -234,8 +246,24 @@ Page({
   },
 
   // 消耗品数据
-  setConsumableData(res) {},
+  setConsumableData(res) {
+    const consumableName = res['name']
+    const category = res['category']
+    this.setData({
+      mode: 'consumables',
+      consumableName,
+      categoryText: category['name'],
+    })
+  },
 
   // 组件数据
-  setComponentData(res) {},
+  setComponentData(res) {
+    const componentName = res['name']
+    const category = res['category']
+    this.setData({
+      mode: 'components',
+      componentName,
+      categoryText: category['name'],
+    })
+  },
 })
