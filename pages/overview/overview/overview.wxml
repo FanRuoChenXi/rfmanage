@@ -3,18 +3,6 @@
   <t-tabs value="{{tabValue}}" bind:change="onTabChange" t-class-content="tabContent" theme="tag">
     <t-tab-panel label="资产" value="0">
       <scroll-view class="" scroll-y bindscrolltolower="onAssetBottom" style="height: 1150rpx;">
-        <!-- <t-cell
-          wx:for="{{assetList}}"
-          wx:key="index"
-          title="{{item.assetTag}}"
-          description="名称：{{item['name'] ? tem['name'] : item['model']['name']}}"
-          bind:click="toItemDetail"
-          data-key="hardware"
-          data-id="{{item.id}}"
-          hover
-          arrow
-        /> -->
-
         <view style="margin-top: 20px" wx:for="{{assetList}}" wx:key="index">
           <t-cell-group theme="card" bordered>
             <t-cell title="{{item['name']}}" image="{{item['image']}}" rightIcon="barcode" />
@@ -108,18 +96,6 @@
     </t-tab-panel>
     <t-tab-panel label="许可证" value="1">
       <scroll-view scroll-y style="height: 1150rpx;">
-        <!-- <t-cell
-          wx:for="{{licensesList}}"
-          wx:key="index"
-          title="{{item.name}}"
-          description="制造商：{{item['manufacturer']['name']}}"
-          bind:click="toItemDetail"
-          data-key="licenses"
-          data-id="{{item.id}}"
-          hover
-          arrow
-        /> -->
-
         <view style="margin-top: 20px" wx:for="{{licensesList}}" wx:key="index">
           <t-cell-group theme="card" bordered>
             <t-cell title="{{item['name']}}" rightIcon="system-storage" />
@@ -158,18 +134,6 @@
     </t-tab-panel>
     <t-tab-panel label="配件" value="2">
       <scroll-view scroll-y style="height: 1150rpx;">
-        <!-- <t-cell
-          wx:for="{{accessoryList}}"
-          wx:key="index"
-          title="{{item.name}}"
-          description="制造商：{{item['manufacturer']['name']}}"
-          bind:click="toItemDetail"
-          data-key="accessories"
-          data-id="{{item.id}}"
-          hover
-          arrow
-        /> -->
-
         <view style="margin-top: 20px" wx:for="{{accessoryList}}" wx:key="index">
           <t-cell-group theme="card" bordered>
             <t-cell title="{{item['name']}}" image="{{item['image']}}" rightIcon="keyboard" />
@@ -185,6 +149,9 @@
               size="small"
               variant="outline"
               disabled="{{!item['availableActions']['update']}}"
+              bind:tap="toItemUpdate"
+              data-key="accessories"
+              data-id="{{item.id}}"
               >更新</t-button
             >
             <t-button

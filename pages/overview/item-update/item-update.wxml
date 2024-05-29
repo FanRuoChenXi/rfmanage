@@ -21,14 +21,40 @@
       tips="必填"
       model:value="{{licenseName}}"
     />
+    <t-cell
+      title="配件类别"
+      required
+      arrow
+      hover
+      note="{{categoryText}}"
+      bind:click="onCategoryPicker"
+    />
     <t-cell title="总量" required>
       <t-stepper
-        defaultValue="{{licenseSeats}}"
+        value="{{licenseSeats}}"
         theme="filled"
         slot="note"
         bind:change="licenseSeatsChange"
       />
     </t-cell>
+  </view>
+  <!-- 配件 -->
+  <view wx:if="{{mode == 'accessories'}}">
+    <t-input
+      label="配件名称"
+      placeholder="请输入配件名称"
+      status="error"
+      tips="必填"
+      model:value="{{accessoryName}}"
+    />
+    <t-cell
+      title="配件类别"
+      required
+      arrow
+      hover
+      note="{{categoryText}}"
+      bind:click="onCategoryPicker"
+    />
   </view>
 </view>
 
@@ -63,4 +89,18 @@
   bindcancel="onPickerCancel"
 >
   <t-picker-item options="{{status}}" />
+</t-picker>
+
+<!-- 类别选择器 -->
+<t-picker
+  visible="{{pickerName == 'category'}}"
+  data-key="category"
+  value="{{categoryValue}}"
+  title="选择状态"
+  cancelBtn="取消"
+  confirmBtn="确认"
+  bindchange="onPickerChange"
+  bindcancel="onPickerCancel"
+>
+  <t-picker-item options="{{category}}" />
 </t-picker>

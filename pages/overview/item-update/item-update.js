@@ -8,11 +8,16 @@ Page({
     statusValue: [], // 状态标签
     statusText: '',
     status: [],
+    categoryValue: [], // 类别
+    categoryText: '',
+    category: [],
 
     assetTag: '', // 资产标签
 
     licensesName: '', // 许可证名称
     licenseSeats: 0, // 许可证总量
+
+    accessoryName: '', // 配件名称
   },
 
   async onLoad(query) {
@@ -58,10 +63,15 @@ Page({
       case 'licenses':
         param = {
           name: this.data.licensesName,
+          category_id: this.data.categoryValue[0],
           seats: this.data.licenseSeats,
         }
         break
       case 'accessories':
+        param = {
+          name: this.data.accessoryName,
+          category_id: this.data.categoryValue[0],
+        }
         break
       case 'consumables':
         break
@@ -156,6 +166,34 @@ Page({
     this.setData({ pickerName: 'status', status })
   },
 
+  // 选择类别
+  async onCategoryPicker() {
+    const categoryType = {
+      licenses: 'license',
+      accessories: 'accessory',
+      consumables: 'consumable',
+      components: 'component',
+    }
+    const category = []
+    const param = {
+      limit: 50,
+      offset: 0,
+      sort: 'created_at',
+      order: 'asc',
+      categoryType: categoryType[this.data.mode],
+    }
+    const [res, err] = await wx.$get('categories', param) // 获取状态标签列表
+    if (err) return wx.$msg(err)
+    const { total, rows } = res
+    rows.forEach((e) => {
+      category.push({
+        label: e['name'],
+        value: e['id'],
+      })
+    })
+    this.setData({ pickerName: 'category', category })
+  },
+
   // 步进器
   licenseSeatsChange(e) {
     this.setData({
@@ -174,12 +212,26 @@ Page({
   // 许可证数据
   setLicensesData(res) {
     const licensesName = res['name']
+    const category = res['category']
     const licenseSeats = res['seats']
-    this.setData({ mode: 'licenses', licensesName, licenseSeats })
+    this.setData({
+      mode: 'licenses',
+      licensesName,
+      licenseSeats,
+      categoryText: category['name'],
+    })
   },
 
   // 配件数据
-  setAccessoryData(res) {},
+  setAccessoryData(res) {
+    const accessoryName = res['name']
+    const category = res['category']
+    this.setData({
+      mode: 'accessories',
+      accessoryName,
+      categoryText: category['name'],
+    })
+  },
 
   // 消耗品数据
   setConsumableData(res) {},
